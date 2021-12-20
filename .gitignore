@@ -31,6 +31,10 @@ atlassian-ide-plugin.xml
 *.tar.gz
 *.rar
 
+#Low-Key thingz
+mixin/
+test/
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
