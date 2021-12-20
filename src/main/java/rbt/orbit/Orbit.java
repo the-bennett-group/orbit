@@ -10,6 +10,8 @@ import rbt.orbit.fluid.OrbitFluids;
 import rbt.orbit.items.OrbitItems;
 import rbt.orbit.items.tabs.OrbitTabs;
 import rbt.orbit.rules.OrbitRules;
+import rbt.orbit.tags.OrbitTags;
+import rbt.orbit.test.OrbitTest;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
@@ -24,11 +26,16 @@ public class Orbit implements ModInitializer {
     @Override
     public void onInitialize() {
         OrbitRules.initialize();
+        OrbitTags.initialize();
         OrbitTabs.initialize();
         OrbitFluids.initialize();
         OrbitBlocks.initialize();
         OrbitItems.initialize();
+        OrbitTest.test();
+        log("Orbit initialized");
+
     }
-    public static void log(Level level, String message) {LOGGER.log(level, "["+MOD_NAME+"]" + message);}
+    public static void log(String message) {LOGGER.info("[" + MOD_NAME + "]" + message);
+    }
 
 }
