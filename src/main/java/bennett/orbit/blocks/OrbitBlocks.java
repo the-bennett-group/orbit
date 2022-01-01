@@ -1,4 +1,4 @@
-package rbt.orbit.blocks;
+package bennett.orbit.blocks;
 
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.Block;
@@ -6,8 +6,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import rbt.orbit.Orbit;
-import rbt.orbit.fluid.OrbitFluids;
+import bennett.orbit.Orbit;
+import bennett.orbit.fluid.OrbitFluids;
 
 
 public final class OrbitBlocks {

@@ -1,17 +1,16 @@
-package rbt.orbit;
+package bennett.orbit;
 
+import bennett.orbit.blocks.OrbitBlocks;
+import bennett.orbit.items.tabs.OrbitTabs;
+import bennett.orbit.rules.OrbitRules;
+import bennett.orbit.tags.OrbitTags;
+import bennett.orbit.test.OrbitTest;
 import net.minecraft.resources.ResourceLocation;
 import net.fabricmc.api.ModInitializer;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import rbt.orbit.blocks.OrbitBlocks;
-import rbt.orbit.fluid.OrbitFluids;
-import rbt.orbit.items.OrbitItems;
-import rbt.orbit.items.tabs.OrbitTabs;
-import rbt.orbit.rules.OrbitRules;
-import rbt.orbit.tags.OrbitTags;
-import rbt.orbit.test.OrbitTest;
+import bennett.orbit.fluid.OrbitFluids;
+import bennett.orbit.items.OrbitItems;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
@@ -35,7 +34,7 @@ public class Orbit implements ModInitializer {
         log("Orbit initialized");
 
     }
-    public static void log(String message) {LOGGER.info("[" + MOD_NAME + "]" + message);
+    public static void log(String message) {LOGGER.info("[" + MOD_NAME + "]"  + message);
     }
 
 }

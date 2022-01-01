@@ -1,8 +1,8 @@
-package rbt.orbit.fluid;
+package bennett.orbit.fluid;
 
+import bennett.orbit.Orbit;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.material.FlowingFluid;
-import rbt.orbit.Orbit;
 
 
 public final class OrbitFluids {

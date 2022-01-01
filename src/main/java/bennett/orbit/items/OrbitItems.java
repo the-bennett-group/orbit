@@ -1,12 +1,12 @@
-package rbt.orbit.items;
+package bennett.orbit.items;
 
+import bennett.orbit.Orbit;
+import bennett.orbit.items.tabs.OrbitTabs;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import rbt.orbit.Orbit;
-import rbt.orbit.fluid.OrbitFluids;
-import rbt.orbit.items.tabs.OrbitTabs;
+import bennett.orbit.fluid.OrbitFluids;
 
 public final class OrbitItems {
 

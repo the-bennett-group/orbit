@@ -1,0 +1,93 @@
+{
+  "type": {
+    "ultrawarm": false,
+    "natural": true,
+    "piglin_safe": true,
+    "respawn_anchor_works": false,
+    "bed_works": true,
+    "has_raids": true,
+    "has_skylight": true,
+    "has_ceiling": false,
+    "coordinate_scale": 1,
+    "ambient_light": 0.2,
+    "logical_height": 384,
+    "effects": "minecraft:overworld",
+    "infiniburn": "minecraft:infiniburn_overworld",
+    "min_y": 0,
+    "height": 384
+  },
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 1481851145,
+    "settings": {
+      "sea_level": 32,
+      "disable_mob_generation": false,
+      "noise_caves_enabled": false,
+      "noodle_caves_enabled": false,
+      "aquifers_enabled": false,
+      "ore_veins_enabled": false,
+      "legacy_random_source": false,
+      "default_block": {
+        "Name": "minecraft:white_concrete_powder"
+      },
+      "default_fluid": {
+        "Name": "orbit:acid",
+        "Properties": {
+          "level": "0"
+        }
+      },
+      "noise": {
+        "min_y": 0,
+        "height": 384,
+        "size_horizontal": 1,
+        "size_vertical": 2,
+        "sampling": {
+          "xz_scale": 1,
+          "y_scale": 1,
+          "xz_factor": 80,
+          "y_factor": 160
+        },
+        "bottom_slide": {
+          "target": 0.4,
+          "size": 3,
+          "offset": 0
+        },
+        "top_slide": {
+          "target": -0.078125,
+          "size": 2,
+          "offset": 8
+        },
+        "terrain_shaper": {
+          "offset": {
+            "coordinate": "continents",
+            "points": [
+              {
+                "location": -1,
+                "derivative": 0,
+                "value": -1
+              },
+              {
+                "location": 1,
+                "derivative": 0,
+                "value": 2
+              }
+            ]
+          },
+          "factor": 32,
+          "jaggedness": 0
+        }
+      },
+      "surface_rule": {
+        "type": "minecraft:sequence",
+        "sequence": []
+      },
+      "structures": {
+        "structures": {}
+      }
+    },
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "orbit:salty_flatlands"
+    }
+  }
+}

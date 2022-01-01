@@ -1,7 +1,8 @@
-package rbt.orbit.fluid;
+package bennett.orbit.fluid;
 
 
-import net.fabricmc.fabric.mixin.client.rendering.MixinInGameHud;
+import bennett.orbit.blocks.OrbitBlocks;
+import bennett.orbit.tags.OrbitTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
@@ -9,17 +10,13 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.SoulFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import rbt.orbit.Orbit;
-import rbt.orbit.blocks.OrbitBlocks;
-import rbt.orbit.items.OrbitItems;
-import rbt.orbit.tags.OrbitTags;
+import bennett.orbit.Orbit;
+import bennett.orbit.items.OrbitItems;
 
 import java.util.Random;
 
@@ -44,7 +41,7 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 
 	@Override
 	protected BlockState createLegacyBlock(FluidState fluidState) {
-		return OrbitBlocks.ACID.defaultBlockState().setValue(LiquidBlock.LEVEL, AcidFluid.getLegacyLevel(fluidState));
+		return OrbitBlocks.ACID.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
 	}
 
 	public int getDropOff(LevelReader levelReader) {

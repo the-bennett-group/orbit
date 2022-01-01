@@ -1,4 +1,4 @@
-package rbt.orbit.client;
+package bennett.orbit.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -10,7 +10,7 @@ import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
-import rbt.orbit.fluid.OrbitFluids;
+import bennett.orbit.fluid.OrbitFluids;
 
 @Environment(EnvType.CLIENT)
 public class OrbitClient implements ClientModInitializer {

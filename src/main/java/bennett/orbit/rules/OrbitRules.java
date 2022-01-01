@@ -1,4 +1,4 @@
-package rbt.orbit.rules;
+package bennett.orbit.rules;
 
 import net.minecraft.world.level.GameRules;
 

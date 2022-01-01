@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "rbt.orbit.client.OrbitClient"
+      "bennett.orbit.client.OrbitClient"
     ],
     "main": [
-      "rbt.orbit.Orbit"
+      "bennett.orbit.Orbit"
     ]
   },
   "mixins": [
