@@ -35,12 +35,11 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 
 	@Override
 	public Item getBucket() {
-		Orbit.log("Bucket gotten!");
 		return OrbitItems.ACID_BUCKET;
 	}
 
 	@Override
-	protected BlockState createLegacyBlock(FluidState fluidState) {
+	public BlockState createLegacyBlock(FluidState fluidState) {
 		return OrbitBlocks.ACID.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
 	}
 

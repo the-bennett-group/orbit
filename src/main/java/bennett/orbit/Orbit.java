@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import bennett.orbit.fluid.OrbitFluids;
 import bennett.orbit.items.OrbitItems;
+import bennett.orbit.world.feature.OrbitFeatures;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
@@ -30,6 +31,7 @@ public class Orbit implements ModInitializer {
         OrbitFluids.initialize();
         OrbitBlocks.initialize();
         OrbitItems.initialize();
+        OrbitFeatures.initialize();
         OrbitTest.test();
         log("Orbit initialized");
 
