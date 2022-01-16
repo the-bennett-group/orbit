@@ -1,3 +1,5 @@
 {
-  "item.orbit.acid_bucket": "Acid Bucket"
+  "item.orbit.acid_bucket": "Acid Bucket",
+  "itemGroup.orbit.orbit_group": "Orbit",
+  "block.orbit.salt_block": "Salt Block"
 }

@@ -30,7 +30,7 @@ public class OrbitFeatures {
     public static void initialize() {
         ACID_LAKE = register(Feature.LAKE.configured(
                         new LakeFeature.Configuration(BlockStateProvider.simple(OrbitBlocks.ACID.defaultBlockState()),
-                        BlockStateProvider.simple(Blocks.WHITE_CONCRETE_POWDER.defaultBlockState()))), "acid_lake");
+                        BlockStateProvider.simple(OrbitBlocks.SALT_BLOCK.defaultBlockState()))), "acid_lake");
 
         ACID_LAKE_SURFACE = register(OrbitFeatures.ACID_LAKE.placed(
                         RarityFilter.onAverageOnceEvery(13),

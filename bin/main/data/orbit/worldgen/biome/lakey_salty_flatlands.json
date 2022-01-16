@@ -14,5 +14,5 @@
   "spawners": {},
   "spawn_costs": {},
   "carvers": {},
-  "features": []
+  "features": ["acid_lake_surface"]
 }

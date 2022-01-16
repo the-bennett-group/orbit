@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:lake",
+  "config": {
+    "fluid": {
+      "Name": "orbit:acid",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    "barrier": {
+      "Name": "minecraft:white_concrete_powder"
+    }
+  }
+}

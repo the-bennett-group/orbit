@@ -5,6 +5,9 @@
 *.ipr
 *.iws
 
+# stuff we want ignored right now
+ignored/
+
 # IntelliJ
 out/
 # mpeltonen/sbt-idea plugin

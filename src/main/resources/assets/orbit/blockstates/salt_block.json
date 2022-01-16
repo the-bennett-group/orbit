@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "orbit:block/salt_block" }
+  }
+}

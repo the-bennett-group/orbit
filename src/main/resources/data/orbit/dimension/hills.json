@@ -28,7 +28,7 @@
       "ore_veins_enabled": false,
       "legacy_random_source": false,
       "default_block": {
-        "Name": "minecraft:white_concrete_powder"
+        "Name": "orbit:salt_block"
       },
       "default_fluid": {
         "Name": "orbit:acid",
