@@ -1,8 +1,8 @@
 {
-  "name": "lushland",
+  "name": "acid_world",
   "ultrawarm": false,
   "natural": true,
-  "coordinate_scale": true,
+  "coordinate_scale": 1,
   "has_skylight": true,
   "has_ceiling" : false,
   "ambient_light": 0.75,

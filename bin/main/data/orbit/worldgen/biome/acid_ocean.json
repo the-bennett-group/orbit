@@ -14,17 +14,5 @@
   "spawners": {},
   "spawn_costs": {},
   "carvers": {},
-  "features": [
-    [],
-    ["orbit:acid_lake_surface"],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-  ]
+  "features": []
 }

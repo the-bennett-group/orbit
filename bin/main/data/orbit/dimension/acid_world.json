@@ -73,7 +73,7 @@
               }
             ]
           },
-          "factor": 32,
+          "factor": 128,
           "jaggedness": 0
         }
       },
@@ -86,8 +86,42 @@
       }
     },
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "orbit:salty_flatlands"
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {"biome": "orbit:salty_flatlands",
+        "parameters": {
+          "temperature": 0.5,
+          "humidity": 0.5,
+          "continentalness": 0.5,
+          "erosion": 0,
+          "weirdness": 0.5,
+          "offset": 0,
+          "depth": 0.2
+          }
+        },
+        {"biome": "orbit:lakey_salty_flatlands",
+          "parameters": {
+            "temperature": 0.5,
+            "humidity": 0.5,
+            "continentalness": 0.5,
+            "erosion": 1,
+            "weirdness": 0.5,
+            "offset": 0,
+            "depth": 0.2
+          }
+        },
+        {"biome": "orbit:acid_ocean",
+          "parameters": {
+            "temperature": 0.5,
+            "humidity": 0.5,
+            "continentalness": 0,
+            "erosion": 1,
+            "weirdness": 0.5,
+            "offset": 0,
+            "depth": 0.2
+          }
+        }
+      ]
     }
   }
 }
