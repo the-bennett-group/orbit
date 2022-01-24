@@ -8,7 +8,9 @@ import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
@@ -21,18 +23,33 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 
 @SuppressWarnings("Deprecated")
 public class OrbitFeatures {
-    public static ConfiguredFeature<LakeFeature.Configuration, ?> ACID_LAKE;
-    public static  PlacedFeature ACID_LAKE_SURFACE;
+    public static ConfiguredFeature<LakeFeature.Configuration, ?> ACID_LAKE_CONFIGURED;
+    public static PlacedFeature ACID_LAKE_PLACED;
+
+    public static Feature<SaltPillarFeatureConfiguration> SALT_PILLAR;
+    public static  ConfiguredFeature<SaltPillarFeatureConfiguration, ?> SALT_PILLAR_CONFIGURED;
+    public static PlacedFeature SALT_PILLAR_PLACED;
 
     public static void initialize() {
-        ACID_LAKE = register(Feature.LAKE.configured(
+        ACID_LAKE_CONFIGURED = register(Feature.LAKE.configured(
                         new LakeFeature.Configuration(BlockStateProvider.simple(OrbitBlocks.ACID.defaultBlockState()),
                         BlockStateProvider.simple(OrbitBlocks.SALT_BLOCK.defaultBlockState()))), "acid_lake");
-
-        ACID_LAKE_SURFACE = register(OrbitFeatures.ACID_LAKE.placed(
+        ACID_LAKE_PLACED = register(OrbitFeatures.ACID_LAKE_CONFIGURED.placed(
                         RarityFilter.onAverageOnceEvery(3),
                         InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()), "acid_lake_surface");
 
+        SALT_PILLAR = register(new SaltPillarFeature(SaltPillarFeatureConfiguration.CODEC), "salt_pillar");
+        SALT_PILLAR_CONFIGURED = register(SALT_PILLAR.configured(
+                new SaltPillarFeatureConfiguration(
+                        UniformInt.of(5, 15), UniformInt.of(3, 10), UniformInt.of(3, 10), UniformInt.of(3, 10), UniformInt.of(3, 10))),
+                "salt_pillar_configured");
+        SALT_PILLAR_PLACED = register(OrbitFeatures.SALT_PILLAR_CONFIGURED.placed(
+                RarityFilter.onAverageOnceEvery(2),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()), "salt_pillar_surface");
+    }
+
+    public static <FC extends FeatureConfiguration> Feature<FC> register(Feature<FC> feature, String name) {
+        return Registry.register(Registry.FEATURE, Orbit.newId(name), feature);
     }
 
     public static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> register(ConfiguredFeature<FC, ?> configuredFeature, String name) {
@@ -42,6 +59,8 @@ public class OrbitFeatures {
     public static PlacedFeature register(PlacedFeature feature, String name) {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, Orbit.newId(name), feature);
     }
+
+
 
 
 }
