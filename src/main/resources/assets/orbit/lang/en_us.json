@@ -1,5 +1,8 @@
 {
   "item.orbit.acid_bucket": "Acid Bucket",
   "itemGroup.orbit.orbit_group": "Orbit",
-  "block.orbit.salt_block": "Salt Block"
+  "block.orbit.salt_block": "Salt Block",
+  "block.orbit.blackwood_log": "Blackwood Log",
+  "block.orbit.stripped_blackwood_log": "Stripped Blackwood Log",
+  "block.orbit.blackwood_planks": "Blackwood Planks"
 }
