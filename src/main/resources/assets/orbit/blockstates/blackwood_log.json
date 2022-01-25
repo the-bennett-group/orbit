@@ -11,9 +11,6 @@
     "axis=z": {
       "model": "orbit:block/blackwood_log_horizontal",
       "x": 90
-    },
-    "": {
-      "model": "orbit:block/blackwood_log"
     }
   }
 }
