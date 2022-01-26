@@ -1,5 +1,7 @@
 package bennett.orbit.client;
 
+import bennett.orbit.Orbit;
+import bennett.orbit.util.OrbitUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -13,30 +15,33 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import bennett.orbit.fluid.OrbitFluids;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.FlowingFluid;
 
 @Environment(EnvType.CLIENT)
 public class OrbitClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ClientSpriteRegistryCallback.event(InventoryMenu.BLOCK_ATLAS).register((atlasTexture, registry) -> {
-            registry.register(new ResourceLocation("orbit:block/acid_still"));
-            registry.register(new ResourceLocation("orbit:block/acid_flow"));
-            registry.register(new ResourceLocation("orbit:block/blackwood_log"));
-            registry.register(new ResourceLocation("orbit:block/blackwood_log_top"));
-            registry.register(new ResourceLocation("orbit:block/stripped_blackwood_log"));
-            registry.register(new ResourceLocation("orbit:block/stripped_blackwood_log_top"));
-            registry.register(new ResourceLocation("orbit:block/blackwood_planks"));
+            registerBlockTexture(registry, "acid_still");
+            registerBlockTexture(registry, "acid_flow");
+            registerBlockTexture(registry, "blackwood_log");
+            registerBlockTexture(registry, "blackwood_log_top");
+            registerBlockTexture(registry, "stripped_blackwood_log");
+            registerBlockTexture(registry, "stripped_blackwood_log_top");
+            registerBlockTexture(registry, "blackwood_log_planks");
 
-
-            BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), OrbitFluids.SOURCE_ACID, OrbitFluids.FLOWING_ACID);
-
+            createFluidRenderLayer(OrbitFluids.SOURCE_ACID, OrbitFluids.FLOWING_ACID, "acid_still", "acid_flow");
         });
-        FluidRenderHandlerRegistry.INSTANCE.register(OrbitFluids.SOURCE_ACID, OrbitFluids.FLOWING_ACID, new SimpleFluidRenderHandler(
-                new ResourceLocation("orbit:block/acid_still"),
-                new ResourceLocation("orbit:block/acid_flow")
-        ));
 
+    }
 
+    public static void registerBlockTexture(ClientSpriteRegistryCallback.Registry registry, String name) {
+        registry.register(Orbit.newId("block/" + name));
+    }
 
+    public static void createFluidRenderLayer(FlowingFluid SOURCE, FlowingFluid FLOWING, String sourceTexture, String flowingTexture) {
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), SOURCE, FLOWING);
+        FluidRenderHandlerRegistry.INSTANCE.register(SOURCE, FLOWING, new SimpleFluidRenderHandler(
+                Orbit.newId("block"+sourceTexture), Orbit.newId("block"+flowingTexture)));
     }
 }

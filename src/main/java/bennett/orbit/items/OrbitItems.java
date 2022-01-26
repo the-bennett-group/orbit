@@ -3,6 +3,7 @@ package bennett.orbit.items;
 import bennett.orbit.Orbit;
 import bennett.orbit.blocks.OrbitBlocks;
 import bennett.orbit.items.tabs.OrbitTabs;
+import bennett.orbit.util.OrbitUtils;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
@@ -10,12 +11,10 @@ import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import bennett.orbit.fluid.OrbitFluids;
-import net.minecraft.world.level.block.Block;
-import org.lwjgl.system.CallbackI;
 
 public final class OrbitItems {
 
-	public static Item ACID_BUCKET = new BucketItem(OrbitFluids.SOURCE_ACID, new Item.Properties()
+	public static final Item ACID_BUCKET = new BucketItem(OrbitFluids.SOURCE_ACID, new Item.Properties()
 			.craftRemainder(Items.BUCKET).stacksTo(1).tab(OrbitTabs.ORBIT_TAB));
 	
 	public static void initialize() {

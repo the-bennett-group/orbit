@@ -1,28 +1,18 @@
 package bennett.orbit.fluid;
 
 import bennett.orbit.Orbit;
+import bennett.orbit.util.OrbitUtils;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.material.FlowingFluid;
 
 
 public final class OrbitFluids {
-	// TODO: create oil
-	// public static FlowingFluid STILL_OIL;
-	// public static FlowingFluid FLOWING_OIL;
-
-	public static FlowingFluid SOURCE_ACID;
-	public static FlowingFluid FLOWING_ACID;
+	public static final FlowingFluid SOURCE_ACID = register(new AcidFluid.Source(), "acid");
+	public static final FlowingFluid FLOWING_ACID = register(new AcidFluid.Flowing(), "flowing_acid");
 	   
 	
 	public static void initialize() {
-		// TODO: create oil
-		// //oil
-		// STILL_OIL = register(new OilFluid.StillOil(), "oil");
-		// FLOWING_OIL = register(new OilFluid.FlowingOil(), "flowing_oil");
 
-		//acid
-		SOURCE_ACID = register(new AcidFluid.Source(), "acid");
-		FLOWING_ACID = register(new AcidFluid.Flowing(), "flowing_acid");
     }
 	
 	

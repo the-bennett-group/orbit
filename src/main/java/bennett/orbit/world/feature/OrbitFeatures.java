@@ -2,6 +2,7 @@ package bennett.orbit.world.feature;
 
 import bennett.orbit.Orbit;
 import bennett.orbit.blocks.OrbitBlocks;
+import bennett.orbit.util.OrbitUtils;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;

@@ -19,23 +19,24 @@ public class Orbit implements ModInitializer {
 
     public static Logger LOGGER = LogManager.getLogger();
 
-    public static ResourceLocation newId(String name) {
-        return new ResourceLocation(MOD_ID, name);
-    }
-
     @Override
     public void onInitialize() {
         OrbitRules.initialize();
         OrbitTags.initialize();
-        OrbitTabs.initialize();
         OrbitFluids.initialize();
         OrbitBlocks.initialize();
+        OrbitTabs.initialize();
         OrbitItems.initialize();
         OrbitFeatures.initialize();
         OrbitTest.test();
-        log("Orbit initialized");
+        log("Orbit initialized!");
 
     }
+
+    public static ResourceLocation newId(String name) {
+        return new ResourceLocation(Orbit.MOD_ID, name);
+    }
+
     public static void log(String message) {LOGGER.info("[" + MOD_NAME + "]"  + message);
     }
 
