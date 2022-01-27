@@ -4,20 +4,24 @@ import bennett.orbit.blocks.OrbitBlocks;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
-public class SaltPillarFeature extends Feature<SaltPillarFeatureConfiguration> {
-    public SaltPillarFeature(Codec<SaltPillarFeatureConfiguration> configCodec) {
+public class PillarFeature extends Feature<PillarFeatureConfiguration> {
+    public PillarFeature(Codec<PillarFeatureConfiguration> configCodec) {
         super(configCodec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<SaltPillarFeatureConfiguration> context) {
+    public boolean place(FeaturePlaceContext<PillarFeatureConfiguration> context) {
         BlockPos origin = context.origin();
+        BlockStateProvider blockStateProvider = context.config().block();
+
         BlockPos currentPos = origin;
         Direction UP = Direction.UP;
-        SaltPillarFeatureConfiguration config = context.config();
+        PillarFeatureConfiguration config = context.config();
 
         int centerHeight = config.centerHeight().sample(context.random());
         int eastHeight = config.eastHeight().sample(context.random());
@@ -27,7 +31,7 @@ public class SaltPillarFeature extends Feature<SaltPillarFeatureConfiguration> {
 
         // generate center pillar
         for (int i = 0; i <= centerHeight; i++) {
-            context.level().setBlock(currentPos, OrbitBlocks.SALT_BLOCK.defaultBlockState(), 1);
+            context.level().setBlock(currentPos, blockStateProvider.getState(context.random(), currentPos), 1);
             currentPos = currentPos.above();
 
         }
@@ -35,28 +39,28 @@ public class SaltPillarFeature extends Feature<SaltPillarFeatureConfiguration> {
         // generate east pillar
         currentPos = origin.east();
         for (int i = 0; i <= eastHeight; i++) {
-            context.level().setBlock(currentPos, OrbitBlocks.SALT_BLOCK.defaultBlockState(), 1);
+            context.level().setBlock(currentPos, blockStateProvider.getState(context.random(), currentPos), 1);
             currentPos = currentPos.above();
         }
 
         // generate west pillar
         currentPos = origin.west();
         for (int i = 0; i <= westHeight; i++) {
-            context.level().setBlock(currentPos, OrbitBlocks.SALT_BLOCK.defaultBlockState(), 1);
+            context.level().setBlock(currentPos, blockStateProvider.getState(context.random(), currentPos), 1);
             currentPos = currentPos.above();
         }
 
         // generate north pillar
         currentPos = origin.north();
         for (int i = 0; i <= northHeight; i++) {
-            context.level().setBlock(currentPos, OrbitBlocks.SALT_BLOCK.defaultBlockState(), 1);
+            context.level().setBlock(currentPos, blockStateProvider.getState(context.random(), currentPos), 1);
             currentPos = currentPos.above();
         }
 
         // generate south pillar
         currentPos = origin.south();
         for (int i = 0; i <= southHeight; i++) {
-            context.level().setBlock(currentPos, OrbitBlocks.SALT_BLOCK.defaultBlockState(), 1);
+            context.level().setBlock(currentPos, blockStateProvider.getState(context.random(), currentPos), 1);
             currentPos = currentPos.above();
         }
 
