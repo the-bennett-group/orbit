@@ -1,9 +1,7 @@
 package bennett.orbit.tags;
 
 import bennett.orbit.Orbit;
-import bennett.orbit.util.OrbitUtils;
 import net.fabricmc.fabric.api.tag.TagFactory;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.level.block.Block;
 

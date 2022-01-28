@@ -56,7 +56,4 @@ public class OrbitFeatures {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, Orbit.newId(name), feature);
     }
 
-
-
-
 }
