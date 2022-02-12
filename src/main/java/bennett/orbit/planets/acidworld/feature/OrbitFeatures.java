@@ -1,4 +1,4 @@
-package bennett.orbit.world.feature;
+package bennett.orbit.planets.acidworld.feature;
 
 import bennett.orbit.Orbit;
 import bennett.orbit.blocks.OrbitBlocks;

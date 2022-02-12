@@ -18,6 +18,9 @@ public final class OrbitBlocks {
 	public static final Block BLACKWOOD_LOG = register(newLogBlock(), "blackwood_log");
 	public static final Block STRIPPED_BLACKWOOD_LOG = register(newLogBlock(), "stripped_blackwood_log");
 	public static final Block BLACKWOOD_PLANKS = register(newLogBlock(), "blackwood_planks");
+	public static final Block BLACKWOOD_FENCE_GATE = register(
+			new FenceGateBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).strength(2.0f, 3.0f).sound(SoundType.WOOD)),
+			"blackwood_fence_gate");
 
 	public static void initialize() {
 	}

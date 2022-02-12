@@ -1,10 +1,8 @@
 package bennett.orbit.items.tabs;
 import bennett.orbit.blocks.OrbitBlocks;
-import bennett.orbit.util.OrbitUtils;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.item.CreativeModeTab;
 import bennett.orbit.Orbit;
 

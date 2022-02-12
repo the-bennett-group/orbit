@@ -1,0 +1,13 @@
+package bennett.orbit.planets;
+
+import bennett.orbit.Orbit;
+import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;
+import net.minecraft.core.Registry;
+import net.minecraft.world.level.dimension.DimensionType;
+
+
+public class OrbitDimensionTypes {
+    public static DimensionType ACID_WORLD_TYPE;
+
+
+}
