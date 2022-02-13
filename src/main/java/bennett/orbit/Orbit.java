@@ -1,17 +1,17 @@
 package bennett.orbit;
 
 import bennett.orbit.blocks.OrbitBlocks;
+import bennett.orbit.fluid.OrbitFluids;
+import bennett.orbit.items.OrbitItems;
 import bennett.orbit.items.tabs.OrbitTabs;
+import bennett.orbit.planets.casud.feature.OrbitFeatures;
 import bennett.orbit.rules.OrbitRules;
 import bennett.orbit.tags.OrbitTags;
 import bennett.orbit.test.OrbitTest;
-import net.minecraft.resources.ResourceLocation;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import bennett.orbit.fluid.OrbitFluids;
-import bennett.orbit.items.OrbitItems;
-import bennett.orbit.planets.acidworld.feature.OrbitFeatures;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";

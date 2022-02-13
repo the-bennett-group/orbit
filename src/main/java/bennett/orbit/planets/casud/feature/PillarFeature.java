@@ -1,4 +1,4 @@
-package bennett.orbit.planets.acidworld.feature;
+package bennett.orbit.planets.casud.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

@@ -69,9 +69,13 @@ for i, arg in enumerate(args):
                 isolated_param.sort(key= lambda tup: tup[1][0]) # sort by first entry in parameter value list
                 isolated_params.append((param, *isolated_param))
             
-            iterprint(isolated_params)
+            for tup in isolated_params: 
+                param = tup[0]
+                print(param)
+                param_vals = [(small_tup[0], small_tup[1]) for small_tup in tup[1:]]
+                print(param_vals)
                 
-                
+
 
 
 

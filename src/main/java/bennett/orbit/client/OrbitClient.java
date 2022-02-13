@@ -24,7 +24,7 @@ public class OrbitClient implements ClientModInitializer {
             registerBlockTexture(registry, "blackwood_log_top");
             registerBlockTexture(registry, "stripped_blackwood_log");
             registerBlockTexture(registry, "stripped_blackwood_log_top");
-            registerBlockTexture(registry, "blackwood_log_planks");
+            registerBlockTexture(registry, "blackwood_planks");
 
             createFluidRenderLayer(OrbitFluids.SOURCE_ACID, OrbitFluids.FLOWING_ACID, "acid_still", "acid_flow");
         });
