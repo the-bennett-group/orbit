@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 public class OrbitFeatures {
     public static ConfiguredFeature<LakeFeature.Configuration, ?> ACID_LAKE_CONFIGURED;
     public static PlacedFeature ACID_LAKE_PLACED;
+    public static PlacedFeature ACID_LAKE_PLACED_FREQUENT;
 
     public static Feature<PillarFeatureConfiguration> PILLAR_FEATURE;
     public static ConfiguredFeature<PillarFeatureConfiguration, ?> SALT_PILLAR_CONFIGURED;
@@ -30,8 +31,11 @@ public class OrbitFeatures {
                         new LakeFeature.Configuration(BlockStateProvider.simple(OrbitBlocks.ACID.defaultBlockState()),
                         BlockStateProvider.simple(OrbitBlocks.SALT_BLOCK.defaultBlockState()))), "acid_lake");
         ACID_LAKE_PLACED = register(OrbitFeatures.ACID_LAKE_CONFIGURED.placed(
-                        RarityFilter.onAverageOnceEvery(3),
+                        RarityFilter.onAverageOnceEvery(5),
                         InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()), "acid_lake_surface");
+        ACID_LAKE_PLACED_FREQUENT = register(OrbitFeatures.ACID_LAKE_CONFIGURED.placed(
+                RarityFilter.onAverageOnceEvery(2),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()), "acid_lake_surface_frequent");
 
         PILLAR_FEATURE = register(new PillarFeature(PillarFeatureConfiguration.CODEC), "salt_pillar");
         SALT_PILLAR_CONFIGURED = register(PILLAR_FEATURE.configured(
