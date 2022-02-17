@@ -26,7 +26,7 @@ public class Casud {
     public static final int CASUD_FOG_COLOR = 3163680;
     public static final int CASUD_WATER_FOG_COLOR = 10541966;
 
-    public static final NoiseBasedChunkGenerator CasedChunkGenerator = new NoiseBasedChunkGenerator()s
+    public static final NoiseBasedChunkGenerator CasedChunkGenerator = new NoiseBasedChunkGenerator();
 
     public static final ResourceKey<LevelStem> STEM_KEY = ResourceKey.create(Registry.LEVEL_STEM_REGISTRY, Orbit.newId("casud"));
     public static final LevelStem STEM = new LevelStem();
