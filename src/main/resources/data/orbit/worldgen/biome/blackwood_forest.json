@@ -1,7 +1,7 @@
 {
   "temperature": 0.8,
   "downfall": 0.4,
-  "precipitation": "none",
+  "precipitation": "rain",
   "category": "none",
   "effects": {
     "sky_color": 3163680,
@@ -9,7 +9,15 @@
     "water_color": 3163680,
     "water_fog_color": 10541966,
     "grass_color": 16777215,
-    "foliage_color": 16777215
+    "foliage_color": 16777215,
+    "particle": {
+      "probability": 0.05,
+      "options": {
+        "type": "dust",
+        "color": [0.04, 0.2, 0.0],
+        "scale": 1.0
+      }
+    }
   },
   "spawners": {
     "monster": [

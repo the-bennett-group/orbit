@@ -7,11 +7,13 @@
   "item.orbit.blackwood_log": "Blackwood Log",
   "block.orbit.stripped_blackwood_log": "Stripped Blackwood Log",
   "item.orbit.stripped_blackwood_log": "Stripped Blackwood Log",
+  "block.orbit.blackwood_leaves": "Blackwood Leaves",
   "block.orbit.blackwood_planks": "Blackwood Planks",
   "block.orbit.blackwood_fence": "Blackwood Fence",
-  "biome.orbit.blackwood_fence_gate": "Blackwood Fence Gate",
+  "block.orbit.blackwood_fence_gate": "Blackwood Fence Gate",
   "biome.orbit.blackwood_forest": "Blackwood Forest",
   "biome.orbit.acid_ocean": "Acid Ocean",
   "biome.orbit.deep_acid_ocean": "Deep Acid Ocean",
-  "biome.orbit.salty_flatlands": "Salty Flatlands"
+  "biome.orbit.salty_flatlands": "Salty Flatlands",
+  "biome.orbit.salty_beach": "Salty Beach"
 }
