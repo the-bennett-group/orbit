@@ -25,9 +25,11 @@
   "mixins": [
     "orbit.mixins.json"
   ],
+  "accessWidener": "orbit.accesswidener",
   "depends": {
     "fabricloader": ">=0.12.8",
     "fabric": "*",
     "minecraft": "1.18.1"
   }
+
 }

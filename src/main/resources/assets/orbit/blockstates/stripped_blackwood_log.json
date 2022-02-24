@@ -9,7 +9,7 @@
       "model": "orbit:block/stripped_blackwood_log"
     },
     "axis=z": {
-      "model": "orbit:block/stripped_blackwood_horizontal",
+      "model": "orbit:block/stripped_blackwood_log_horizontal",
       "x": 90
     }
   }

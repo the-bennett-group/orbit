@@ -11,13 +11,22 @@
     "grass_color": 16777215,
     "foliage_color": 16777215
   },
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:drowned",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 4
+      }
+    ]
+  },
   "spawn_costs": {},
   "carvers": {},
   "features": [
     [],
-    ["orbit:acid_lake_surface"],
-    ["orbit:salt_pillar_surface"],
+    [],
+    [],
     [],
     [],
     [],

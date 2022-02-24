@@ -31,6 +31,9 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 }
+loom {
+    accessWidenerPath = file("src/main/resources/orbit.accesswidener")
+}
 
 processResources {
     inputs.property "version", project.version
@@ -70,6 +73,7 @@ jar {
         rename { "${it}_${project.archivesBaseName}" }
     }
 }
+
 
 // configure the maven publication
 publishing {

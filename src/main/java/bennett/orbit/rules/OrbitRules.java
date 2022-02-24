@@ -1,12 +1,9 @@
 package bennett.orbit.rules;
 
-import net.minecraft.world.level.GameRules;
-
-
 public class OrbitRules {
-    public static final GameRules.Key<GameRules.BooleanValue> RULE_DOCORROSION = null;
+    //public static GameRules.Key<GameRules.BooleanValue> RULE_DOCORROSIONTICK;
     
     public static void initialize() {
-        //TODO: Corrosion from Acid and a gamerule to prevent it
+        //RULE_DOCORROSIONTICK = GameRuleRegistry.register("doCorrosionTick", GameRules.Category.UPDATES, new GameRules.BooleanValue()));
     }
 }

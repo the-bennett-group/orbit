@@ -38,6 +38,6 @@ public class OrbitClient implements ClientModInitializer {
     public static void createFluidRenderLayer(FlowingFluid SOURCE, FlowingFluid FLOWING, String sourceTexture, String flowingTexture) {
         BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), SOURCE, FLOWING);
         FluidRenderHandlerRegistry.INSTANCE.register(SOURCE, FLOWING, new SimpleFluidRenderHandler(
-                Orbit.newId("block"+sourceTexture), Orbit.newId("block"+flowingTexture)));
+                Orbit.newId("block/"+sourceTexture), Orbit.newId("block/"+flowingTexture)));
     }
 }
