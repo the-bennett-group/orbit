@@ -63,7 +63,7 @@ public class OrbitFeatures {
                                                                                                                                                                                                             //radius, offset from trunk, height
         BLACKWOOD_TREE_TALL_CONFIGURED = register(Feature.TREE
                 .configured(new TreeConfiguration.TreeConfigurationBuilder(
-                        BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LOG), new StraightTrunkPlacer(10, 3, 6), BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LEAVES), new BlobFoliagePlacer(UniformInt.of(1, 4), ConstantInt.of(1), 6), new TwoLayersFeatureSize(2, 3, 2)).build()), "blackwood_tree_configured");
+                        BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LOG), new StraightTrunkPlacer(10, 3, 6), BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LEAVES), new BlobFoliagePlacer(UniformInt.of(1, 4), ConstantInt.of(1), 6), new TwoLayersFeatureSize(2, 3, 2)).build()), "blackwood_tree_tall_configured");
         BLACKWOOD_TREE_PLACED = register(BLACKWOOD_TREE_CONFIGURED.placed(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()), "blackwood_tree_placed");
         BLACKWOOD_TREE_TALL_PLACED = register(BLACKWOOD_TREE_TALL_CONFIGURED.placed(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()), "blackwood_tree_tall_placed");
     }
