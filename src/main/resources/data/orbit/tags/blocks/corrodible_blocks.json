@@ -11,6 +11,7 @@
     "#minecraft:iron_ores",
     "minecraft:iron_block",
     "minecraft:calcite",
-    "#minecraft:wool"
+    "#minecraft:wool",
+    "#minecraft:logs_that_burn"
   ]
 }

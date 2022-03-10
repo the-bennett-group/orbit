@@ -7,11 +7,11 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public record PillarFeatureConfiguration(UniformInt centerHeight,
-                                             UniformInt eastHeight,
-                                             UniformInt westHeight,
-                                             UniformInt northHeight,
-                                             UniformInt southHeight,
-                                             BlockStateProvider block) implements FeatureConfiguration {
+                                         UniformInt eastHeight,
+                                         UniformInt westHeight,
+                                         UniformInt northHeight,
+                                         UniformInt southHeight,
+                                         BlockStateProvider block) implements FeatureConfiguration {
     public static final Codec<PillarFeatureConfiguration> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             UniformInt.CODEC.fieldOf("centerHeight").forGetter(PillarFeatureConfiguration::centerHeight),
             UniformInt.CODEC.fieldOf("eastHeight").forGetter(PillarFeatureConfiguration::eastHeight),

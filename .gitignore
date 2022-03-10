@@ -12,6 +12,7 @@ ignored/
 out/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+remappedSrc/*
 
 # JIRA plugin
 atlassian-ide-plugin.xml

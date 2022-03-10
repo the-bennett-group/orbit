@@ -7,7 +7,6 @@ import bennett.orbit.items.tabs.OrbitTabs;
 import bennett.orbit.planets.casud.feature.OrbitFeatures;
 import bennett.orbit.rules.OrbitRules;
 import bennett.orbit.tags.OrbitTags;
-import bennett.orbit.test.OrbitTest;
 import bennett.orbit.util.OrbitUtils;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.ResourceLocation;
@@ -39,7 +38,6 @@ public class Orbit implements ModInitializer {
         OrbitItems.initialize();
         OrbitFeatures.initialize();
         //OrbitPlanets.initialize();
-        OrbitTest.test();
         log("Orbit initialized!");
 /*
         ServerLifecycleEvents.SERVER_STARTING.register((minecraftServer)->{
