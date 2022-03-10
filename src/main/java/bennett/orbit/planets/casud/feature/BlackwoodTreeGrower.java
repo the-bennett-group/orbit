@@ -1,21 +1,21 @@
 package bennett.orbit.planets.casud.feature;
 
+import bennett.orbit.Orbit;
+import net.minecraft.core.Holder;
+import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
 public class BlackwoodTreeGrower extends AbstractTreeGrower {
-    private final ConfiguredFeature<TreeConfiguration, ?> feature;
+    private final Holder<ConfiguredFeature<?, ?>> feature;
 
     public BlackwoodTreeGrower(ConfiguredFeature<?, ?> feature) {
-        this.feature = (ConfiguredFeature<TreeConfiguration, ?>)  feature;
+        this.feature = BuiltinRegistries.register(BuiltinRegistries.CONFIGURED_FEATURE, Orbit.newId("blackwood"), feature);
     }
-    @Nullable
     @Override
-    protected ConfiguredFeature<?, ?> getConfiguredFeature(Random random, boolean largeHive) {
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean largeHive) {
         return feature;
     }
 }

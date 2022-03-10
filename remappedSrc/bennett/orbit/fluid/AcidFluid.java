@@ -2,25 +2,22 @@ package bennett.orbit.fluid;
 
 
 import bennett.orbit.blocks.OrbitBlocks;
-import bennett.orbit.items.OrbitItems;
 import bennett.orbit.tags.OrbitTags;
-import bennett.orbit.util.OrbitUtils;
+import bennett.orbit.items.OrbitItems;
+
+import java.util.Random;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-
-import java.util.Random;
 
 
 public abstract class AcidFluid extends BaseOrbitFluid {
@@ -95,8 +92,7 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 
 
 	public static boolean isCorrodible(Level level, BlockPos blockPos) {
-		Block currentBlock = level.getBlockState(blockPos).getBlock();
-		return Registry.BLOCK.getOrCreateTag(OrbitTags.CORRODIBLE_BLOCKS).contains(OrbitUtils.findHolder(currentBlock));
+		return OrbitTags.CORRODIBLE_BLOCKS.contains(level.getBlockState(blockPos).getBlock());
 	}
 
 	private boolean hasCorrodibleNeighbors(Level level, BlockPos blockPos) {

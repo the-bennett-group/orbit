@@ -3,12 +3,11 @@ package bennett.orbit.planets.casud.biome;
 import bennett.orbit.Orbit;
 import bennett.orbit.planets.casud.Casud;
 import bennett.orbit.planets.casud.feature.OrbitFeatures;
-import bennett.orbit.util.OrbitUtils;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
 import net.minecraft.world.entity.EntityType;
@@ -19,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import static net.minecraft.world.entity.MobCategory.CREATURE;
 import static net.minecraft.world.entity.MobCategory.MONSTER;
+import static net.minecraft.world.level.biome.MobSpawnSettings.SpawnerData;
 
 public class CasudBiomes {
 
@@ -28,17 +28,17 @@ public class CasudBiomes {
     public static final ResourceKey<Biome> SALTY_FLATLANDS_KEY = register("salty_flatlands");
     public static final ResourceKey<Biome> SALTY_BEACH_KEY = register("salty_beach");
 
-    public static Holder<Biome> BLACKWOOD_FOREST;
-    public static Holder<Biome> ACID_OCEAN;
-    public static Holder<Biome> DEEP_ACID_OCEAN;
-    public static Holder<Biome> SALTY_FLATLANDS;
-    public static Holder<Biome> SALTY_BEACH;
+    public static Biome BLACKWOOD_FOREST;
+    public static Biome ACID_OCEAN;
+    public static Biome DEEP_ACID_OCEAN;
+    public static Biome SALTY_FLATLANDS;
+    public static Biome SALTY_BEACH;
 
 
     public static Biome blackwoodForest() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.ZOMBIE, 80, 1, 4));
         BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder());
-        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(OrbitFeatures.ACID_LAKE_KEY)).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, OrbitUtils.findHolder(OrbitFeatures.BLACKWOOD_TREE_KEY));
+        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, OrbitFeatures.ACID_LAKE_PLACED).feature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationFeatures.TREES_PLAINS.placed());
         BiomeDefaultFeatures.addDefaultGrass(biomeGenBuilder);
 
         return Biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 1.0f, 0.5f, mobSpawnSettingsBuilder, biomeGenBuilder,  null);
@@ -58,14 +58,15 @@ public class CasudBiomes {
     public static Biome saltyFlatlands() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.HUSK, 80, 1, 4)).addSpawn(CREATURE, new SpawnerData(EntityType.CHICKEN, 120, 1, 3));
         BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder())
-                .addFeature(GenerationStep.Decoration.LAKES, OrbitUtils.findHolder(OrbitFeatures.ACID_LAKE_KEY))
-                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, OrbitUtils.findHolder(OrbitFeatures.SALT_PILLAR_KEY));
+                .addFeature(GenerationStep.Decoration.LAKES, OrbitFeatures.SALT_PILLAR_PLACED)
+                .feature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, OrbitFeatures.ACID_LAKE_PLACED_FREQUENT);
         return Biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 1.0f, 0.3f, mobSpawnSettingsBuilder, biomeGenBuilder, null);
     }
 
     public static Biome saltyBeach() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.HUSK, 80, 1, 4)).addSpawn(CREATURE, new SpawnerData(EntityType.CHICKEN, 120, 1, 3));
-        BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder());
+        BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder())
+                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, OrbitFeatures.ACID_LAKE_PLACED);
         return Biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 1.0f, 0.3f, mobSpawnSettingsBuilder, biomeGenBuilder, null);
     }
 
@@ -89,7 +90,7 @@ public class CasudBiomes {
     public static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registry.BIOME_REGISTRY, Orbit.newId(name));
     }
-    public static Holder<Biome> register(ResourceKey<Biome> key, Biome biome) {
-        return BuiltinRegistries.register(BuiltinRegistries.BIOME, key, biome);
+    public static Biome register(ResourceKey<Biome> key, Biome biome) {
+        return BuiltinRegistries.registerMapping(BuiltinRegistries.BIOME, key, biome);
     }
 }
