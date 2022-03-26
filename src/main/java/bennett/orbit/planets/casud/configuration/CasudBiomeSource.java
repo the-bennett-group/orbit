@@ -59,7 +59,7 @@ public class CasudBiomeSource extends MultiNoiseBiomeSource {
 
 
     public static void initialize() {
-
+        Registry.register(Registry.BIOME_SOURCE, Orbit.newId("casud_biome_source"), CasudBiomeSource.CODEC);
     }
 
 
