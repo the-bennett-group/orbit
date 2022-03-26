@@ -1,4 +1,4 @@
-package bennett.orbit.planets.casud.generator;
+package bennett.orbit.planets.casud.configuration;
 
 import bennett.orbit.blocks.OrbitBlocks;
 import bennett.orbit.fluid.OrbitFluids;

@@ -56,34 +56,34 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 		if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
 			int i = random.nextInt(3);
 			if (i > 0) {
-				BlockPos blockPos2 = blockPos;
+				BlockPos acidTargetedBlockPos = blockPos;
 
 				for(int j = 0; j < i; ++j) {
-					blockPos2 = blockPos2.offset(random.nextInt(3) - 1, 1, random.nextInt(3) - 1);
-					if (!level.isLoaded(blockPos2)) {
+					acidTargetedBlockPos = acidTargetedBlockPos.offset(random.nextInt(3) - 1, 1, random.nextInt(3) - 1);
+					if (!level.isLoaded(acidTargetedBlockPos)) {
 						return;
 					}
 
-					BlockState blockState = level.getBlockState(blockPos2);
-					if (blockState.isAir()) {
-						if (this.hasCorrodibleNeighbors(level, blockPos2)) {
-							level.setBlockAndUpdate(blockPos2, BaseFireBlock.getState(level, blockPos2));
+					BlockState acidTargetedBlock = level.getBlockState(acidTargetedBlockPos);
+					if (acidTargetedBlock.isAir()) {
+						if (this.hasCorrodibleNeighbors(level, acidTargetedBlockPos)) {
+							level.setBlockAndUpdate(acidTargetedBlockPos, BaseFireBlock.getState(level, acidTargetedBlockPos));
 							return;
 						}
-					} else if (blockState.getMaterial().blocksMotion()) {
+					} else if (acidTargetedBlock.getMaterial().blocksMotion()) {
 						return;
 					}
 				}
 			} else {
-				for(int blockPos2 = 0; blockPos2 < 3; ++blockPos2) {
-					BlockPos j = blockPos.offset(random.nextInt(3) - 1, 0, random.nextInt(3) - 1);
-					if (!level.isLoaded(j)) {
+				for(int j = 0; j < 3; ++j) { //3 attempts to set nearby block on fire
+					BlockPos pos = blockPos.offset(random.nextInt(3) - 1, 0, random.nextInt(3) - 1);
+					if (!level.isLoaded(pos)) {
 						return;
 					}
 
-					if (level.isEmptyBlock(j.above()) && this.isCorrodible(level, j)) {
+					if (level.isEmptyBlock(pos.above()) && this.isCorrodible(level, pos)) {
 						Integer decider = random.nextInt(2) - 1;
-						level.setBlockAndUpdate(j.above(), BaseFireBlock.getState(level, j));
+						level.setBlockAndUpdate(pos.above(), BaseFireBlock.getState(level, pos));
 
 					}
 				}
@@ -100,18 +100,17 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 	}
 
 	private boolean hasCorrodibleNeighbors(Level level, BlockPos blockPos) {
-		Direction[] var3 = Direction.values();
-		int var4 = var3.length;
+		Direction[] directions = Direction.values();
 
-		for(int var5 = 0; var5 < var4; ++var5) {
-			Direction direction = var3[var5];
-			if (this.isCorrodible(level, blockPos.relative(direction))) {
+		for (Direction direction : directions) {
+			if (isCorrodible(level, blockPos.relative(direction))) {
 				return true;
 			}
 		}
 
 		return false;
 	}
+
 
 	public static class Flowing extends AcidFluid {
 		@Override
@@ -130,6 +129,7 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 			return false;
 		}
 	}
+
 
 	public static class Source extends AcidFluid {
 		@Override

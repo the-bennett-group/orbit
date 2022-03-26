@@ -2,7 +2,7 @@ package bennett.orbit.planets.casud;
 
 import bennett.orbit.Orbit;
 import bennett.orbit.planets.OrbitPlanets;
-import bennett.orbit.planets.casud.generator.CasudNoiseGenSettings;
+import bennett.orbit.planets.casud.configuration.CasudNoiseGenSettings;
 import java.util.OptionalLong;
 import java.util.function.Supplier;
 import net.minecraft.core.Registry;

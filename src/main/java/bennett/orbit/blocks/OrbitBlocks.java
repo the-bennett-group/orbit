@@ -12,7 +12,6 @@ import net.minecraft.world.level.material.Material;
 
 import static bennett.orbit.util.OrbitUtils.newLogBlock;
 
-
 public final class OrbitBlocks {
 	public static final Block ACID = register(new LiquidBlock(OrbitFluids.SOURCE_ACID, FabricBlockSettings.copyOf(Blocks.WATER).luminance(9)){}, "acid");
 	public static final Block SALT_BLOCK = register(new GlassBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(0.3f).sound(SoundType.GLASS)), "salt_block");
@@ -33,4 +32,6 @@ public final class OrbitBlocks {
 		return Registry.register(Registry.BLOCK, Orbit.newId(name), block);
 	}
 
+    public static void preInitialize() {
+    }
 }

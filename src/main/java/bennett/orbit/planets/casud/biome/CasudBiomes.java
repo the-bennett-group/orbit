@@ -1,9 +1,9 @@
 package bennett.orbit.planets.casud.biome;
 
 import bennett.orbit.Orbit;
+import bennett.orbit.planets.OrbitWorldGenUtils;
 import bennett.orbit.planets.casud.Casud;
 import bennett.orbit.planets.casud.feature.OrbitFeatures;
-import bennett.orbit.util.OrbitUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -15,8 +15,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.biome.MobSpawnSettings.SpawnerData;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jetbrains.annotations.Nullable;
 
+import static bennett.orbit.planets.OrbitWorldGenUtils.range;
+import static bennett.orbit.util.OrbitUtils.RegistryType;
+import static bennett.orbit.util.OrbitUtils.findHolder;
 import static net.minecraft.world.entity.MobCategory.CREATURE;
 import static net.minecraft.world.entity.MobCategory.MONSTER;
 
@@ -34,11 +38,24 @@ public class CasudBiomes {
     public static Holder<Biome> SALTY_FLATLANDS;
     public static Holder<Biome> SALTY_BEACH;
 
+    public static final Climate.ParameterPoint BLACKWOOD_FOREST_PARAMETER;
+    public static final Climate.ParameterPoint ACID_OCEAN_PARAMETER;
+    public static final Climate.ParameterPoint DEEP_ACID_OCEAN_PARAMETER;
+    public static final Climate.ParameterPoint SALTY_FLATLANDS_PARAMETER;
+    public static final Climate.ParameterPoint SALTY_BEACH_PARAMETER;
+
+    static {
+        BLACKWOOD_FOREST_PARAMETER = Climate.parameters(range(OrbitWorldGenUtils.temperatures[0], OrbitWorldGenUtils.temperatures[3]), OrbitWorldGenUtils.humidities[1], OrbitWorldGenUtils.MID_INLAND_CONTINENTALNESS, OrbitWorldGenUtils.erosions[2], OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, 0.0f);
+        ACID_OCEAN_PARAMETER = Climate.parameters(OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.OCEAN_CONTINENTALNESS, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, 0.0f);
+        DEEP_ACID_OCEAN_PARAMETER = Climate.parameters(OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.DEEP_OCEAN_CONTINENTALNESS, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, 0.0f);
+        SALTY_FLATLANDS_PARAMETER = Climate.parameters(range(OrbitWorldGenUtils.temperatures[4], OrbitWorldGenUtils.temperatures[5]), OrbitWorldGenUtils.humidities[1], OrbitWorldGenUtils.INLAND_CONTINENTALNESS, OrbitWorldGenUtils.erosions[4], OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, 0.0f);
+        SALTY_BEACH_PARAMETER = Climate.parameters(OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.COAST_CONTINENTALNESS, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, 0.0f);
+    }
 
     public static Biome blackwoodForest() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.ZOMBIE, 80, 1, 4));
         BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder());
-        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, BuiltinRegistries.PLACED_FEATURE.getHolderOrThrow(OrbitFeatures.ACID_LAKE_KEY)).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, OrbitUtils.findHolder(OrbitFeatures.BLACKWOOD_TREE_KEY));
+        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, (Holder<PlacedFeature>) findHolder(OrbitFeatures.ACID_LAKE_KEY, RegistryType.PLACED_FEATURE)).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, (Holder<PlacedFeature>) findHolder(OrbitFeatures.BLACKWOOD_TREE_KEY, RegistryType.PLACED_FEATURE));
         BiomeDefaultFeatures.addDefaultGrass(biomeGenBuilder);
 
         return Biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 1.0f, 0.5f, mobSpawnSettingsBuilder, biomeGenBuilder,  null);
@@ -58,8 +75,8 @@ public class CasudBiomes {
     public static Biome saltyFlatlands() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.HUSK, 80, 1, 4)).addSpawn(CREATURE, new SpawnerData(EntityType.CHICKEN, 120, 1, 3));
         BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder())
-                .addFeature(GenerationStep.Decoration.LAKES, OrbitUtils.findHolder(OrbitFeatures.ACID_LAKE_KEY))
-                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, OrbitUtils.findHolder(OrbitFeatures.SALT_PILLAR_KEY));
+                .addFeature(GenerationStep.Decoration.LAKES, (Holder<PlacedFeature>) findHolder(OrbitFeatures.ACID_LAKE_FREQUENT_KEY, RegistryType.PLACED_FEATURE))
+                .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, (Holder<PlacedFeature>) findHolder(OrbitFeatures.SALT_PILLAR_KEY, RegistryType.PLACED_FEATURE));
         return Biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 1.0f, 0.3f, mobSpawnSettingsBuilder, biomeGenBuilder, null);
     }
 

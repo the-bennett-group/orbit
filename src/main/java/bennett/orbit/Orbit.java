@@ -4,31 +4,36 @@ import bennett.orbit.blocks.OrbitBlocks;
 import bennett.orbit.fluid.OrbitFluids;
 import bennett.orbit.items.OrbitItems;
 import bennett.orbit.items.tabs.OrbitTabs;
+import bennett.orbit.planets.OrbitWorldGenUtils;
 import bennett.orbit.planets.casud.feature.OrbitFeatures;
 import bennett.orbit.rules.OrbitRules;
 import bennett.orbit.tags.OrbitTags;
 import bennett.orbit.util.OrbitUtils;
+import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.OptionalLong;
+import org.slf4j.Logger;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
     public static final String MOD_NAME = "Orbit";
 
-    public static Logger LOGGER = LogManager.getLogger();
+    public static Logger LOGGER = LogUtils.getLogger();
 
     @Nullable
     private static MinecraftServer server;
-    public static OptionalLong SEED;
 
+
+    public static void preInitialize() {
+        OrbitBlocks.preInitialize();
+        OrbitFeatures.preInitialize();
+    }
     @Override
     public void onInitialize() {
+        preInitialize();
         OrbitUtils.initialize();
         OrbitRules.initialize();
         OrbitTags.initialize();
@@ -37,19 +42,20 @@ public class Orbit implements ModInitializer {
         OrbitTabs.initialize();
         OrbitItems.initialize();
         OrbitFeatures.initialize();
+        OrbitWorldGenUtils.initialize();
         //OrbitPlanets.initialize();
         log("Orbit initialized!");
-/*
+
         ServerLifecycleEvents.SERVER_STARTING.register((minecraftServer)->{
             Orbit.server = minecraftServer;
-            Orbit.SEED = OptionalLong.of(Orbit.getServer().overworld().getSeed());
+            OrbitWorldGenUtils.setSeed(Orbit.getServer().overworld().getSeed());
         });
 
         ServerLifecycleEvents.SERVER_STOPPING.register((minecraftServer)->{
             Orbit.server = null;
-            Orbit.SEED = OptionalLong.empty();
+            OrbitWorldGenUtils.nullifySeed();
         });
-*/
+
     }
 
     public static ResourceLocation newId(String name) {

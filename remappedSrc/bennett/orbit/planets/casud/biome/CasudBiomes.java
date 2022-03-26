@@ -34,6 +34,12 @@ public class CasudBiomes {
     public static Biome SALTY_FLATLANDS;
     public static Biome SALTY_BEACH;
 
+    public static final Climate.Parameter BLACKWOOD_FOREST_PARAMETER;
+    public static final Climate.Parameter ACID_OCEAN_PARAMETER;
+
+    static {
+        BLACKWOOD_FOREST_PARAMETER Climate.parameters(range(OrbitWorldGenUtils.temperatures[0], OrbitWorldGenUtils.temperatures[3]), OrbitWorldGenUtils.humidities[1], OrbitWorldGenUtils.MID_INLAND_CONTINENTALNESS, OrbitWorldGenUtils.erosions[2], OrbitWorldGenUtils.FULL_RANGE, OrbitWorldGenUtils.FULL_RANGE, 0.0f)
+    }
 
     public static Biome blackwoodForest() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.ZOMBIE, 80, 1, 4));

@@ -1,21 +1,30 @@
 package bennett.orbit.planets.casud.feature;
 
-import bennett.orbit.Orbit;
+import bennett.orbit.blocks.OrbitBlocks;
 import net.minecraft.core.Holder;
-import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 
 import java.util.Random;
 
 public class BlackwoodTreeGrower extends AbstractTreeGrower {
-    private final Holder<ConfiguredFeature<?, ?>> feature;
+    public static final TreeConfiguration CONFIGURATION;
 
-    public BlackwoodTreeGrower(ConfiguredFeature<?, ?> feature) {
-        this.feature = BuiltinRegistries.register(BuiltinRegistries.CONFIGURED_FEATURE, Orbit.newId("blackwood"), feature);
+    static {
+        CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LOG), new StraightTrunkPlacer(8, 3, 0), BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LEAVES), new BlobFoliagePlacer(UniformInt.of(1, 3), ConstantInt.of(0), 4), new TwoLayersFeatureSize(2, 3, 2)).build();
+    }
+    public BlackwoodTreeGrower(ConfiguredFeature<TreeConfiguration, ?> feature) {
+
     }
     @Override
-    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean largeHive) {
-        return feature;
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean bl) {
+        return OrbitFeatures.BLACKWOOD;
     }
 }
