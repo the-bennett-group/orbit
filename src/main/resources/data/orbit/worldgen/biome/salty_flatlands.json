@@ -30,7 +30,13 @@
     ]
   },
   "spawn_costs": {},
-  "carvers": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
   "features": [
     ["orbit:salt_pillar_surface"],
     ["orbit:acid_lake_surface_frequent"],

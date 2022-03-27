@@ -41,8 +41,6 @@ public class Orbit implements ModInitializer {
         OrbitTabs.initialize();
         OrbitItems.initialize();
         OrbitFeatures.initialize();
-        //OrbitWorldGenUtils.initialize();
-        //OrbitPlanets.initialize();
         log("Orbit initialized!");
 
         ServerLifecycleEvents.SERVER_STARTING.register((minecraftServer)->{
