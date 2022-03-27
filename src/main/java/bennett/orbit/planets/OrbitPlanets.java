@@ -21,7 +21,7 @@ public class OrbitPlanets {
     public static void initialize() {
         Casud.initialize();
         //levelStemMappedRegistry.register(Casud.CASUD_STEM_KEY, Casud.STEM, Lifecycle.experimental());
-        dimensionTypeWritableRegistry.register(Casud.CASUD_TYPE_KEY, Casud.TYPE, Lifecycle.stable());
+        //dimensionTypeWritableRegistry.register(Casud.CASUD_TYPE_KEY, Casud.TYPE, Lifecycle.stable());
         dimensionWritableRegistry.register(Casud.CASUD_LEVEL_KEY, getLevel(Casud.CASUD_LEVEL_KEY, dimensionWritableRegistry), Lifecycle.stable());
     }
 

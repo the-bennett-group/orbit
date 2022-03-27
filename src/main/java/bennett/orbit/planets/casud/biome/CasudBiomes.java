@@ -55,7 +55,7 @@ public class CasudBiomes {
     public static Biome blackwoodForest() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.ZOMBIE, 80, 1, 4));
         BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder());
-        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, (Holder<PlacedFeature>) findHolder(OrbitFeatures.ACID_LAKE_KEY, RegistryType.PLACED_FEATURE)).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, (Holder<PlacedFeature>) findHolder(OrbitFeatures.BLACKWOOD_TREE_KEY, RegistryType.PLACED_FEATURE));
+        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, (Holder<PlacedFeature>) findHolder(OrbitFeatures.ACID_LAKE_KEY, RegistryType.PLACED_FEATURE)).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, (Holder<PlacedFeature>) findHolder(OrbitFeatures.BLACKWOOD_TREE_KEY, RegistryType.PLACED_FEATURE)).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, (Holder<PlacedFeature>) findHolder(OrbitFeatures.BLACKWOOD_TALL_KEY, RegistryType.PLACED_FEATURE)).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, (Holder<PlacedFeature>) findHolder(OrbitFeatures.BLACKWOOD_MEGA_KEY, RegistryType.PLACED_FEATURE));
         BiomeDefaultFeatures.addDefaultGrass(biomeGenBuilder);
 
         return Biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 1.0f, 0.5f, mobSpawnSettingsBuilder, biomeGenBuilder,  null);

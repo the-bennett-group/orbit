@@ -5,23 +5,15 @@ import bennett.orbit.planets.OrbitWorldGenUtils;
 import bennett.orbit.planets.casud.biome.CasudBiomes;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.RegistryOps;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
 
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class CasudBiomeSource extends MultiNoiseBiomeSource {
-    public static final Codec<CasudBiomeSource> CODEC =
-            RecordCodecBuilder.create((instance) -> instance.group(
-                            RegistryOps.retrieveRegistry(Registry.BIOME_REGISTRY).forGetter((CasudBiomeSource) -> CasudBiomeSource.biomeRegistry))
-                    .apply(instance, instance.stable(CasudBiomeSource::new)));
+public class CasudBiomeSource {
 
    // public static final MultiNoiseBiomeSource SOURCE;
     private static long SEED = OrbitWorldGenUtils.seed();
@@ -29,15 +21,9 @@ public class CasudBiomeSource extends MultiNoiseBiomeSource {
     public static Climate.ParameterList PARAMETER_LIST;
 
     public static MultiNoiseBiomeSource.Preset preset;
-    private final Registry<Biome> biomeRegistry;
 
-    public CasudBiomeSource(Registry<Biome> registry) {
-        super(createParameterList(registry), Optional.of(new PresetInstance(createBiomeSourcePreset(), registry)));
+    public static MultiNoiseBiomeSource SOURCE;
 
-        biomeRegistry = registry;
-
-
-    }
 
     private static Climate.ParameterList createParameterList(Registry<Biome> biomeRegistry) {
         PARAMETER_LIST = new Climate.ParameterList(ImmutableList.of(
@@ -59,19 +45,8 @@ public class CasudBiomeSource extends MultiNoiseBiomeSource {
 
 
     public static void initialize() {
-        Registry.register(Registry.BIOME_SOURCE, Orbit.newId("casud_biome_source"), CasudBiomeSource.CODEC);
+        SOURCE = new MultiNoiseBiomeSource(createParameterList(OrbitWorldGenUtils.biomeRegistry), Optional.of(new MultiNoiseBiomeSource.PresetInstance(preset, OrbitWorldGenUtils.biomeRegistry)));
     }
 
-
-    @Override
-    protected Codec<? extends BiomeSource> codec() {
-        return CODEC;
-    }
-
-    @Override
-    public BiomeSource withSeed(long seed) {
-        //jokes on you, i already have the seed!
-        return this;
-    }
 
 }

@@ -36,7 +36,7 @@ atlassian-ide-plugin.xml
 *.rar
 
 #Low-Key thingz
-mixin/
+MappedRegistryMixin.java
 test/
 *.pyc
 

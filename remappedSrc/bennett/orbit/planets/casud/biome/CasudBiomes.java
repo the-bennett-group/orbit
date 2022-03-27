@@ -44,7 +44,8 @@ public class CasudBiomes {
     public static Biome blackwoodForest() {
         MobSpawnSettings.Builder mobSpawnSettingsBuilder = new MobSpawnSettings.Builder().addSpawn(MONSTER, new SpawnerData(EntityType.ZOMBIE, 80, 1, 4));
         BiomeGenerationSettings.Builder biomeGenBuilder = addCarvers(new BiomeGenerationSettings.Builder());
-        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, OrbitFeatures.ACID_LAKE_PLACED).feature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationFeatures.TREES_PLAINS.placed());
+        biomeGenBuilder.addFeature(GenerationStep.Decoration.LAKES, OrbitFeatures.ACID_LAKE_PLACED).feature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationFeatures.TREES_PLAINS.placed()));
+        biomeGenBuilder.addFeature(Generation)
         BiomeDefaultFeatures.addDefaultGrass(biomeGenBuilder);
 
         return Biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.PLAINS, 1.0f, 0.5f, mobSpawnSettingsBuilder, biomeGenBuilder,  null);

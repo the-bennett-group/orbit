@@ -31,7 +31,7 @@
                     "argument1": {
                       "spline": "jaggedness",
                       "min_value": 0.0,
-                      "max_value": 2.56,
+                      "max_value": 1.28,
                       "continentalness": "orbit:casud/continents",
                       "erosion": "orbit:casud/erosion",
                       "weirdness": "orbit:casud/ridges",
@@ -54,7 +54,7 @@
             "argument2": {
               "argument": {
                 "noise": "minecraft:jagged",
-                "xz_scale": 1800.0,
+                "xz_scale": 1500.0,
                 "y_scale": 0.0,
                 "type": "minecraft:noise"
               },

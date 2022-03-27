@@ -4,7 +4,6 @@ import bennett.orbit.blocks.OrbitBlocks;
 import bennett.orbit.fluid.OrbitFluids;
 import bennett.orbit.items.OrbitItems;
 import bennett.orbit.items.tabs.OrbitTabs;
-import bennett.orbit.planets.OrbitWorldGenUtils;
 import bennett.orbit.planets.casud.feature.OrbitFeatures;
 import bennett.orbit.rules.OrbitRules;
 import bennett.orbit.tags.OrbitTags;
@@ -42,18 +41,18 @@ public class Orbit implements ModInitializer {
         OrbitTabs.initialize();
         OrbitItems.initialize();
         OrbitFeatures.initialize();
-        OrbitWorldGenUtils.initialize();
+        //OrbitWorldGenUtils.initialize();
         //OrbitPlanets.initialize();
         log("Orbit initialized!");
 
         ServerLifecycleEvents.SERVER_STARTING.register((minecraftServer)->{
             Orbit.server = minecraftServer;
-            OrbitWorldGenUtils.setSeed(Orbit.getServer().overworld().getSeed());
+            //OrbitWorldGenUtils.setSeed(Orbit.getServer().overworld().getSeed());
         });
 
         ServerLifecycleEvents.SERVER_STOPPING.register((minecraftServer)->{
             Orbit.server = null;
-            OrbitWorldGenUtils.nullifySeed();
+            //OrbitWorldGenUtils.nullifySeed();
         });
 
     }

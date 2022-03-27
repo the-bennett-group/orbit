@@ -1,18 +1,13 @@
 package bennett.orbit.planets.casud;
 
-import bennett.orbit.Orbit;
-import bennett.orbit.planets.casud.configuration.CasudBiomeSource;
-import bennett.orbit.planets.casud.configuration.CasudNoiseGenSettings;
 import bennett.orbit.tags.OrbitTags;
 import bennett.orbit.util.OrbitUtils;
 import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
 
 import java.util.OptionalLong;
-import java.util.function.Supplier;
 
 public class Casud {
     public static final ResourceKey<Level> CASUD_LEVEL_KEY = OrbitUtils.makeKey("casud", Registry.DIMENSION_REGISTRY);
@@ -24,7 +19,8 @@ public class Casud {
     public static final int CASUD_FOG_COLOR = 3163680;
     public static final int CASUD_WATER_FOG_COLOR = 10541966;
 
-    public static Supplier<DimensionType> TYPE_SUPPLIER = () -> TYPE;
+
+    //public static Supplier<DimensionType> TYPE_SUPPLIER = () -> TYPE;
     //public static Supplier<NoiseGeneratorSettings> NOISE_GEN_SETTINGS_SUPPLIER = () -> CasudNoiseGenSettings.SETTINGS;
 
 
@@ -40,8 +36,7 @@ public class Casud {
 
 
     public static void initialize() {
-        Registry.register(BuiltinRegistries.NOISE_GENERATOR_SETTINGS, Orbit.newId("casud_noise_settings"), CasudNoiseGenSettings.SETTINGS);
-        Registry.register(Registry.BIOME_SOURCE, Orbit.newId("casud_biome_source"), CasudBiomeSource.CODEC);
-
+       // Registry.register(BuiltinRegistries.NOISE_GENERATOR_SETTINGS, Orbit.newId("casud_noise_settings"), CasudNoiseGenSettings.SETTINGS);
+       // Registry.register(Registry.BIOME_SOURCE_REGISTRY, OrbitUtils.makeKey("casud_biome_source", Registry.BIOME_SOURCE_REGISTRY), CasudBiomeSource.SOURCE);
     }
 }

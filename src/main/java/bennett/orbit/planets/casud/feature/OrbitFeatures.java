@@ -43,9 +43,9 @@ public class OrbitFeatures {
     public static PlacedFeature SALT_PILLAR_PLACED;
     public static ResourceKey<?> SALT_PILLAR_KEY;
 
-    public static Holder<ConfiguredFeature<TreeConfiguration, ?>> BLACKWOOD;
-    public static Holder<ConfiguredFeature<TreeConfiguration, ?>> BLACKWOOD_TALL;
-    public static Holder<ConfiguredFeature<TreeConfiguration, ?>> BLACKWOOD_MEGA;
+    public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD;
+    public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD_TALL;
+    public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD_MEGA;
     public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_TREE_CONFIGURED;
     public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_TALL_CONFIGURED;
     public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_MEGA_CONFIGURED;
@@ -102,8 +102,8 @@ public class OrbitFeatures {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, Orbit.newId(name), feature);
     }
 
-    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<FC, ?>> makeHolder(String string, ConfiguredFeature<FC, ?> feature) {
-        return BuiltinRegistries.registerExact(BuiltinRegistries.CONFIGURED_FEATURE, string, feature);
+    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<?, ?>> makeHolder(String name, ConfiguredFeature<FC, ?> feature) {
+        return BuiltinRegistries.register(BuiltinRegistries.CONFIGURED_FEATURE, Orbit.newId(name), feature);
     }
 
 

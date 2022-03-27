@@ -2,7 +2,10 @@ package bennett.orbit.planets;
 
 import bennett.orbit.util.OrbitUtils;
 import bennett.orbit.util.OrbitUtils.RegistryType;
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.DensityFunction;
 
@@ -31,6 +34,10 @@ public class OrbitWorldGenUtils {
     public static final ResourceKey<DensityFunction> Y = (ResourceKey<DensityFunction>) OrbitUtils.makeKey("common/y", RegistryType.DENSITY_FUNCTION);
 
     private static OptionalLong SEED;
+
+    public static final RegistryAccess registryAccess = RegistryAccess.builtinCopy();
+
+    public static final Registry<Biome> biomeRegistry = registryAccess.ownedRegistryOrThrow(Registry.BIOME_REGISTRY);
 
     public static void initialize() {
 
