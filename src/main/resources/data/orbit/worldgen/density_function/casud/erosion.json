@@ -1,6 +1,6 @@
 {
   "argument": {
-    "xz_scale": 0.50,
+    "xz_scale": 0.25,
     "y_scale": 0.0,
     "noise": "orbit:casud/erosion",
     "shift_x": "orbit:casud/shift_x",

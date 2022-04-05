@@ -3,7 +3,7 @@
   "ultrawarm": false,
   "natural": true,
   "ambient_light": 0.25,
-  "has_skylight": false,
+  "has_skylight": true,
   "has_ceiling": false,
   "infiniburn": "#orbit:infiniburn_casud",
   "logical_height" : 192,

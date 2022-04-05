@@ -1,7 +1,7 @@
 {
-  "aquifers_enabled": true,
-  "ore_veins_enabled": false,
-  "legacy_random_source": true,
+  "aquifers_enabled": false,
+  "ore_veins_enabled": true,
+  "legacy_random_source": false,
   "sea_level": 32,
   "disable_mob_generation": false,
   "default_fluid": {
@@ -49,12 +49,7 @@
       },
       "type": "minecraft:mul"
     },
-    "lava": {
-      "noise": "orbit:casud/aquifer_acid",
-      "xz_scale": 1.0,
-      "y_scale": 1.0,
-      "type": "minecraft:noise"
-    },
+    "lava":  0.0,
     "temperature": {
       "xz_scale": 0.25,
       "y_scale": 0.0,
@@ -94,10 +89,37 @@
     }
   },
   "surface_rule": {
-    "result_state": {
-      "Name": "orbit:salt_block"
-    },
-    "type": "minecraft:block"
+    "sequence": [
+      {
+        "if_true": {
+          "biome_is": [
+            "orbit:salty_flatlands",
+            "orbit:salty_beach",
+            "orbit:blackwood_forest"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run":
+          {
+            "if_true": {
+              "offset": 0,
+              "add_surface_depth": false,
+              "secondary_depth_range": 0,
+              "surface_type": "ceiling",
+              "type": "minecraft:stone_depth"
+            },
+            "then_run": {
+              "result_state": {
+                "Name": "orbit:salt_block"
+              },
+              "type": "minecraft:block"
+            },
+            "type": "minecraft:condition"
+          },
+        "type": "minecraft:condition"
+      }
+    ],
+    "type": "minecraft:sequence"
   },
   "noise": {
     "bottom_slide": {
@@ -406,6 +428,6 @@
     }
   },
   "default_block": {
-    "Name": "orbit:salt_block"
+    "Name": "minecraft:purple_terracotta"
   }
 }

@@ -1,7 +1,2 @@
 accessWidener	v1	named
 
-accessible  class   net/minecraft/world/level/biome/MultiNoiseBiomeSource$PresetInstance
-
-accessible  method  net/minecraft/world/level/levelgen/NoiseGeneratorSettings <init> (Lnet/minecraft/world/level/levelgen/StructureSettings;Lnet/minecraft/world/level/levelgen/NoiseSettings;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;IZZZZZZ)V
-accessible  method  net/minecraft/world/level/biome/MultiNoiseBiomeSource <init>    (Lnet/minecraft/world/level/biome/Climate$ParameterList;Ljava/util/Optional;)V
-accessible  method  net/minecraft/world/level/biome/MultiNoiseBiomeSource$PresetInstance <init> (Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource$Preset;Lnet/minecraft/core/Registry;)V
