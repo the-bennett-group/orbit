@@ -428,6 +428,6 @@
     }
   },
   "default_block": {
-    "Name": "orbit:salt_block"
+    "Name": "minecraft:purple_terracotta"
   }
 }
