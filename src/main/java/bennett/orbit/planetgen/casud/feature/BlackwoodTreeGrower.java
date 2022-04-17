@@ -1,4 +1,4 @@
-package bennett.orbit.planets.casud.feature;
+package bennett.orbit.planetgen.casud.feature;
 
 import bennett.orbit.blocks.OrbitBlocks;
 import net.minecraft.core.Holder;

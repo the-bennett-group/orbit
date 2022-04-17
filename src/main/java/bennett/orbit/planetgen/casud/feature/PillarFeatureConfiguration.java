@@ -1,4 +1,4 @@
-package bennett.orbit.planets.casud.feature;
+package bennett.orbit.planetgen.casud.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

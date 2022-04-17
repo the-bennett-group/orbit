@@ -1,4 +1,4 @@
-package bennett.orbit.planets;
+package bennett.orbit.planetgen;
 
 import bennett.orbit.util.OrbitUtils;
 import bennett.orbit.util.OrbitUtils.RegistryType;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.DensityFunction;
 import java.util.OptionalLong;
 import java.util.function.Supplier;
 
-public class OrbitWorldGenUtils {
+public class OrbitPlanetGenUtils {
     public static final Climate.Parameter DEEP_OCEAN_CONTINENTALNESS = Climate.Parameter.span(-1.05f, -0.455f);
     public static final Climate.Parameter OCEAN_CONTINENTALNESS = Climate.Parameter.span(-0.455f, -0.19f);
     public static final Climate.Parameter COAST_CONTINENTALNESS = Climate.Parameter.span(-0.19f, -0.11f);
