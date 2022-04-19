@@ -1,7 +1,6 @@
-package bennett.orbit.planetgen;
+package bennett.orbit.world;
 
 import bennett.orbit.util.OrbitUtils;
-import bennett.orbit.util.OrbitUtils.RegistryType;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceKey;
@@ -29,9 +28,9 @@ public class OrbitPlanetGenUtils {
         return Climate.Parameter.span(lowerEnd.min(), highEnd.max());
     }
 
-    public static final ResourceKey<DensityFunction> ZERO = (ResourceKey<DensityFunction>) OrbitUtils.makeKey("common/zero", RegistryType.DENSITY_FUNCTION);
-    //public static final ResourceKey<DensityFunction> BASE_3D_NOISE = (ResourceKey<DensityFunction>) OrbitUtils.makeKey("common/base_3d_noise", RegistryType.DENSITY_FUNCTION);
-    public static final ResourceKey<DensityFunction> Y = (ResourceKey<DensityFunction>) OrbitUtils.makeKey("common/y", RegistryType.DENSITY_FUNCTION);
+    public static final ResourceKey<DensityFunction> ZERO = (ResourceKey<DensityFunction>) OrbitUtils.makeKey("common/zero", Registry.DENSITY_FUNCTION_REGISTRY);
+    //public static final ResourceKey<DensityFunction> BASE_3D_NOISE = (ResourceKey<DensityFunction>) OrbitUtils.makeKey("common/base_3d_noise", Registry.DENSITY_FUNCTION_REGISTRY);
+    public static final ResourceKey<DensityFunction> Y = (ResourceKey<DensityFunction>) OrbitUtils.makeKey("common/y", Registry.DENSITY_FUNCTION_REGISTRY);
 
     private static OptionalLong SEED;
 
@@ -52,12 +51,7 @@ public class OrbitPlanetGenUtils {
     }
 
     public static Supplier<Long> seedSupplier() {
-        return new Supplier<Long>() {
-            @Override
-            public Long get() {
-                return SEED.getAsLong();
-            }
-        };
+        return () -> SEED.getAsLong();
     }
 
 

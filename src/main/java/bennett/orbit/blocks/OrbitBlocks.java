@@ -2,8 +2,8 @@ package bennett.orbit.blocks;
 
 import bennett.orbit.Orbit;
 import bennett.orbit.fluid.OrbitFluids;
-import bennett.orbit.planets.casud.feature.BlackwoodTreeGrower;
-import bennett.orbit.planets.casud.feature.OrbitFeatures;
+import bennett.orbit.world.feature.BlackwoodTreeGrower;
+import bennett.orbit.world.feature.OrbitFeatures;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.*;

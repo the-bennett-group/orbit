@@ -16,8 +16,9 @@ out/
 # JIRA plugin
 atlassian-ide-plugin.xml
 
-# remapped sources
-/remappedSrc/*
+# generated stuff
+remappedSrc/
+bin/
 
 # Compiled class file
 *.class

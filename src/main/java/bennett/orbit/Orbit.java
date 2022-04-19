@@ -4,10 +4,10 @@ import bennett.orbit.blocks.OrbitBlocks;
 import bennett.orbit.fluid.OrbitFluids;
 import bennett.orbit.items.OrbitItems;
 import bennett.orbit.items.tabs.OrbitTabs;
-import bennett.orbit.planets.casud.feature.OrbitFeatures;
 import bennett.orbit.rules.OrbitRules;
 import bennett.orbit.tags.OrbitTags;
 import bennett.orbit.util.OrbitUtils;
+import bennett.orbit.world.feature.OrbitFeatures;
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -25,14 +25,8 @@ public class Orbit implements ModInitializer {
     @Nullable
     private static MinecraftServer server;
 
-
-    public static void preInitialize() {
-        OrbitBlocks.preInitialize();
-        OrbitFeatures.preInitialize();
-    }
     @Override
     public void onInitialize() {
-        preInitialize();
         OrbitUtils.initialize();
         OrbitRules.initialize();
         OrbitTags.initialize();
