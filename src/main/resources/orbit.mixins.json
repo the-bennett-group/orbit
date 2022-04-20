@@ -1,13 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "bennett.orbit.mixin",
+  "package": "com.github.the.bennett.group.orbit.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
 
   ],
   "client": [
-    "MappedRegistryMixin"
   ],
   "server": [],
   "injectors": {
