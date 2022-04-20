@@ -16,7 +16,7 @@
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": [
-        "com.github.the.bennett.group.Orbit"
+        "the.bennett.group.Orbit"
       ]
     },
     "depends": [
