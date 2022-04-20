@@ -2,21 +2,22 @@ package com.github.the.bennett.group.orbit.client;
 
 import com.github.the.bennett.group.orbit.Orbit;
 import com.github.the.bennett.group.orbit.fluid.OrbitFluids;
-import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.material.FlowingFluid;
+import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
+import org.quiltmc.qsl.block.extensions.api.client.BlockRenderLayerMap;
 
 @Environment(EnvType.CLIENT)
 public class OrbitClient implements ClientModInitializer {
     @Override
-    public void onInitializeClient() {
+    public void onInitializeClient(ModContainer mod) {
         ClientSpriteRegistryCallback.event(InventoryMenu.BLOCK_ATLAS).register((atlasTexture, registry) -> {
             registerBlockTexture(registry, "acid_still");
             registerBlockTexture(registry, "acid_flow");
@@ -36,7 +37,7 @@ public class OrbitClient implements ClientModInitializer {
     }
 
     public static void createFluidRenderLayer(FlowingFluid SOURCE, FlowingFluid FLOWING, String sourceTexture, String flowingTexture) {
-        BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), SOURCE, FLOWING);
+        BlockRenderLayerMap.put(RenderType.translucent(), SOURCE, FLOWING);
         FluidRenderHandlerRegistry.INSTANCE.register(SOURCE, FLOWING, new SimpleFluidRenderHandler(
                 Orbit.newId("block/"+sourceTexture), Orbit.newId("block/"+flowingTexture)));
     }

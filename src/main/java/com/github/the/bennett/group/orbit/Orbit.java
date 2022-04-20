@@ -10,12 +10,12 @@ import com.github.the.bennett.group.orbit.world.OrbitPlanetGenUtils;
 import com.github.the.bennett.group.orbit.world.feature.OrbitFeatures;
 import com.github.the.bennett.group.orbit.world.planets.OrbitPlanets;
 import com.mojang.logging.LogUtils;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import org.jetbrains.annotations.Nullable;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
+import org.quiltmc.qsl.lifecycle.api.event.ServerLifecycleEvents;
 import org.slf4j.Logger;
 
 public class Orbit implements ModInitializer {
@@ -39,13 +39,13 @@ public class Orbit implements ModInitializer {
         OrbitPlanets.initialize();
         log("Orbit initialized!");
 
-        ServerLifecycleEvents.SERVER_STARTING.register((minecraftServer)->{
+        ServerLifecycleEvents.STARTING.register((minecraftServer)->{
             Orbit.server = minecraftServer;
             OrbitPlanetGenUtils.setSeed(Orbit.getServer().overworld().getSeed());
             System.out.println("Seed aquired: " + OrbitPlanetGenUtils.seed());
         });
 
-        ServerLifecycleEvents.SERVER_STOPPING.register((minecraftServer)->{
+        ServerLifecycleEvents.STOPPING.register((minecraftServer)->{
             Orbit.server = null;
             OrbitPlanetGenUtils.nullifySeed();
         });
