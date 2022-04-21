@@ -18,7 +18,7 @@ import net.minecraft.world.level.material.FluidState;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.items.OrbitItems;
 import the.bennett.group.orbit.tags.OrbitTags;
-import the.bennett.group.orbit.util.OrbitUtils;
+import the.bennett.group.orbit.util.RegistryUtils;
 
 import java.util.Random;
 
@@ -81,7 +81,7 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 						return;
 					}
 
-					if (level.isEmptyBlock(pos.above()) && this.isCorrodible(level, pos)) {
+					if (level.isEmptyBlock(pos.above()) && isCorrodible(level, pos)) {
 						Integer decider = random.nextInt(2) - 1;
 						level.setBlockAndUpdate(pos.above(), BaseFireBlock.getState(level, pos));
 
@@ -96,7 +96,7 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 
 	public static boolean isCorrodible(Level level, BlockPos blockPos) {
 		Block currentBlock = level.getBlockState(blockPos).getBlock();
-		return Registry.BLOCK.getOrCreateTag(OrbitTags.CORRODIBLE_BLOCKS).contains(OrbitUtils.findHolder(currentBlock, Registry.BLOCK));
+		return Registry.BLOCK.getOrCreateTag(OrbitTags.CORRODIBLE_BLOCKS).contains(RegistryUtils.findHolder(currentBlock, Registry.BLOCK));
 	}
 
 	private boolean hasCorrodibleNeighbors(Level level, BlockPos blockPos) {

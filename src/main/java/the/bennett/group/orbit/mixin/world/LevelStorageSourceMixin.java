@@ -1,4 +1,4 @@
-package the.bennett.group.orbit.mixin;
+package the.bennett.group.orbit.mixin.world;
 
 import com.mojang.datafixers.DataFixer;
 import net.minecraft.nbt.CompoundTag;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import the.bennett.group.orbit.world.OrbitPlanetGenUtils;
+import the.bennett.group.orbit.util.SeedHolder;
 
 import java.io.File;
 
@@ -24,7 +24,7 @@ public class LevelStorageSourceMixin {
                                                          CallbackInfoReturnable<DataPackConfig> cir,
                                                          Tag fileCompoundTag, CompoundTag dataCompoundTag) {
         if(dataCompoundTag.contains("WorldGenSettings") && dataCompoundTag.getCompound("WorldGenSettings").contains("seed")) {
-            OrbitPlanetGenUtils.setSeed(dataCompoundTag.getCompound("WorldGenSettings").getLong("seed"));
+            SeedHolder.setSeed(dataCompoundTag.getCompound("WorldGenSettings").getLong("seed"));
         }
     }
 }
