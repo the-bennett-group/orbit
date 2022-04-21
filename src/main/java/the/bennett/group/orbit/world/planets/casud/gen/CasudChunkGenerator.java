@@ -3,9 +3,9 @@ package the.bennett.group.orbit.world.planets.casud.gen;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureFeatureManager;
@@ -16,12 +16,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.ProtoChunk;
 import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.blending.Blender;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import org.quiltmc.loader.api.QuiltLoader;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.fluid.OrbitFluids;
+import the.bennett.group.orbit.util.SeedHolder;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,7 @@ public class CasudChunkGenerator extends ChunkGenerator {
     public static final Codec<CasudChunkGenerator> CODEC = RecordCodecBuilder.create((instance) ->
             instance.group(
                             BiomeSource.CODEC.fieldOf("biome_source").forGetter((generator) -> generator.biomeSource),
-                            Codec.LONG.fieldOf("seed").stable().forGetter((generator) -> generator.seed))
+                            Codec.LONG.fieldOf("seed").stable().orElseGet(SeedHolder::getSeed).forGetter((generator) -> generator.seed))
                     .apply(instance, instance.stable(CasudChunkGenerator::new)));
 
     private long seed;
@@ -88,7 +89,7 @@ public class CasudChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public void buildSurface(WorldGenRegion worldGenRegion, StructureFeatureManager structureFeatureManager, ChunkAccess chunkAccess) {
+    public void buildSurface(WorldGenRegion region, StructureFeatureManager structureFeatureManager, ChunkAccess chunk) {
 
     }
 
@@ -103,104 +104,40 @@ public class CasudChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public CompletableFuture<ChunkAccess> fillFromNoise(Executor executor, Blender blender, StructureFeatureManager structureFeatureManager, ChunkAccess chunkAccess) {
-        fillFromNoise(structureFeatureManager, chunkAccess);
+    public CompletableFuture<ChunkAccess> fillFromNoise(Executor executor, Blender blender, StructureFeatureManager structureFeatureManager, ChunkAccess chunk) {
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+        Heightmap heightmap = chunk.getOrCreateHeightmapUnprimed(Heightmap.Types.OCEAN_FLOOR_WG);
+        Heightmap heightmap2 = chunk.getOrCreateHeightmapUnprimed(Heightmap.Types.WORLD_SURFACE_WG);
 
-        return CompletableFuture.completedFuture(chunkAccess);
-    }
+        for(int i = 0; i <= 64; ++i) {
+            BlockState blockState = defaultBlock;
+            if (blockState != null) {
+                int j = chunk.getMinBuildHeight() + i;
 
-    void fillFromNoise(StructureFeatureManager structureFeatureManager, ChunkAccess chunk) {
-        ProtoChunk protoChunk = (ProtoChunk)chunk;
-        Heightmap oceanFloor = protoChunk.getOrCreateHeightmapUnprimed(Heightmap.Types.OCEAN_FLOOR_WG);
-        Heightmap worldSurface = protoChunk.getOrCreateHeightmapUnprimed(Heightmap.Types.WORLD_SURFACE_WG);
-        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-
-        ChunkPos pos = chunk.getPos();
-        int chunkX = pos.x;
-        int chunkZ = pos.z;
-        int chunkStartX = chunkX << 4;
-        int chunkStartZ = chunkZ << 4;
-
-        for(int noiseX = 0; noiseX < this.noiseSizeX; ++noiseX) {
-            // Initialize noise data on the x1 column
-            int noiseZ;
-
-            // [0, 4] -> z noise chunks
-            for(noiseZ = 0; noiseZ < this.noiseSizeZ; ++noiseZ) {
-                LevelChunkSection section = protoChunk.getSection(chunk.getSectionIndex(255));
-                section.acquire();
-
-                // [0, 32] -> y noise chunks
-                for(int noiseY = this.noiseSizeY - 1; noiseY >= 0; --noiseY) {
-                    // Lower samples
-
-                    // Upper samples
-
-
-                    // [0, 8) -> y noise pieces
-                    for(int pieceY = this.verticalNoiseResolution - 1; pieceY >= 0; --pieceY) {
-                        int realY = noiseY * this.verticalNoiseResolution + pieceY;
-                        int localY = realY & 15;
-                        int sectionY = chunk.getSectionIndex(realY);
-                        // Get the chunk section
-                        if (section.bottomBlockY() >> 4 != sectionY) {
-                            section.release();
-                            section = protoChunk.getSection(sectionY);
-                            section.acquire();
-                        }
-
-                        // progress within loop
-                        double yLerp = (double) pieceY / (double)this.verticalNoiseResolution;
-
-                        // Interpolate noise data based on y progress
-
-
-                        // [0, 4) -> x noise pieces
-                        for(int pieceX = 0; pieceX < this.horizontalNoiseResolution; ++pieceX) {
-                            int realX = chunkStartX + noiseX * this.horizontalNoiseResolution + pieceX;
-                            int localX = realX & 15;
-
-                            // Interpolate noise based on x progress
-
-                            // [0, 4) -> z noise pieces
-                            for(int pieceZ = 0; pieceZ < this.horizontalNoiseResolution; ++pieceZ) {
-                                int realZ = chunkStartZ + noiseZ * this.horizontalNoiseResolution + pieceZ;
-                                int localZ = realZ & 15;
-
-                                // Get the blockstate based on the y and density
-                                BlockState state = this.getBlockState(1, realY);
-
-                                if (state != AIR) {
-                                    // Add light source if the state has light
-                                    if (state.getLightEmission() != 0) {
-                                        mutable.set(realX, realY, realZ);
-                                        protoChunk.addLight(mutable);
-                                    }
-
-                                    // Place the state at the position
-                                    section.setBlockState(localX, localY, localZ, state, false);
-                                    // Track heightmap data
-                                    oceanFloor.update(localX, realY, localZ, state);
-                                    worldSurface.update(localX, realY, localZ, state);
-                                }
-                            }
-                        }
+                for(int k = 0; k < 16; ++k) {
+                    for(int l = 0; l < 16; ++l) {
+                        chunk.setBlockState(mutableBlockPos.set(k, j, l), blockState, false);
+                        heightmap.update(k, j, l, blockState);
+                        heightmap2.update(k, j, l, blockState);
                     }
                 }
-
-                section.release();
             }
-
         }
+
+        return CompletableFuture.completedFuture(chunk);
+    }
+
+    @Override
+    public void createStructures(RegistryAccess registryAccess, StructureFeatureManager structureFeatureManager, ChunkAccess chunkAccess, StructureManager structureManager, long l) {
+        //TODO fix structures
     }
 
     public BlockState getBlockState(double density, int y) {
-        if (density > 0.0D) {
-            return this.defaultBlock;
-        } else if (y < this.getSeaLevel()) {
-            return this.defaultFluid;
-        } else {
+        //TODO THIS
+        if (y > 64) {
             return AIR;
+        } else {
+            return defaultBlock;
         }
     }
 
@@ -229,6 +166,8 @@ public class CasudChunkGenerator extends ChunkGenerator {
 
     @Override
     public void addDebugScreenInfo(List<String> list, BlockPos blockPos) {
-
+        if(QuiltLoader.isDevelopmentEnvironment()) {
+            list.add("Seed " + SeedHolder.getSeed());
+        }
     }
 }

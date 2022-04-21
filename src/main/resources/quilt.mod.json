@@ -16,7 +16,7 @@
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": "the.bennett.group.orbit.Orbit",
-      "client": "the.bennett.group.orbit.client.OrbitClient"
+      "client_init": "the.bennett.group.orbit.client.OrbitClient"
     },
     "depends": [
       {
