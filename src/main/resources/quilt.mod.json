@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "quilt_loader": {
-    "group": "${maven_group}",
+    "group": "the.bennett.group",
     "id": "orbit",
     "version": "${version}",
     "metadata": {
       "name": "Orbit",
-      "description": "An exploration and story-based mod for 1.18.2+.",
+      "description": "A short description of your mod.",
       "contributors": {
         "peaceheis": "Owner",
         "Icee50": "Owner"
@@ -15,29 +15,23 @@
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
-      "init": [
-        "the.bennett.group.Orbit"
-      ]
+      "init": "the.bennett.group.orbit.Orbit",
+      "client": "the.bennett.group.orbit.client.OrbitClient"
     },
     "depends": [
       {
         "id": "quilt_loader",
-        "versions": ">=${loader_version}"
+        "versions": ">=0.16.0-"
       },
       {
         "id": "quilted_fabric_api",
-        "versions": "${quilted_fabric_api_version}"
+        "versions": ">=1.0.0-"
       },
       {
         "id": "minecraft",
-        "versions": ">=${minecraft_version}"
+        "versions": ">=1.18.2"
       }
     ]
   },
-  "mixin": [
-    "orbit.mixins.json"
-  ],
-  "minecraft": {
-    "environment": "*"
-  }
+  "mixin": "orbit.mixins.json"
 }
