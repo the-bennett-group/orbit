@@ -7,8 +7,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.SurfaceRules;
 import org.jetbrains.annotations.Nullable;
+import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.util.RegistryUtils;
 import the.bennett.group.orbit.world.feature.OrbitFeatures;
@@ -25,7 +28,13 @@ public class CasudBiomes {
     public static final ResourceKey<Biome> DEEP_ACID_OCEAN = RegistryUtils.makeKeyAndRegisterToo("deep_acid_ocean", deepAcidOcean(), BuiltinRegistries.BIOME);
     public static final ResourceKey<Biome> SALTY_FLATLANDS = RegistryUtils.makeKeyAndRegisterToo("salty_flatlands", saltyFlatlands(), BuiltinRegistries.BIOME);
     public static final ResourceKey<Biome> SALTY_BEACH = RegistryUtils.makeKeyAndRegisterToo("salty_beach", saltyBeach(), BuiltinRegistries.BIOME);
-
+    public static final SurfaceRules.RuleSource RULE_SOURCE; //TODO: should this be in Casud?
+    static {
+        RULE_SOURCE = SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(BLACKWOOD_FOREST),
+                        SurfaceRules.sequence(SurfaceRules.state(Blocks.BLACK_CONCRETE_POWDER.defaultBlockState()), SurfaceRules.state(OrbitBlocks.SALT_BLOCK.defaultBlockState())))
+        );
+    }
     public static void initialize() {
     }
 

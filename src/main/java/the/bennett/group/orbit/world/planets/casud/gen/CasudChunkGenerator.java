@@ -3,6 +3,7 @@ package the.bennett.group.orbit.world.planets.casud.gen;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.server.level.WorldGenRegion;
@@ -23,6 +24,8 @@ import org.quiltmc.loader.api.QuiltLoader;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.fluid.OrbitFluids;
 import the.bennett.group.orbit.util.SeedHolder;
+import the.bennett.group.orbit.world.planets.casud.Casud;
+import the.bennett.group.orbit.world.planets.casud.biomes.CasudBiomes;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +36,7 @@ public class CasudChunkGenerator extends ChunkGenerator {
     public static final Codec<CasudChunkGenerator> CODEC = RecordCodecBuilder.create((instance) ->
             instance.group(
                             BiomeSource.CODEC.fieldOf("biome_source").forGetter((generator) -> generator.biomeSource),
-                            Codec.LONG.fieldOf("seed").stable().orElseGet(SeedHolder::getSeed).forGetter((generator) -> generator.seed))
+                            Codec.LONG.fieldOf("seed").stable().orElseGet(SeedHolder::seed).forGetter((generator) -> generator.seed))
                     .apply(instance, instance.stable(CasudChunkGenerator::new)));
 
     private long seed;
@@ -48,7 +51,13 @@ public class CasudChunkGenerator extends ChunkGenerator {
     private final int noiseSizeX;
     private final int noiseSizeY;
     private final int noiseSizeZ;
+    private final int seaLevel;
+    private final NoiseGeneratorSettings noiseGeneratorSettings;
+    private final SurfaceSystem surfaceSystem;
+    private final LegacyRandomSource randomSource;
+    private final Aquifer.FluidPicker aquiferFluidPicker;
 
+    //TODO: move init functionality into BaseOrbitChunkGenerator
     public CasudChunkGenerator(BiomeSource biomeSource, long seed) {
         super(BuiltinRegistries.STRUCTURE_SETS, Optional.empty(), biomeSource);
         this.seed = seed;
@@ -56,13 +65,17 @@ public class CasudChunkGenerator extends ChunkGenerator {
         this.worldgenRandom = new WorldgenRandom(new XoroshiroRandomSource(RandomSupport.seedUniquifier()));
         this.defaultBlock = OrbitBlocks.SALT_BLOCK.defaultBlockState();
         this.defaultFluid = OrbitFluids.SOURCE_ACID.defaultFluidState().createLegacyBlock();
-
         this.verticalNoiseResolution = 8;
         this.horizontalNoiseResolution = 4;
         this.noiseSizeX = 16 / this.horizontalNoiseResolution;
         this.noiseSizeY = 256 / this.verticalNoiseResolution;
         this.noiseSizeZ = 16 / this.horizontalNoiseResolution;
         this.random = new WorldgenRandom(new LegacyRandomSource(seed));
+        this.seaLevel = Casud.SEA_LEVEL;
+        this.randomSource = new LegacyRandomSource(SeedHolder.seed()); //TODO: figure out if this should actually be the world seed: for now I think its fine.
+        this.surfaceSystem = new SurfaceSystem(BuiltinRegistries.NOISE, this.defaultBlock, this.seaLevel, SeedHolder.seed(), WorldgenRandom.Algorithm.LEGACY);
+        Aquifer.FluidStatus acidFluidStatus = new Aquifer.FluidStatus(Casud.MAX_HEIGHT, OrbitBlocks.ACID.defaultBlockState());
+        this.aquiferFluidPicker = (int1, int2, int3) -> acidFluidStatus; // I TRULY don't know what those integers are doing, all I know is that acid will always be returned.
     }
 
 
@@ -89,8 +102,29 @@ public class CasudChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public void buildSurface(WorldGenRegion region, StructureFeatureManager structureFeatureManager, ChunkAccess chunk) {
+    public void buildSurface(WorldGenRegion region, StructureFeatureManager structures, ChunkAccess chunk) {
+        WorldGenerationContext worldGenerationContext = new WorldGenerationContext(this, region);
+        NoiseChunk noiseChunk = chunk.getOrCreateNoiseChunk(this.router, () -> {
+            return new Beardifier(structureFeatureManager, chunkAccess);
+        }, noiseGeneratorSettings, this.globalFluidPicker, Blender.of(worldGenRegion));
 
+        this.surfaceSystem.buildSurface(region.getBiomeManager(), region.registryAccess().registryOrThrow(Registry.BIOME_REGISTRY), true, worldGenerationContext, noiseChunk, CasudBiomes.RULE_SOURCE);
+        this.buildBedrock(chunk, random);
+
+    }
+
+    protected void buildBedrock(ChunkAccess chunk, WorldgenRandom random) {
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+        int chunkStartX = chunk.getPos().getMinBlockX();
+        int chunkStartZ = chunk.getPos().getMinBlockZ();
+
+        for (BlockPos pos : BlockPos.betweenClosed(chunkStartX, 0, chunkStartZ, chunkStartX + 15, 0, chunkStartZ + 15)) {
+            for (int y = 3; y >= 0; --y) {
+                if (y <= random.nextInt(3)) {
+                    chunk.setBlockState(mutable.set(pos.getX(), y, pos.getZ()), Blocks.BEDROCK.defaultBlockState(), false);
+                }
+            }
+        }
     }
 
     @Override
@@ -113,7 +147,6 @@ public class CasudChunkGenerator extends ChunkGenerator {
             BlockState blockState = defaultBlock;
             if (blockState != null) {
                 int j = chunk.getMinBuildHeight() + i;
-
                 for(int k = 0; k < 16; ++k) {
                     for(int l = 0; l < 16; ++l) {
                         chunk.setBlockState(mutableBlockPos.set(k, j, l), blockState, false);
@@ -132,18 +165,19 @@ public class CasudChunkGenerator extends ChunkGenerator {
         //TODO fix structures
     }
 
-    public BlockState getBlockState(double density, int y) {
-        //TODO THIS
-        if (y > 64) {
-            return AIR;
+    protected BlockState getBlockState(double density, int y) {
+        if (density > 0.0D) {
+            return this.defaultBlock;
+        } else if (y < this.getSeaLevel()) {
+            return this.defaultFluid;
         } else {
-            return defaultBlock;
+            return AIR;
         }
     }
 
     @Override
     public int getSeaLevel() {
-        return 64;
+        return this.seaLevel;
     }
 
     @Override
@@ -167,7 +201,9 @@ public class CasudChunkGenerator extends ChunkGenerator {
     @Override
     public void addDebugScreenInfo(List<String> list, BlockPos blockPos) {
         if(QuiltLoader.isDevelopmentEnvironment()) {
-            list.add("Seed " + SeedHolder.getSeed());
+            list.add("Seed " + SeedHolder.seed());
         }
     }
+
+    void addBedrock()
 }
