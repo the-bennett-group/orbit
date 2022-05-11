@@ -1,2 +1,4 @@
 accessWidener	v1	named
 
+extendable  class   net/minecraft/world/level/biome/Climate$ParameterPoint
+extendable  class   net/minecraft/world/level/biome/Climate$TargetPoint
