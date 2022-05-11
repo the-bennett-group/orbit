@@ -5,6 +5,7 @@ import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.WritableRegistry;
+import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
@@ -36,9 +37,11 @@ public class OrbitPlanetGenUtils {
         return Climate.Parameter.span(lowerEnd.min(), highEnd.max());
     }
 
-    public static final ResourceKey<DensityFunction> ZERO = (ResourceKey<DensityFunction>) RegistryUtils.makeKey("common/zero", Registry.DENSITY_FUNCTION_REGISTRY);
+
+    public static final ResourceKey<DensityFunction> ZERO_KEY = (ResourceKey<DensityFunction>) RegistryUtils.makeKey("common/zero", Registry.DENSITY_FUNCTION_REGISTRY);
     //public static final ResourceKey<DensityFunction> BASE_3D_NOISE = (ResourceKey<DensityFunction>) RegistryUtils.makeKey("common/base_3d_noise", Registry.DENSITY_FUNCTION_REGISTRY);
-    public static final ResourceKey<DensityFunction> Y = (ResourceKey<DensityFunction>) RegistryUtils.makeKey("common/y", Registry.DENSITY_FUNCTION_REGISTRY);
+    public static final ResourceKey<DensityFunction> Y_KEY = (ResourceKey<DensityFunction>) RegistryUtils.makeKey("common/y", Registry.DENSITY_FUNCTION_REGISTRY);
+    public static final DensityFunction ZERO = RegistryUtils.findHolder(ZERO_KEY, BuiltinRegistries.DENSITY_FUNCTION).value();
 
     private static OptionalLong SEED;
     public static Registry<Biome> biomeRegistry = RegistryAccess.builtinCopy().registryOrThrow(Registry.BIOME_REGISTRY);
