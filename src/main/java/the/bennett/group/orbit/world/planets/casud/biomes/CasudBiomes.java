@@ -15,7 +15,7 @@ import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.util.RegistryUtils;
 import the.bennett.group.orbit.world.feature.OrbitFeatures;
-import the.bennett.group.orbit.world.planets.casud.Casud;
+import the.bennett.group.orbit.world.planets.casud.CasudDimensionData;
 
 import static net.minecraft.world.entity.MobCategory.CREATURE;
 import static net.minecraft.world.entity.MobCategory.MONSTER;
@@ -76,7 +76,7 @@ public class CasudBiomes {
     public static Biome Biome(Biome.Precipitation precipitation, Biome.BiomeCategory biomeCategory, float temperature, float downfall, MobSpawnSettings.Builder mobSpawnBuilder, BiomeGenerationSettings.Builder biomeGenBuilder, @Nullable Music music) {
         ContentCounter.countBiome();
         //TODO add water color and biome-level coloring?
-        return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(biomeCategory).temperature(temperature).downfall(downfall).specialEffects(new BiomeSpecialEffects.Builder().waterFogColor(Casud.FOG_COLOR).fogColor(Casud.FOG_COLOR).skyColor(Casud.SKY_COLOR).waterColor(Casud.SKY_COLOR).waterFogColor(Casud.FOG_COLOR).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music).build()).mobSpawnSettings(mobSpawnBuilder.build()).generationSettings(biomeGenBuilder.build()).build();
+        return new Biome.BiomeBuilder().precipitation(precipitation).biomeCategory(biomeCategory).temperature(temperature).downfall(downfall).specialEffects(new BiomeSpecialEffects.Builder().waterFogColor(CasudDimensionData.FOG_COLOR).fogColor(CasudDimensionData.FOG_COLOR).skyColor(CasudDimensionData.SKY_COLOR).waterColor(CasudDimensionData.SKY_COLOR).waterFogColor(CasudDimensionData.FOG_COLOR).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music).build()).mobSpawnSettings(mobSpawnBuilder.build()).generationSettings(biomeGenBuilder.build()).build();
     }
 
     public static BiomeGenerationSettings.Builder addCarvers(BiomeGenerationSettings.Builder biomeGenBuilder) {
