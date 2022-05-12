@@ -4,8 +4,11 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.QuartPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Climate;
+import net.minecraft.world.level.levelgen.DensityFunction;
 
 import java.util.List;
 
@@ -112,5 +115,85 @@ public class OrbitClimate extends Climate {
             return this.alteration;
         }
     }
+
+    public static class Sampler extends Climate.Sampler {
+        private final DensityFunction temperature;
+        private final DensityFunction humidity;
+        private final DensityFunction continentalness;
+        private final DensityFunction erosion;
+        private final DensityFunction depth;
+        private final DensityFunction weirdness;
+        private final DensityFunction alteration;
+        private final List<OrbitClimate.ParameterPoint> spawnTarget;
+        public <T extends Climate.ParameterPoint> Sampler(DensityFunction temperature, DensityFunction humidity, DensityFunction continentalness, DensityFunction erosion, DensityFunction depth, DensityFunction weirdness, DensityFunction alteration, List<T> list) {
+            super(temperature, humidity, continentalness, erosion, depth, weirdness, (List<Climate.ParameterPoint>) list);
+            this.temperature = temperature;
+            this.humidity = humidity;
+            this.continentalness = continentalness;
+            this.erosion = erosion;
+            this.depth = depth;
+            this.weirdness = weirdness;
+            this.alteration = alteration;
+            this.spawnTarget = (List<ParameterPoint>) list;
+        }
+
+        public OrbitClimate.TargetPoint sample(int x, int y, int z) {
+            int i = QuartPos.toBlock(x);
+            int j = QuartPos.toBlock(y);
+            int k = QuartPos.toBlock(z);
+            DensityFunction.SinglePointContext singlePointContext = new DensityFunction.SinglePointContext(i, j, k);
+            return OrbitClimate.orbitTarget((float)this.temperature.compute(singlePointContext), (float)this.humidity.compute(singlePointContext), (float)this.continentalness.compute(singlePointContext), (float)this.erosion.compute(singlePointContext), (float)this.depth.compute(singlePointContext), (float)this.weirdness.compute(singlePointContext), (float)this.alteration.compute(singlePointContext));
+        }
+
+        public BlockPos findSpawnPosition() {
+            return this.spawnTarget.isEmpty() ? BlockPos.ZERO : OrbitClimate.findSpawnPosition(this.spawnTarget, this);
+        }
+
+        public DensityFunction temperature() {
+            return this.temperature;
+        }
+
+        public DensityFunction humidity() {
+            return this.humidity;
+        }
+
+        public DensityFunction continentalness() {
+            return this.continentalness;
+        }
+
+        public DensityFunction erosion() {
+            return this.erosion;
+        }
+
+        public DensityFunction depth() {
+            return this.depth;
+        }
+
+        public DensityFunction weirdness() {
+            return this.weirdness;
+        }
+
+        public List<OrbitClimate.ParameterPoint> spawnOrbitClimateTarget() {
+            return this.spawnTarget;
+        }
+    }
+
+    public static TargetPoint orbitTarget(float temperatureNoise, float humidityNoise, float continentalnessNoise, float erosionNoise, float depth, float weirdnessNoise, float alterationNoise) {
+        return new TargetPoint(quantizeCoord(temperatureNoise), quantizeCoord(humidityNoise), quantizeCoord(continentalnessNoise), quantizeCoord(erosionNoise), quantizeCoord(depth), quantizeCoord(weirdnessNoise), quantizeCoord(alterationNoise));
+    }
+
+    public static ParameterPoint orbitParameters(float temperature, float humidity, float continentalness, float erosion, float depth, float weirdness, float alteration, float offset) {
+        return new ParameterPoint(OrbitClimate.Parameter.point(temperature), OrbitClimate.Parameter.point(humidity), OrbitClimate.Parameter.point(continentalness), OrbitClimate.Parameter.point(erosion), OrbitClimate.Parameter.point(depth), OrbitClimate.Parameter.point(weirdness), Climate.Parameter.point(alteration), quantizeCoord(offset));
+    }
+
+    public static ParameterPoint orbitParameters(Parameter temperature, Parameter humidity, Parameter continentalness, Parameter erosion, Parameter depth, Parameter weirdness, Parameter alteration, float offset) {
+        return new ParameterPoint(temperature, humidity, continentalness, erosion, depth, weirdness, alteration, quantizeCoord(offset));
+    }
+
+    public static BlockPos findSpawnPosition(List<OrbitClimate.ParameterPoint> noises, OrbitClimate.Sampler sampler) {
+        return (new SpawnFinder(noises, sampler)).result.location();
+    }
+
+
 
 }
