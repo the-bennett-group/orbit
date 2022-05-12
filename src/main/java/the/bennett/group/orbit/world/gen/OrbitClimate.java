@@ -12,7 +12,7 @@ import java.util.List;
 public class OrbitClimate extends Climate {
     protected static final int PARAMETER_COUNT = 8;
 
-    public class TargetPoint extends Climate.TargetPoint{
+    public static class TargetPoint extends Climate.TargetPoint{
         final long temperature;
         final long humidity;
         final long continentalness;
@@ -46,26 +46,25 @@ public class OrbitClimate extends Climate {
         }
     }
 
-    public class ParameterPoint extends Climate.ParameterPoint {
+    public static class ParameterPoint extends Climate.ParameterPoint {
         public static final Codec<OrbitClimate.ParameterPoint> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
-                Parameter.CODEC.fieldOf("temperature").forGetter((parameterPoint) -> parameterPoint.temperature),
-                Parameter.CODEC.fieldOf("humidity").forGetter((parameterPoint) -> parameterPoint.humidity),
-                Parameter.CODEC.fieldOf("continentalness").forGetter((parameterPoint) -> parameterPoint.continentalness),
-                Parameter.CODEC.fieldOf("erosion").forGetter((parameterPoint) -> parameterPoint.erosion),
-                Parameter.CODEC.fieldOf("depth").forGetter((parameterPoint) -> parameterPoint.depth),
-                Parameter.CODEC.fieldOf("weirdness").forGetter((parameterPoint) -> parameterPoint.weirdness),
-                Parameter.CODEC.fieldOf("alteration").forGetter((parameterPoint) -> parameterPoint.alteration),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("offset").xmap(Climate::quantizeCoord, Climate::unquantizeCoord).forGetter((parameterPoint) -> parameterPoint.offset))
-                .apply(instance, ParameterPoint::new));
-
+            Parameter.CODEC.fieldOf("temperature").forGetter((parameterPoint) -> parameterPoint.temperature),
+            Parameter.CODEC.fieldOf("humidity").forGetter((parameterPoint) -> parameterPoint.humidity),
+            Parameter.CODEC.fieldOf("continentalness").forGetter((parameterPoint) -> parameterPoint.continentalness),
+            Parameter.CODEC.fieldOf("erosion").forGetter((parameterPoint) -> parameterPoint.erosion),
+            Parameter.CODEC.fieldOf("depth").forGetter((parameterPoint) -> parameterPoint.depth),
+            Parameter.CODEC.fieldOf("weirdness").forGetter((parameterPoint) -> parameterPoint.weirdness),
+            Parameter.CODEC.fieldOf("alteration").forGetter((parameterPoint) -> parameterPoint.alteration),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("offset").xmap(Climate::quantizeCoord, Climate::unquantizeCoord).forGetter((parameterPoint) -> parameterPoint.offset))
+            .apply(instance, ParameterPoint::new));
         public Parameter temperature;
-        private Parameter humidity;
-        private Parameter continentalness;
-        private Parameter erosion;
-        private Parameter depth;
-        private Parameter weirdness;
-        private Parameter alteration;
-        private long offset;
+        private final Parameter humidity;
+        private final Parameter continentalness;
+        private final Parameter erosion;
+        private final Parameter depth;
+        private final Parameter weirdness;
+        private final Parameter alteration;
+        private final long offset;
 
         public ParameterPoint(Parameter temperature, Parameter humidity, Parameter continentalness, Parameter erosion, Parameter depth, Parameter weirdness, long offset) {
             this(temperature, humidity, continentalness, erosion, depth, weirdness, new Parameter(0L, 0L), 0);
