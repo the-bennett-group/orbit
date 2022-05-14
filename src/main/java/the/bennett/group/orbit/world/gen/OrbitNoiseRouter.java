@@ -33,8 +33,8 @@ public class OrbitNoiseRouter extends NoiseRouter{
         this(barrierNoise, fluidLevelFloodednessnoise, fluidLevelSpreadNoise, aquiferLavaNoise, aquiferPositionalRandomFactory, oreVeinsPositionalRandomFactory, temperature, humidity, continents, erosion, depth, ridges, initialDensityWithoutJaggedness, finalDensity, veinToggle, veinRidged, veinGap, DensityFunctions.zero(), (List<OrbitClimate.ParameterPoint>) spawnTarget);
     }
 
-    public <T extends Climate.ParameterPoint> OrbitNoiseRouter(DensityFunction barrierNoise, DensityFunction fluidLevelFloodednessnoise, DensityFunction fluidLevelSpreadNoise, DensityFunction aquiferLavaNoise, PositionalRandomFactory aquiferPositionalRandomFactory, PositionalRandomFactory oreVeinsPositionalRandomFactory, DensityFunction temperature, DensityFunction humidity, DensityFunction continents, DensityFunction erosion, DensityFunction depth, DensityFunction ridges, DensityFunction alteration, DensityFunction initialDensityWithoutJaggedness, DensityFunction finalDensity, DensityFunction veinToggle, DensityFunction veinRidged, DensityFunction veinGap, List<T> spawnTarget) {
-        super(barrierNoise, fluidLevelFloodednessnoise, fluidLevelSpreadNoise, aquiferLavaNoise, aquiferPositionalRandomFactory, oreVeinsPositionalRandomFactory, temperature, humidity, continents, erosion, depth, ridges, initialDensityWithoutJaggedness, finalDensity, veinToggle, veinRidged, veinGap, (List<Climate.ParameterPoint>) spawnTarget);
+    public OrbitNoiseRouter(DensityFunction barrierNoise, DensityFunction fluidLevelFloodednessnoise, DensityFunction fluidLevelSpreadNoise, DensityFunction aquiferLavaNoise, PositionalRandomFactory aquiferPositionalRandomFactory, PositionalRandomFactory oreVeinsPositionalRandomFactory, DensityFunction temperature, DensityFunction humidity, DensityFunction continents, DensityFunction erosion, DensityFunction depth, DensityFunction ridges, DensityFunction alteration, DensityFunction initialDensityWithoutJaggedness, DensityFunction finalDensity, DensityFunction veinToggle, DensityFunction veinRidged, DensityFunction veinGap, List<OrbitClimate.ParameterPoint> spawnTarget) {
+        super(barrierNoise, fluidLevelFloodednessnoise, fluidLevelSpreadNoise, aquiferLavaNoise, aquiferPositionalRandomFactory, oreVeinsPositionalRandomFactory, temperature, humidity, continents, erosion, depth, ridges, initialDensityWithoutJaggedness, finalDensity, veinToggle, veinRidged, veinGap, OrbitClimate.ParameterPoint.convertList(spawnTarget));
         this.barrierNoise = barrierNoise;
         this.fluidLevelFloodednessNoise = fluidLevelFloodednessnoise;
         this.fluidLevelSpreadNoise = fluidLevelSpreadNoise;
@@ -46,14 +46,14 @@ public class OrbitNoiseRouter extends NoiseRouter{
         this.continents = continents;
         this.erosion = erosion;
         this.depth = depth;
-        this.ridges = ridges;
+        this.ridges = ridges; //also known as weirdness
         this.alteration = alteration;
         this.initialDensityWithoutJaggedness = initialDensityWithoutJaggedness;
         this.finalDensity = finalDensity;
         this.veinToggle = veinToggle;
         this.veinRidged = veinRidged;
         this.veinGap = veinGap;
-        this.spawnTarget = (List<OrbitClimate.ParameterPoint>) spawnTarget;
+        this.spawnTarget = spawnTarget;
     }
 
     public DensityFunction alteration() {

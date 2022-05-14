@@ -10,6 +10,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.DensityFunction;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class OrbitClimate extends Climate {
@@ -114,7 +116,81 @@ public class OrbitClimate extends Climate {
         public Parameter alteration() {
             return this.alteration;
         }
+
+        public static <T extends Climate.ParameterPoint> List<T> convertList(List<OrbitClimate.ParameterPoint> list) {
+            List<T> returned = new ArrayList<T>();
+            for(OrbitClimate.ParameterPoint element : list) {
+                returned.add((T) element);
+            }
+            return returned;
+        }
     }
+
+    private static class SpawnFinder extends Climate.SpawnFinder{
+        OrbitClimate.SpawnFinder.Result result;
+
+        public SpawnFinder(List<OrbitClimate.ParameterPoint> list, OrbitClimate.Sampler sampler) {
+            super(ParameterPoint.convertList(list), sampler);
+            this.result = getSpawnPositionAndFitness(list, sampler, 0, 0);
+            this.radialSearch(ParameterPoint.convertList(list), sampler, 2048.0F, 512.0F);
+            this.radialSearch(ParameterPoint.convertList(list), sampler, 512.0F, 32.0F);
+        }
+
+        private void radialSearch(List<OrbitClimate.ParameterPoint> noises, OrbitClimate.Sampler sampler, float maxDistance, float step) {
+            float f = 0.0F;
+            float g = step;
+            BlockPos blockPos = this.result.location();
+
+            while(g <= maxDistance) {
+                int i = blockPos.getX() + (int)(Math.sin((double)f) * (double)g);
+                int j = blockPos.getZ() + (int)(Math.cos((double)f) * (double)g);
+                OrbitClimate.SpawnFinder.Result result = getSpawnPositionAndFitness(noises, sampler, i, j);
+                if (result.fitness() < this.result.fitness()) {
+                    this.result = result;
+                }
+
+                f += step / g;
+                if ((double)f > 6.283185307179586) {
+                    f = 0.0F;
+                    g += step;
+                }
+            }
+
+        }
+
+        private static OrbitClimate.SpawnFinder.Result getSpawnPositionAndFitness(List<OrbitClimate.ParameterPoint> noises, OrbitClimate.Sampler sampler, int x, int z) {
+            double d = Mth.square(2500.0);
+            long l = (long)((double)Mth.square(10000.0F) * Math.pow((double)(Mth.square((long)x) + Mth.square((long)z)) / d, 2.0));
+            OrbitClimate.TargetPoint targetPoint = sampler.sample(QuartPos.fromBlock(x), 0, QuartPos.fromBlock(z));
+            OrbitClimate.TargetPoint targetPoint2 = new OrbitClimate.TargetPoint(targetPoint.temperature(), targetPoint.humidity(), targetPoint.continentalness(), targetPoint.erosion(), 0L, targetPoint.weirdness());
+            long m = Long.MAX_VALUE;
+
+            OrbitClimate.ParameterPoint parameterPoint;
+            for(Iterator var13 = noises.iterator(); var13.hasNext(); m = Math.min(m, parameterPoint.fitness(targetPoint2))) {
+                parameterPoint = (OrbitClimate.ParameterPoint)var13.next();
+            }
+
+            return new OrbitClimate.SpawnFinder.Result(new BlockPos(x, 0, z), l + m);
+        }
+
+        static class Result {
+            private BlockPos location;
+            private long fitness;
+            public Result(BlockPos blockPos, long l) {
+                this.location = blockPos;
+                this.fitness = l;
+            }
+
+            public BlockPos location() {
+                return this.location;
+            }
+
+            public long fitness() {
+                return this.fitness;
+            }
+        }
+    }
+
 
     public static class Sampler extends Climate.Sampler {
         private final DensityFunction temperature;

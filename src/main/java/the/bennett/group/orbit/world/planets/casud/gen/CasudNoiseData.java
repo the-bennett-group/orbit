@@ -1,5 +1,6 @@
 package the.bennett.group.orbit.world.planets.casud.gen;
 
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 import net.minecraft.core.Holder;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
@@ -15,16 +16,17 @@ import static net.minecraft.world.level.levelgen.synth.NormalNoise.NoiseParamete
 
 public class CasudNoiseData {
     //initialize noises
-    private static final ResourceKey<NoiseParameters> CONTINENTALNESS_NOISE = makeNoiseKey("continents");
-    private static final ResourceKey<NoiseParameters> EROSION_NOISE = makeNoiseKey("erosion");
-    private static final ResourceKey<NoiseParameters> RIDGES_NOISE = makeNoiseKey("ridge");
-    private static final ResourceKey<NoiseParameters> JAGGED_NOISE = makeNoiseKey("jagged");
-    private static final ResourceKey<NoiseParameters> TEMPERATURE_NOISE = makeNoiseKey("temperature");
-    private static final ResourceKey<NoiseParameters> VEGETATION_NOISE = makeNoiseKey("vegetation");
-    private static final ResourceKey<NoiseParameters> ALTERATION_NOISE = makeNoiseKey("alteration");
+    private static final ResourceKey<NoiseParameters> CONTINENTALNESS_NOISE_KEY = makeNoiseKey("continentalness");
+    private static final ResourceKey<NoiseParameters> EROSION_NOISE_KEY = makeNoiseKey("erosion");
+    private static final ResourceKey<NoiseParameters> RIDGES_NOISE_KEY = makeNoiseKey("ridge");
+    private static final ResourceKey<NoiseParameters> JAGGED_NOISE_KEY = makeNoiseKey("jagged");
+    private static final ResourceKey<NoiseParameters> OFFSET_NOISE_KEY = makeNoiseKey("offset");
+    private static final ResourceKey<NoiseParameters> TEMPERATURE_NOISE_KEY = makeNoiseKey("temperature");
+    private static final ResourceKey<NoiseParameters> VEGETATION_NOISE_KEY = makeNoiseKey("vegetation");
+    private static final ResourceKey<NoiseParameters> ALTERATION_NOISE_KEY = makeNoiseKey("alteration");
 
     //initialize all the density function keys
-    public static final ResourceKey<DensityFunction> CONTINENTS_KEY = makeDFKey("continents");
+    public static final ResourceKey<DensityFunction> CONTINENTS_KEY = makeDFKey("continentalness");
     public static final ResourceKey<DensityFunction> EROSION_KEY = makeDFKey("erosion");
     public static final ResourceKey<DensityFunction> RIDGES_KEY = makeDFKey("ridges");
     public static final ResourceKey<DensityFunction> DEPTH_KEY = makeDFKey("depth");
@@ -36,19 +38,28 @@ public class CasudNoiseData {
     public static final ResourceKey<DensityFunction> BEFORE_JAGGEDNESS_KEY = makeDFKey("before_jaggedness");
     public static final ResourceKey<DensityFunction> FINAL_DENSITY_KEY = makeDFKey("final_density");
 
+    //initialize all the noises
+    public static final NoiseParameters CONTINENTALNESS_NOISE = bindNoise(CONTINENTALNESS_NOISE_KEY, new NoiseParameters(-9, DoubleList.of(1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 2.0)));
+    public static final NoiseParameters EROSION_NOISE = bindNoise(EROSION_NOISE_KEY, new NoiseParameters(-9, DoubleList.of(1.0, 1.0, 0.0, 1.0, 1.0)));
+    public static final NoiseParameters RIDGES_NOISE = bindNoise(RIDGES_NOISE_KEY, new NoiseParameters(-9, DoubleList.of(1.0, 2.0, 1.0, 0.0, 0.0, 0.0)));
+    public static final NoiseParameters JAGGED_NOISE = bindNoise(JAGGED_NOISE_KEY, new NoiseParameters(-16, DoubleList.of(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0)));
+    public static final NoiseParameters TEMPERATURE_NOISE = bindNoise(TEMPERATURE_NOISE_KEY, new NoiseParameters(-10, DoubleList.of( 1.5, 0.0, 1.0, 0.0, 0.0, 0.0)));
+    public static final NoiseParameters VEGETATION_NOISE = bindNoise(VEGETATION_NOISE_KEY, new NoiseParameters(-8, DoubleList.of(1.0, 1.0, 0.0, 0.0, 0.0, 0.0)));
+    public static final NoiseParameters ALTERATION_NOISE = bindNoise(ALTERATION_NOISE_KEY, new NoiseParameters(-9, DoubleList.of(2.0, 1.5, 1.5)));
+    public static final NoiseParameters OFFSET_NOISE = bindNoise(OFFSET_NOISE_KEY, new NoiseParameters(-3, DoubleList.of(1.0, 1.0, 1.0, 0.0)));
 
     //initialize all the density functions
-    public static final DensityFunction CONTINENTS = bind(CONTINENTS_KEY, shiftedNoise(CONTINENTALNESS_NOISE));
-    public static final DensityFunction EROSION = bind(EROSION_KEY, shiftedNoise(EROSION_NOISE));
-    public static final DensityFunction RIDGES = bind(RIDGES_KEY, shiftedNoise(RIDGES_NOISE));
+    public static final DensityFunction CONTINENTS = bindDF(CONTINENTS_KEY, shiftedNoise(CONTINENTALNESS_NOISE_KEY));
+    public static final DensityFunction EROSION = bindDF(EROSION_KEY, shiftedNoise(EROSION_NOISE_KEY));
+    public static final DensityFunction RIDGES = bindDF(RIDGES_KEY, shiftedNoise(RIDGES_NOISE_KEY));
     private static final DensityFunction BLENDING_FACTOR = DensityFunctions.constant(10.0);
-    public static final DensityFunction OFFSET = bind(OFFSET_KEY, blendedSpline(-0.81, 2.5, TerrainShaperSpline.SplineType.OFFSET, DensityFunctions.blendOffset()));
-    public static final DensityFunction FACTOR = bind(FACTOR_KEY, blendedSpline(0.0, 8.0, TerrainShaperSpline.SplineType.FACTOR, BLENDING_FACTOR));
-    public static final DensityFunction DEPTH = bind(DEPTH_KEY, DensityFunctions.add(DensityFunctions.yClampedGradient(CasudDimensionData.MIN_HEIGHT, CasudDimensionData.MAX_HEIGHT, 1.5, -1.5), OFFSET));
-    public static final DensityFunction TEMPERATURE = bind(TEMPERATURE_KEY, shiftedNoise(TEMPERATURE_NOISE));
-    public static final DensityFunction VEGETATION = bind(VEGETATION_KEY, shiftedNoise(VEGETATION_NOISE));
-    public static final DensityFunction ALTERATION = bind(ALTERATION_KEY, shiftedNoise(ALTERATION_NOISE));
-    public static final DensityFunction BEFORE_JAGGEDNESS = bind(BEFORE_JAGGEDNESS_KEY, noiseGradientDensity(DensityFunctions.cache2d(FACTOR), DEPTH));
+    public static final DensityFunction OFFSET = bindDF(OFFSET_KEY, blendedSpline(-0.81, 2.5, TerrainShaperSpline.SplineType.OFFSET, DensityFunctions.blendOffset()));
+    public static final DensityFunction FACTOR = bindDF(FACTOR_KEY, blendedSpline(0.0, 8.0, TerrainShaperSpline.SplineType.FACTOR, BLENDING_FACTOR));
+    public static final DensityFunction DEPTH = bindDF(DEPTH_KEY, DensityFunctions.add(DensityFunctions.yClampedGradient(CasudDimensionData.MIN_HEIGHT, CasudDimensionData.MAX_HEIGHT, 1.5, -1.5), OFFSET));
+    public static final DensityFunction TEMPERATURE = bindDF(TEMPERATURE_KEY, shiftedNoise(TEMPERATURE_NOISE_KEY));
+    public static final DensityFunction VEGETATION = bindDF(VEGETATION_KEY, shiftedNoise(VEGETATION_NOISE_KEY));
+    public static final DensityFunction ALTERATION = bindDF(ALTERATION_KEY, shiftedNoise(ALTERATION_NOISE_KEY));
+    public static final DensityFunction BEFORE_JAGGEDNESS = bindDF(BEFORE_JAGGEDNESS_KEY, noiseGradientDensity(DensityFunctions.cache2d(FACTOR), DEPTH));
     //public static final DensityFunction FINAL_DENSITY = bind(FINAL_DENSITY_KEY)
 
     public static ResourceKey<DensityFunction> makeDFKey(String name) {
@@ -71,8 +82,12 @@ public class CasudNoiseData {
         return BuiltinRegistries.DENSITY_FUNCTION.getHolderOrThrow(key).value();
     }
 
-    private static DensityFunction bind(ResourceKey<DensityFunction> key, DensityFunction function) {
+    private static DensityFunction bindDF(ResourceKey<DensityFunction> key, DensityFunction function) {
         return BuiltinRegistries.register(BuiltinRegistries.DENSITY_FUNCTION, key, function).value();
+    }
+
+    private static NoiseParameters bindNoise(ResourceKey<NoiseParameters> key, NoiseParameters function) {
+        return BuiltinRegistries.register(BuiltinRegistries.NOISE, key, function).value();
     }
 
     private static Holder<NoiseParameters> noiseHolder(ResourceKey<NoiseParameters> noiseKey) {
@@ -88,6 +103,10 @@ public class CasudNoiseData {
     private static DensityFunction noiseGradientDensity(DensityFunction densityFunction, DensityFunction densityFunction2) {
         DensityFunction densityFunction3 = DensityFunctions.mul(densityFunction2, densityFunction);
         return DensityFunctions.mul(DensityFunctions.constant(4.0), densityFunction3.quarterNegative());
+    }
+
+    public static void initialize() {
+
     }
 
 }
