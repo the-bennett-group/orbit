@@ -1,6 +1,5 @@
 package the.bennett.group.orbit.world.gen;
 
-import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
@@ -33,11 +32,6 @@ public abstract class BaseOrbitChunkGenerator extends ChunkGenerator {
 
     public BaseOrbitChunkGenerator(Registry<StructureSet> registry, Optional<HolderSet<StructureSet>> optional, BiomeSource biomeSource) {
         super(registry, optional, biomeSource);
-    }
-
-    @Override
-    protected Codec<? extends ChunkGenerator> codec() {
-        return CODEC;
     }
 
     @Override

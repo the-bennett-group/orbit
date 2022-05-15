@@ -16,6 +16,7 @@ import net.minecraft.world.level.biome.TerrainShaper;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -83,6 +84,7 @@ public class CasudChunkGenerator extends BaseOrbitChunkGenerator {
 
     public CasudChunkGenerator(BiomeSource biomeSource, long seed) {
         super(BuiltinRegistries.STRUCTURE_SETS, Optional.empty(), biomeSource);
+        this.seed = SeedHolder.seed();
         this.biomeSource = biomeSource;
         this.defaultBlock = OrbitBlocks.SALT_BLOCK.defaultBlockState();
         this.defaultFluid = OrbitFluids.SOURCE_ACID.defaultFluidState().createLegacyBlock();
@@ -94,7 +96,6 @@ public class CasudChunkGenerator extends BaseOrbitChunkGenerator {
         this.aquiferFluidPicker = (int1, int2, int3) -> acidFluidStatus; // i TRULY don't know what those integers are doing, all I know is that acid will always be returned.
         this.router = buildRouter();
     }
-
 
     @Override
     public BlockState getDefaultBlock() {
@@ -119,7 +120,6 @@ public class CasudChunkGenerator extends BaseOrbitChunkGenerator {
                 this.router.spawnTarget()
         );
     }
-
 
     @Override
     public void applyCarvers(WorldGenRegion worldGenRegion, long l, BiomeManager biomeManager, StructureFeatureManager structureFeatureManager, ChunkAccess chunkAccess, GenerationStep.Carving carving) {
@@ -218,6 +218,11 @@ public class CasudChunkGenerator extends BaseOrbitChunkGenerator {
                         + " PV: " + decimalFormat.format(TerrainShaper.peaksAndValleys((float)this.router.ridges().compute(singlePointContext)))
                         + " w/oJ: " + decimalFormat.format(this.router.initialDensityWithoutJaggedness().compute(singlePointContext))
                         + " N: " + decimalFormat.format(this.router.finalDensity().compute(singlePointContext)));
+    }
+
+    @Override
+    protected Codec<? extends ChunkGenerator> codec() {
+        return CODEC;
     }
 
 
