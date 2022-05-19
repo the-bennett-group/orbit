@@ -1,9 +1,8 @@
-package the.bennett.group.orbit;
+package bennett.orbit;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import org.quiltmc.loader.api.ModContainer;
-import org.quiltmc.loader.api.QuiltLoader;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
@@ -12,9 +11,7 @@ import the.bennett.group.orbit.items.OrbitItems;
 import the.bennett.group.orbit.items.tabs.OrbitTabs;
 import the.bennett.group.orbit.rules.OrbitRules;
 import the.bennett.group.orbit.tags.OrbitTags;
-import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.world.feature.OrbitFeatures;
-import the.bennett.group.orbit.world.gen.BaseOrbitChunkGenerator;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
@@ -24,7 +21,6 @@ public class Orbit implements ModInitializer {
 
     @Override
     public void onInitialize(ModContainer mod) {
-        ContentCounter.initialize();
         OrbitRules.initialize();
         OrbitTags.initialize();
         OrbitFluids.initialize();
@@ -32,12 +28,8 @@ public class Orbit implements ModInitializer {
         OrbitTabs.initialize();
         OrbitItems.initialize();
         OrbitFeatures.initialize();
-        BaseOrbitChunkGenerator.initialize();
+        log("Orbit initialized!");
 
-
-        if(QuiltLoader.isDevelopmentEnvironment()) {
-            log(ContentCounter.report());
-        }
     }
 
     public static ResourceLocation newId(String name) {

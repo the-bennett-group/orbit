@@ -4,7 +4,7 @@
   "package": "the.bennett.group.orbit.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "world.LevelStorageSourceMixin"
+    "world.WorldGenSettingsMixin"
   ],
   "client": [
   ],

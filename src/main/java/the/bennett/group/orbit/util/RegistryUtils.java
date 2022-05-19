@@ -18,7 +18,7 @@ public class RegistryUtils {
     }
 
     public static <R extends Registry<T>, T> Holder<T> findHolder(T object, R registry) {
-        return registry.getOrCreateHolder(registry.createIntrusiveHolder(object).key());
+        return registry.getOrCreateHolder(registry.getResourceKey(object).orElseThrow());
     }
 
     public static <R extends Registry<T>, T> Holder<T> findHolder(ResourceKey<T> key, R registry) {

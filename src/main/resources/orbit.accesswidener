@@ -1,19 +1,8 @@
 accessWidener	v1	named
 
-extendable  class   net/minecraft/world/level/biome/Climate$SpawnFinder
-extendable  class   net/minecraft/world/level/biome/Climate$ParameterPoint
-extendable  class   net/minecraft/world/level/biome/Climate$TargetPoint
-extendable  class   net/minecraft/world/level/biome/Climate$Sampler
-extendable  class   net/minecraft/world/level/biome/Climate$SpawnFinder
-extendable  class   net/minecraft/world/level/biome/Climate$SpawnFinder$Result
-extendable  class   net/minecraft/world/level/levelgen/NoiseRouter
+extendable  class   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
 
-accessible  field   net/minecraft/world/level/levelgen/NoiseRouterData SHIFT_X Lnet/minecraft/resources/ResourceKey;
-accessible  field   net/minecraft/world/level/levelgen/NoiseRouterData SHIFT_Z Lnet/minecraft/resources/ResourceKey;
-accessible  field   net/minecraft/world/level/levelgen/NoiseRouterData Y    Lnet/minecraft/resources/ResourceKey;
-accessible  field   net/minecraft/world/level/levelgen/NoiseRouterData SHIFT_Z Lnet/minecraft/resources/ResourceKey;
-accessible  field   net/minecraft/world/level/levelgen/NoiseRouterData BASE_3D_NOISE Lnet/minecraft/resources/ResourceKey;
-accessible  field   net/minecraft/world/level/levelgen/NoiseRouterData ZERO Lnet/minecraft/resources/ResourceKey;
-
-accessible  method  net/minecraft/world/level/levelgen/Beardifier   <init>  (Lnet/minecraft/world/level/StructureFeatureManager;Lnet/minecraft/world/level/chunk/ChunkAccess;)V
-accessible  method  net/minecraft/world/level/biome/Climate$SpawnFinder <init>  (Ljava/util/List;Lnet/minecraft/world/level/biome/Climate$Sampler;)V
+mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator    noises   Lnet/minecraft/core/Registry;
+mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator biomeSource  Lnet/minecraft/world/level/biome/BiomeSource;
+mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator seed  Ljava/lang/Long;
+mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator settings  Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;
