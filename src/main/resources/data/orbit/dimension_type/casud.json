@@ -12,7 +12,6 @@
   "has_raids" : false,
   "respawn_anchor_works": false,
   "bed_works" : true,
-  "fixed_time" : false,
   "piglin_safe" : false,
   "coordinate_scale": 1.0
 }
