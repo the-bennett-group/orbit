@@ -1,6 +1,7 @@
 accessWidener	v1	named
 
 extendable  class   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+accessible  method  net/minecraft/advancements/critereon/BlockPredicate$Builder <init>  ()V
 
 mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator    noises   Lnet/minecraft/core/Registry;
 mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator biomeSource  Lnet/minecraft/world/level/biome/BiomeSource;

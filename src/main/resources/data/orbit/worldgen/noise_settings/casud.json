@@ -38,7 +38,7 @@
       "type": "minecraft:mul"
     },
     "lava": {
-      "noise": "orbit:casud/aquifer_acid",
+      "noise": "orbit:casud/aquifer_lava",
       "xz_scale": 1.0,
       "y_scale": 1.0,
       "type": "minecraft:noise"
@@ -102,46 +102,14 @@
             "Name": "minecraft:bedrock"
           }
         }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
-          "type": "minecraft:noise_threshold",
-          "noise": "orbit:casud/rivers",
-          "min_threshold": 0.205,
-          "max_threshold": 0.295
-        },
-        "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:not",
-            "invert": {
-              "type": "minecraft:y_above",
-              "anchor": {
-                "absolute": 15
-              },
-              "surface_depth_multiplier": 0,
-              "add_stone_depth": false
-            }
-          },
-          "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "orbit:acid",
-              "Properties": {
-                "level": "0"
-              }
-            }
-          }
-        }
       }
     ]
   },
   "noise": {
     "bottom_slide": {
-      "target": 5.5,
-      "size": 6.52,
-      "offset": 5
+      "target": 7.85,
+      "size": 7.66,
+      "offset": 2.83333
     },
     "size_horizontal": 1,
     "size_vertical": 1.5,
