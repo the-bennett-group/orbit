@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "orbit:blackwood_tree_placed",
+    "orbit:blackwood_tall_placed",
+    "orbit:blackwood_mega_placed"
+  ]
+}

@@ -41,7 +41,8 @@
   "carvers": {},
   "features": [
     [],
-    ["orbit:acid_lake_surface"],
+    ["orbit:acid_lake_surface", "orbit:acid_lake_surface_frequent"
+    ],
     [],
     [],
     [],
@@ -49,7 +50,10 @@
     [],
     [],
     [],
-    ["orbit:blackwood_tree_placed", "orbit:blackwood_tree_tall_placed", "orbit:blackwood_mega_placed"],
+    ["orbit:blackwood_tree_placed",
+      "orbit:blackwood_tall_placed",
+      "orbit:blackwood_mega_placed"
+    ],
     []
   ]
 }

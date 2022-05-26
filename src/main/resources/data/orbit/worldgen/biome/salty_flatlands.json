@@ -33,7 +33,8 @@
   "carvers": {},
   "features": [
     ["orbit:salt_pillar_surface"],
-    ["orbit:acid_lake_surface_frequent"],
+    ["orbit:acid_lake_surface",
+      "orbit:acid_lake_surface_frequent"],
     [],
     [],
     [],

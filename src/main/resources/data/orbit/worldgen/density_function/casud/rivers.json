@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:abs",
+  "argument": {
+    "type": "minecraft:flat_cache",
+    "argument": {
+      "type": "minecraft:shifted_noise",
+      "noise": "orbit:casud/rivers",
+      "xz_scale": 1,
+      "y_scale": 0,
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0,
+      "shift_z": "minecraft:shift_z"
+    }
+  }
+}
