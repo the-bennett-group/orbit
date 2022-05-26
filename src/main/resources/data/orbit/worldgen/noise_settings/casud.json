@@ -38,7 +38,7 @@
       "type": "minecraft:mul"
     },
     "lava": {
-      "noise": "orbit:casud/aquifer_lava",
+      "noise": "orbit:casud/aquifer_acid",
       "xz_scale": 1.0,
       "y_scale": 1.0,
       "type": "minecraft:noise"
