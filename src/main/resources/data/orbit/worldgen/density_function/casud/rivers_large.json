@@ -4,7 +4,7 @@
     "type": "minecraft:flat_cache",
     "argument": {
       "type": "minecraft:shifted_noise",
-      "noise": "orbit:casud/rivers",
+      "noise": "orbit:casud/rivers_large",
       "xz_scale": 1,
       "y_scale": 0,
       "shift_x": "minecraft:shift_x",
