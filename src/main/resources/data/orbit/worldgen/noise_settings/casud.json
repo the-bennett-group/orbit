@@ -11,11 +11,7 @@
     "Name": "orbit:acid"
   },
   "noise_router": {
-    "final_density": {
-      "argument1": "orbit:casud/final_density",
-      "argument2": "orbit:casud/noodle",
-      "type": "minecraft:min"
-    },
+    "final_density": "orbit:casud/final_density",
     "vein_toggle": 0.0,
     "vein_ridged": 0.0,
     "vein_gap": 0.0,
@@ -76,7 +72,7 @@
     },
     "fluid_level_spread": {
       "xz_scale": 1.0,
-      "y_scale": 0.75,
+      "y_scale": 0.7142857142857143,
       "noise": "orbit:casud/aquifer_fluid_level_spread",
       "type": "minecraft:noise"
     }
@@ -107,9 +103,9 @@
   },
   "noise": {
     "bottom_slide": {
-      "target": 7.85,
+      "target": 2.85,
       "size": 7.66,
-      "offset": 2.83333
+      "offset": 11.625
     },
     "size_horizontal": 1,
     "size_vertical": 1.5,
@@ -403,12 +399,12 @@
       "xz_scale": 1.0,
       "y_scale": 1.0,
       "xz_factor": 80.0,
-      "y_factor": 200
+      "y_factor": 160.0
     },
     "top_slide": {
-      "target": 1.5,
-      "size": 0.5,
-      "offset": 10
+      "target": -5.25,
+      "size": 5.625,
+      "offset": 0
     }
   },
   "default_block": {

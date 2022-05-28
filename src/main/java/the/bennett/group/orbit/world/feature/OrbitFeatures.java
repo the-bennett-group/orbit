@@ -63,9 +63,9 @@ public class OrbitFeatures {
         BLACKWOOD_TREE_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.DEFAULT_CONFIGURATION);
         BLACKWOOD_TALL_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.TALL_CONFIGURATION);
         BLACKWOOD_MEGA_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.MEGA_CONFIGURATION);
-        BLACKWOOD_TREE_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_TREE_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(12))), "blackwood_tree_placed");
-        BLACKWOOD_TREE_TALL_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_TALL_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(12))), "blackwood_tall_placed");
-        BLACKWOOD_MEGA_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_MEGA_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(12))), "blackwood_mega_placed");
+        BLACKWOOD_TREE_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_TREE_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(5))), "blackwood_tree_placed");
+        BLACKWOOD_TREE_TALL_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_TALL_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(5))), "blackwood_tall_placed");
+        BLACKWOOD_MEGA_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_MEGA_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(5))), "blackwood_mega_placed");
         BLACKWOOD_TREE_KEY = RegistryUtils.makeKey("blackwood_tree_placed", Registry.PLACED_FEATURE_REGISTRY);
         BLACKWOOD_TALL_KEY = RegistryUtils.makeKey("blackwood_tall_placed", Registry.PLACED_FEATURE_REGISTRY);
         BLACKWOOD_MEGA_KEY = RegistryUtils.makeKey("blackwood_mega_placed", Registry.PLACED_FEATURE_REGISTRY);
