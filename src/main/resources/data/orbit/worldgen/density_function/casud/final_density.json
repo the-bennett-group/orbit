@@ -112,12 +112,12 @@
       "to_value": 0.1
     },
     "argument2": {
-      "type": "minecraft:range_choice",
-      "input": "minecraft:y",
-      "min_inclusive": 0,
-      "max_exclusive": 6,
-      "when_in_range": 1,
-      "when_out_of_range": 0
+        "type": "minecraft:range_choice",
+        "input": "minecraft:y",
+        "min_inclusive": 0,
+        "max_exclusive": 10,
+        "when_in_range": 1,
+        "when_out_of_range": 0
     }
   }
 }
