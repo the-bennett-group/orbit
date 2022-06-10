@@ -22,7 +22,6 @@ public abstract class BaseBlackwoodTreeGrower extends AbstractTreeGrower {
                 break;
             }
         }
-        System.out.println("YEAH");
         return super.growTree(world, chunkGenerator, pos, state, random);
     }
 }
