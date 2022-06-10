@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "orbit:block/blackwood_sapling"
+    },
+    "stage=1": {
+      "model": "orbit:block/blackwood_sapling"
+    }
+  }
+}

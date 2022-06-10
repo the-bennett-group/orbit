@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "orbit:salt_block",
-    "orbit:acid"
+    "orbit:acid",
+    "minecraft:air"
   ]
 }

@@ -1,0 +1,14 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "orbit:block/blackwood_sapling"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-117.43, -18.35, 177.92],
+			"translation": [-11.5, 12.25, 2.5],
+			"scale": [3.01367, 3.01367, 3.01367]
+		}
+	}
+}

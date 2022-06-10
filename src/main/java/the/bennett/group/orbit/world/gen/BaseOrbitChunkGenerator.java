@@ -1,6 +1,5 @@
 package the.bennett.group.orbit.world.gen;
 
-import bennett.orbit.Orbit;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -15,10 +14,13 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import org.quiltmc.loader.api.QuiltLoader;
+import the.bennett.group.orbit.Orbit;
 import the.bennett.group.orbit.util.SeedHolder;
 
 import java.text.DecimalFormat;
 import java.util.List;
+
+
 
 
 public class BaseOrbitChunkGenerator extends NoiseBasedChunkGenerator {

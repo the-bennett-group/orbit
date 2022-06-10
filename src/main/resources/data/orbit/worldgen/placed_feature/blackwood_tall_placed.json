@@ -1,0 +1,15 @@
+{
+  "feature": "orbit:blackwood_tall",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_block_tag",
+        "tag": "orbit:blackwood_replaceable"
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    }
+  ]
+}

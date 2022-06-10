@@ -11,11 +11,17 @@ import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.placement.BiomeFilter;
+import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import the.bennett.group.orbit.Orbit;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.util.RegistryUtils;
+import the.bennett.group.orbit.world.feature.tree.blackwood.BlackwoodTreeGrower;
+import the.bennett.group.orbit.world.feature.tree.blackwood.MegaBlackwoodTreeGrower;
+import the.bennett.group.orbit.world.feature.tree.blackwood.TallBlackwoodTreeGrower;
 
 import java.util.List;
 
@@ -39,12 +45,6 @@ public class OrbitFeatures {
     public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_TREE_CONFIGURED;
     public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_TALL_CONFIGURED;
     public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_MEGA_CONFIGURED;
-    public static PlacedFeature BLACKWOOD_TREE_PLACED;
-    public static PlacedFeature BLACKWOOD_TREE_TALL_PLACED;
-    public static PlacedFeature BLACKWOOD_MEGA_PLACED;
-    public static ResourceKey<PlacedFeature> BLACKWOOD_TREE_KEY;
-    public static ResourceKey<PlacedFeature> BLACKWOOD_TALL_KEY;
-    public static ResourceKey<PlacedFeature> BLACKWOOD_MEGA_KEY;
 
 
     public static void initialize() {
@@ -60,15 +60,10 @@ public class OrbitFeatures {
         SALT_PILLAR_PLACED = register(new PlacedFeature(Holder.direct(SALT_PILLAR_CONFIGURED), List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), BiomeFilter.biome())), "salt_pillar_surface");
         SALT_PILLAR_KEY = RegistryUtils.makeKey("salt_pillar_surface", Registry.PLACED_FEATURE_REGISTRY);
 
-        BLACKWOOD_TREE_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.DEFAULT_CONFIGURATION);
-        BLACKWOOD_TALL_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.TALL_CONFIGURATION);
-        BLACKWOOD_MEGA_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.MEGA_CONFIGURATION);
-        BLACKWOOD_TREE_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_TREE_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(5))), "blackwood_tree_placed");
-        BLACKWOOD_TREE_TALL_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_TALL_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(5))), "blackwood_tall_placed");
-        BLACKWOOD_MEGA_PLACED = register(new PlacedFeature(Holder.direct(BLACKWOOD_MEGA_CONFIGURED), List.of(InSquarePlacement.spread(), BiomeFilter.biome(), CountOnEveryLayerPlacement.of(5))), "blackwood_mega_placed");
-        BLACKWOOD_TREE_KEY = RegistryUtils.makeKey("blackwood_tree_placed", Registry.PLACED_FEATURE_REGISTRY);
-        BLACKWOOD_TALL_KEY = RegistryUtils.makeKey("blackwood_tall_placed", Registry.PLACED_FEATURE_REGISTRY);
-        BLACKWOOD_MEGA_KEY = RegistryUtils.makeKey("blackwood_mega_placed", Registry.PLACED_FEATURE_REGISTRY);
+        BLACKWOOD_TREE_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.CONFIGURATION);
+        BLACKWOOD_TALL_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, TallBlackwoodTreeGrower.TALL_CONFIGURATION);
+        BLACKWOOD_MEGA_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, MegaBlackwoodTreeGrower.TALLER_CONFIGURATION);
+
         BLACKWOOD = makeHolder("blackwood", BLACKWOOD_TREE_CONFIGURED);
         BLACKWOOD_TALL = makeHolder("blackwood_tall", BLACKWOOD_TALL_CONFIGURED);
         BLACKWOOD_MEGA = makeHolder("blackwood_mega", BLACKWOOD_MEGA_CONFIGURED);

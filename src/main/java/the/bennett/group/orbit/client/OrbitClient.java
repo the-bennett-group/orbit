@@ -8,11 +8,13 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.FlowingFluid;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import org.quiltmc.qsl.block.extensions.api.client.BlockRenderLayerMap;
 import the.bennett.group.orbit.Orbit;
+import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.fluid.OrbitFluids;
 
 @Environment(EnvType.CLIENT)
@@ -27,8 +29,11 @@ public class OrbitClient implements ClientModInitializer {
             registerBlockTexture(registry, "stripped_blackwood_log");
             registerBlockTexture(registry, "stripped_blackwood_log_top");
             registerBlockTexture(registry, "blackwood_planks");
+            registerBlockTexture(registry, "blackwood_sapling");
 
             createFluidRenderLayer(OrbitFluids.SOURCE_ACID, OrbitFluids.FLOWING_ACID, "acid_still", "acid_flow");
+            putSpecialRenderType(RenderType.cutout(), OrbitBlocks.BLACKWOOD_SAPLING);
+            putSpecialRenderType(RenderType.cutout(), OrbitBlocks.BLACKWOOD_LEAVES);
         });
 
     }
@@ -42,4 +47,10 @@ public class OrbitClient implements ClientModInitializer {
         FluidRenderHandlerRegistry.INSTANCE.register(SOURCE, FLOWING, new SimpleFluidRenderHandler(
                 Orbit.newId("block/"+sourceTexture), Orbit.newId("block/"+flowingTexture)));
     }
+
+    public static void putSpecialRenderType(RenderType renderType, Block block) {
+        BlockRenderLayerMap.put(renderType, block);
+    }
+
+
 }

@@ -167,7 +167,7 @@
                   "type": "minecraft:noise_threshold",
                   "noise": "orbit:casud/rivers_large",
                   "min_threshold": 0.3,
-                  "max_threshold": 0.5
+                  "max_threshold": 0.4
                 },
                 "then_run": {
                   "type": "minecraft:block",
