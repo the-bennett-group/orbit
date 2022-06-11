@@ -1,7 +1,7 @@
 {
   "type": "minecraft:abs",
   "argument": {
-    "type": "minecraft:flat_cache",
+    "type": "minecraft:cache_2d",
     "argument": {
       "type": "minecraft:shifted_noise",
       "noise": "orbit:casud/rivers_small",

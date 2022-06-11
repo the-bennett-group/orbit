@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+        "type": "minecraft:y_clamped_gradient",
+        "from_y": 10,
+        "to_y": 55,
+        "from_value": -1,
+        "to_value": 0.25
+      },
+    "argument2": {
+      "type": "minecraft:interpolated",
+      "argument": "orbit:casud/pillars"
+    }
+  },
+  "argument2": "orbit:casud/sloped_cheese"
+}
+

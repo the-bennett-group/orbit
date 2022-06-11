@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:range_choice",
+  "input": "orbit:common/y",
+  "min_inclusive": 0,
+  "max_exclusive": 5,
+  "when_in_range": 1.0,
+  "when_out_of_range": 0.0
+}

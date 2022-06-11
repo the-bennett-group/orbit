@@ -49,7 +49,7 @@
             "humidity": [-1.0, 1.0],
             "continentalness": [-0.445, -0.19]
           },
-          "biome": "orbit:acid_ocean"
+          "biome": "orbit:blackwood_forest"
         },
         {
           "parameters": {
@@ -61,7 +61,7 @@
             "humidity": [-1.0, 1.0],
             "continentalness": [-1.0, -0.445]
           },
-          "biome": "orbit:deep_acid_ocean"
+          "biome": "orbit:salty_flatlands"
         }
 
       ],
