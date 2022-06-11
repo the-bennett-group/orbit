@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import the.bennett.group.orbit.Orbit;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
-import the.bennett.group.orbit.fluid.OrbitFluids;
+import the.bennett.group.orbit.blocks.fluid.OrbitFluids;
 import the.bennett.group.orbit.items.tabs.OrbitTabs;
 
 public final class OrbitItems {

@@ -7,7 +7,7 @@ import org.quiltmc.loader.api.QuiltLoader;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
-import the.bennett.group.orbit.fluid.OrbitFluids;
+import the.bennett.group.orbit.blocks.fluid.OrbitFluids;
 import the.bennett.group.orbit.items.OrbitItems;
 import the.bennett.group.orbit.items.tabs.OrbitTabs;
 import the.bennett.group.orbit.rules.OrbitRules;

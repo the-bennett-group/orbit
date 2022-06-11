@@ -15,7 +15,7 @@ import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import org.quiltmc.qsl.block.extensions.api.client.BlockRenderLayerMap;
 import the.bennett.group.orbit.Orbit;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
-import the.bennett.group.orbit.fluid.OrbitFluids;
+import the.bennett.group.orbit.blocks.fluid.OrbitFluids;
 
 @Environment(EnvType.CLIENT)
 public class OrbitClient implements ClientModInitializer {

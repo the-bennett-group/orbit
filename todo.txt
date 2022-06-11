@@ -1,6 +1,4 @@
-//todo: Create Blackwood Sapling
 //todo: Textures for Mystic Grass
-//todo: Tweak Noise Values for Casud
 //todo: Crater Features
 //todo: Boulders for Casud
 //todo: Add Large Biomes for Casud

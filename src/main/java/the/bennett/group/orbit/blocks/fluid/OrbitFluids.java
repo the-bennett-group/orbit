@@ -1,4 +1,4 @@
-package the.bennett.group.orbit.fluid;
+package the.bennett.group.orbit.blocks.fluid;
 
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.material.FlowingFluid;
