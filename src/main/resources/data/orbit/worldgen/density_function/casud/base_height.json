@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:cache_2d",
+      "argument": {
+        "type": "minecraft:interpolated",
+        "argument": {
+          "type": "minecraft:mul",
+          "argument1": {
+            "type": "minecraft:y_clamped_gradient",
+            "from_value": 1.0,
+            "from_y": 160,
+            "to_value": 0.0,
+            "to_y": 200
+          },
+          "argument2": {
+            "type": "noise",
+            "noise": "orbit:casud/base_height_increase",
+            "xz_scale": 3,
+            "y_scale": 1
+          }
+        }
+      }
+    },
+  "argument2": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_value": 1.0,
+    "from_y": 0,
+    "to_value": 0.0,
+    "to_y": 180
+  }
+}
