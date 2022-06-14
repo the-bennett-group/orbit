@@ -14,7 +14,7 @@
           "type": "minecraft:mul"
         },
         "argument2": {
-          "argument1": -0.5,
+          "argument1": -1.0,
           "argument2": {
             "argument1": -1.0,
             "argument2": {

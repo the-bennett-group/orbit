@@ -18,11 +18,11 @@ public class RegistryUtils {
     }
 
     public static <R extends Registry<T>, T> Holder<T> findHolder(T object, R registry) {
-        return registry.getOrCreateHolder(registry.getResourceKey(object).orElseThrow());
+        return registry.getOrCreateHolderOrThrow(registry.getResourceKey(object).orElseThrow());
     }
 
     public static <R extends Registry<T>, T> Holder<T> findHolder(ResourceKey<T> key, R registry) {
-        return registry.getOrCreateHolder(key);
+        return registry.getOrCreateHolderOrThrow(key);
     }
 
     public static <T> ResourceKey<T> makeKey(String name, ResourceKey<Registry<T>> registry) {

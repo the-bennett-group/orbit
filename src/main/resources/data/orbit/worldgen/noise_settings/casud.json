@@ -2,6 +2,9 @@
   "aquifers_enabled": true,
   "ore_veins_enabled": false,
   "legacy_random_source": false,
+  "default_block": {
+    "Name": "orbit:salt_block"
+  },
   "sea_level": 32,
   "disable_mob_generation": true,
   "default_fluid": {
@@ -18,21 +21,7 @@
     "erosion": "orbit:casud/erosion",
     "depth": "orbit:casud/depth",
     "ridges": "orbit:casud/ridges",
-    "initial_density_without_jaggedness": {
-      "argument1": 4.0,
-      "argument2": {
-        "argument": {
-          "argument1": "orbit:casud/depth",
-          "argument2": {
-            "argument": "orbit:casud/factor",
-            "type": "minecraft:cache_2d"
-          },
-          "type": "minecraft:mul"
-        },
-        "type": "minecraft:quarter_negative"
-      },
-      "type": "minecraft:mul"
-    },
+    "initial_density_without_jaggedness": "orbit:casud/final_density",
     "lava": {
       "noise": "orbit:casud/aquifer_acid",
       "xz_scale": 1.0,
@@ -77,6 +66,17 @@
       "type": "minecraft:noise"
     }
   },
+  "spawn_target": [
+    {
+      "temperature": -0.3,
+      "humidity": -0.3,
+      "continentalness": 0,
+      "erosion": 0.45,
+      "weirdness": 0.5,
+      "depth": 0,
+      "offset": 0
+    }
+  ],
   "surface_rule": {
     "type": "minecraft:sequence",
     "sequence": [
@@ -198,296 +198,12 @@
     ]
   },
   "noise": {
-    "bottom_slide": {
-      "target": 2.85,
-      "size": 7.66,
-      "offset": 11.625
-    },
     "size_horizontal": 1,
     "size_vertical": 1.5,
-    "terrain_shaper": {
+    "orbit:casud/_shaper": {
       "offset": 0.0,
       "factor": 0.0,
-      "jaggedness": {
-        "coordinate": "continents",
-        "points": [
-          {
-            "location": -0.11,
-            "value": 0.0,
-            "derivative": 0.0
-          },
-          {
-            "location": 0.03,
-            "value": {
-              "coordinate": "erosion",
-              "points": [
-                {
-                  "location": -1.0,
-                  "value": {
-                    "coordinate": "ridges",
-                    "points": [
-                      {
-                        "location": 0.19999999,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 0.44999996,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 1.0,
-                        "value": {
-                          "coordinate": "weirdness",
-                          "points": [
-                            {
-                              "location": -0.01,
-                              "value": 0.63,
-                              "derivative": 0.0
-                            },
-                            {
-                              "location": 0.01,
-                              "value": 0.3,
-                              "derivative": 0.0
-                            }
-                          ]
-                        },
-                        "derivative": 0.0
-                      }
-                    ]
-                  },
-                  "derivative": 0.0
-                },
-                {
-                  "location": -0.78,
-                  "value": {
-                    "coordinate": "ridges",
-                    "points": [
-                      {
-                        "location": 0.19999999,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 0.44999996,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 1.0,
-                        "value": {
-                          "coordinate": "weirdness",
-                          "points": [
-                            {
-                              "location": -0.01,
-                              "value": 0.315,
-                              "derivative": 0.0
-                            },
-                            {
-                              "location": 0.01,
-                              "value": 0.15,
-                              "derivative": 0.0
-                            }
-                          ]
-                        },
-                        "derivative": 0.0
-                      }
-                    ]
-                  },
-                  "derivative": 0.0
-                },
-                {
-                  "location": -0.5775,
-                  "value": {
-                    "coordinate": "ridges",
-                    "points": [
-                      {
-                        "location": 0.19999999,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 0.44999996,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 1.0,
-                        "value": {
-                          "coordinate": "weirdness",
-                          "points": [
-                            {
-                              "location": -0.01,
-                              "value": 0.315,
-                              "derivative": 0.0
-                            },
-                            {
-                              "location": 0.01,
-                              "value": 0.15,
-                              "derivative": 0.0
-                            }
-                          ]
-                        },
-                        "derivative": 0.0
-                      }
-                    ]
-                  },
-                  "derivative": 0.0
-                },
-                {
-                  "location": -0.375,
-                  "value": 0.0,
-                  "derivative": 0.0
-                }
-              ]
-            },
-            "derivative": 0.0
-          },
-          {
-            "location": 0.65,
-            "value": {
-              "coordinate": "erosion",
-              "points": [
-                {
-                  "location": -1.0,
-                  "value": {
-                    "coordinate": "ridges",
-                    "points": [
-                      {
-                        "location": 0.19999999,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 0.44999996,
-                        "value": {
-                          "coordinate": "weirdness",
-                          "points": [
-                            {
-                              "location": -0.01,
-                              "value": 0.63,
-                              "derivative": 0.0
-                            },
-                            {
-                              "location": 0.01,
-                              "value": 0.3,
-                              "derivative": 0.0
-                            }
-                          ]
-                        },
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 1.0,
-                        "value": {
-                          "coordinate": "weirdness",
-                          "points": [
-                            {
-                              "location": -0.01,
-                              "value": 0.63,
-                              "derivative": 0.0
-                            },
-                            {
-                              "location": 0.01,
-                              "value": 0.3,
-                              "derivative": 0.0
-                            }
-                          ]
-                        },
-                        "derivative": 0.0
-                      }
-                    ]
-                  },
-                  "derivative": 0.0
-                },
-                {
-                  "location": -0.78,
-                  "value": {
-                    "coordinate": "ridges",
-                    "points": [
-                      {
-                        "location": 0.19999999,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 0.44999996,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 1.0,
-                        "value": {
-                          "coordinate": "weirdness",
-                          "points": [
-                            {
-                              "location": -0.01,
-                              "value": 0.63,
-                              "derivative": 0.0
-                            },
-                            {
-                              "location": 0.01,
-                              "value": 0.3,
-                              "derivative": 0.0
-                            }
-                          ]
-                        },
-                        "derivative": 0.0
-                      }
-                    ]
-                  },
-                  "derivative": 0.0
-                },
-                {
-                  "location": -0.5775,
-                  "value": {
-                    "coordinate": "ridges",
-                    "points": [
-                      {
-                        "location": 0.19999999,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 0.44999996,
-                        "value": 0.0,
-                        "derivative": 0.0
-                      },
-                      {
-                        "location": 1.0,
-                        "value": {
-                          "coordinate": "weirdness",
-                          "points": [
-                            {
-                              "location": -0.01,
-                              "value": 0.63,
-                              "derivative": 0.0
-                            },
-                            {
-                              "location": 0.01,
-                              "value": 0.3,
-                              "derivative": 0.0
-                            }
-                          ]
-                        },
-                        "derivative": 0.0
-                      }
-                    ]
-                  },
-                  "derivative": 0.0
-                },
-                {
-                  "location": -0.375,
-                  "value": 0.0,
-                  "derivative": 0.0
-                }
-              ]
-            },
-            "derivative": 0.0
-          }
-        ]
-      }
+      "jaggedness": "orbit:casud/jaggedness"
     },
     "min_y": 0,
     "height": 256,
@@ -496,14 +212,6 @@
       "y_scale": 1.0,
       "xz_factor": 80.0,
       "y_factor": 160.0
-    },
-    "top_slide": {
-      "target": -5.25,
-      "size": 5.625,
-      "offset": 0
     }
-  },
-  "default_block": {
-    "Name": "orbit:salt_block"
   }
 }

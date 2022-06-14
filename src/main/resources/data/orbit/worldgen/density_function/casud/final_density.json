@@ -23,99 +23,132 @@
           "type": "minecraft:mul",
           "argument1": 0.64,
           "argument2": {
+            "type": "minecraft:interpolated",
             "argument": {
+              "type": "minecraft:blend_density",
               "argument": {
-                "argument": {
-                  "max_exclusive": 1.5625,
-                  "when_in_range": {
-                    "argument1": "orbit:casud/sloped_cheese",
-                    "argument2": {
-                      "argument1": 5.0,
-                      "argument2": "orbit:casud/entrances",
-                      "type": "minecraft:mul"
-                    },
-                    "type": "minecraft:min"
+                "type": "minecraft:add",
+                "argument1": 0.1171875,
+                "argument2": {
+                  "type": "minecraft:mul",
+                  "argument1": {
+                    "type": "minecraft:y_clamped_gradient",
+                    "from_value": 0.0,
+                    "from_y": -64,
+                    "to_value": 1.0,
+                    "to_y": -40
                   },
-                  "when_out_of_range": {
-                    "argument1": {
-                      "argument1": {
-                        "argument1": {
-                          "argument1": {
-                            "argument1": 4.0,
-                            "argument2": {
-                              "argument": {
-                                "noise": "orbit:casud/cave_layer",
-                                "xz_scale": 1.0,
-                                "y_scale": 8.0,
-                                "type": "minecraft:noise"
-                              },
-                              "type": "minecraft:square"
-                            },
-                            "type": "minecraft:mul"
-                          },
-                          "argument2": {
-                            "argument1": {
-                              "input": {
-                                "argument1": 0.27,
-                                "argument2": {
-                                  "noise": "orbit:casud/cave_cheese",
-                                  "xz_scale": 1.0,
-                                  "y_scale": 0.6666666666666666,
-                                  "type": "minecraft:noise"
-                                },
-                                "type": "minecraft:add"
-                              },
-                              "min": -1.0,
-                              "max": 1.0,
-                              "type": "minecraft:clamp"
-                            },
-                            "argument2": {
-                              "input": {
-                                "argument1": 1.5,
-                                "argument2": {
-                                  "argument1": -0.64,
-                                  "argument2": "orbit:casud/sloped_cheese",
-                                  "type": "minecraft:mul"
-                                },
-                                "type": "minecraft:add"
-                              },
-                              "min": 0.0,
-                              "max": 0.5,
-                              "type": "minecraft:clamp"
-                            },
-                            "type": "minecraft:add"
-                          },
-                          "type": "minecraft:add"
-                        },
-                        "argument2": "orbit:casud/entrances",
-                        "type": "minecraft:min"
-                      },
+                  "argument2": {
+                    "type": "minecraft:add",
+                    "argument1": -0.1171875,
+                    "argument2": {
+                      "type": "minecraft:add",
+                      "argument1": -0.078125,
                       "argument2": {
-                        "argument1": "orbit:casud/spaghetti_2d",
-                        "argument2": "orbit:casud/spaghetti_roughness_function",
-                        "type": "minecraft:add"
-                      },
-                      "type": "minecraft:min"
-                    },
-                    "argument2": {
-                      "max_exclusive": 0.03,
-                      "when_in_range": -1000000.0,
-                      "when_out_of_range": "orbit:casud/pillars",
-                      "input": "orbit:casud/pillars",
-                      "min_inclusive": -1000000.0,
-                      "type": "minecraft:range_choice"
-                    },
-                    "type": "minecraft:max"
-                  },
-                  "input": "orbit:casud/sloped_cheese",
-                  "min_inclusive": -1000000.0,
-                  "type": "minecraft:range_choice"
-                },
-                "type": "minecraft:slide"
-              },
-              "type": "minecraft:blend_density"
-            },
-            "type": "minecraft:interpolated"
+                        "type": "minecraft:mul",
+                        "argument1": {
+                          "type": "minecraft:y_clamped_gradient",
+                          "from_value": 1.0,
+                          "from_y": 240,
+                          "to_value": 0.0,
+                          "to_y": 256
+                        },
+                        "argument2": {
+                          "type": "minecraft:add",
+                          "argument1": 0.078125,
+                          "argument2": {
+                            "type": "minecraft:range_choice",
+                            "input": "orbit:casud/sloped_cheese",
+                            "max_exclusive": 1.5625,
+                            "min_inclusive": -1000000.0,
+                            "when_in_range": {
+                              "type": "minecraft:min",
+                              "argument1": "orbit:casud/sloped_cheese",
+                              "argument2": {
+                                "type": "minecraft:mul",
+                                "argument1": 5.0,
+                                "argument2": "orbit:casud/entrances"
+                              }
+                            },
+                            "when_out_of_range": {
+                              "type": "minecraft:max",
+                              "argument1": {
+                                "type": "minecraft:min",
+                                "argument1": {
+                                  "type": "minecraft:min",
+                                  "argument1": {
+                                    "type": "minecraft:add",
+                                    "argument1": {
+                                      "type": "minecraft:mul",
+                                      "argument1": 4.0,
+                                      "argument2": {
+                                        "type": "minecraft:square",
+                                        "argument": {
+                                          "type": "minecraft:noise",
+                                          "noise": "orbit:casud/cave_layer",
+                                          "xz_scale": 1.0,
+                                          "y_scale": 8.0
+                                        }
+                                      }
+                                    },
+                                    "argument2": {
+                                      "type": "minecraft:add",
+                                      "argument1": {
+                                        "type": "minecraft:clamp",
+                                        "input": {
+                                          "type": "minecraft:add",
+                                          "argument1": 0.27,
+                                          "argument2": {
+                                            "type": "minecraft:noise",
+                                            "noise": "orbit:casud/cave_cheese",
+                                            "xz_scale": 1.0,
+                                            "y_scale": 0.6666666666666666
+                                          }
+                                        },
+                                        "max": 1.0,
+                                        "min": -1.0
+                                      },
+                                      "argument2": {
+                                        "type": "minecraft:clamp",
+                                        "input": {
+                                          "type": "minecraft:add",
+                                          "argument1": 1.5,
+                                          "argument2": {
+                                            "type": "minecraft:mul",
+                                            "argument1": -0.64,
+                                            "argument2": "orbit:casud/sloped_cheese"
+                                          }
+                                        },
+                                        "max": 0.5,
+                                        "min": 0.0
+                                      }
+                                    }
+                                  },
+                                  "argument2": "orbit:casud/entrances"
+                                },
+                                "argument2": {
+                                  "type": "minecraft:add",
+                                  "argument1": "orbit:casud/spaghetti_2d",
+                                  "argument2": "orbit:casud/spaghetti_roughness_function"
+                                }
+                              },
+                              "argument2": {
+                                "type": "minecraft:range_choice",
+                                "input": "orbit:casud/pillars",
+                                "max_exclusive": 0.03,
+                                "min_inclusive": -1000000.0,
+                                "when_in_range": -1000000.0,
+                                "when_out_of_range": "orbit:casud/pillars"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },

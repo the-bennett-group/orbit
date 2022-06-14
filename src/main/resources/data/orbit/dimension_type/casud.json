@@ -1,5 +1,13 @@
 {
   "effects": "minecraft:overworld",
+  "monster_spawn_light_level": {
+    "type": "minecraft:uniform",
+    "value": {
+      "min_inclusive": 6,
+      "max_inclusive": 11
+    }
+  },
+  "monster_spawn_block_light_limit": 5,
   "ultrawarm": false,
   "natural": true,
   "ambient_light": 0.25,
