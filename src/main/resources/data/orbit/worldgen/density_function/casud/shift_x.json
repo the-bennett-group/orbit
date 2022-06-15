@@ -1,7 +1,7 @@
 {
   "argument": {
     "argument": {
-      "argument": "orbit:casud/base_height_increase",
+      "argument": "orbit:casud/base_height",
       "type": "minecraft:shift_a"
     },
     "type": "minecraft:cache_2d"
