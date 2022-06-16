@@ -1,9 +1,16 @@
 accessWidener	v1	named
 
+#BaseOrbitChunkGenerator stuff
 extendable  class   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
 accessible  method  net/minecraft/advancements/critereon/BlockPredicate$Builder <init>  ()V
-
 mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator    noises   Lnet/minecraft/core/Registry;
 mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator biomeSource  Lnet/minecraft/world/level/biome/BiomeSource;
 mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator seed  Ljava/lang/Long;
 mutable  field   net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator settings  Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;
+
+# Game Rule stuff
+accessible  field   net/minecraft/world/level/GameRules   GAME_RULE_TYPES    Ljava/util/Map;
+accessible method net/minecraft/world/level/GameRules$BooleanValue create  (Z)Lnet/minecraft/world/level/GameRules$Type;
+
+#Acid stuff
+accessible  method  net/minecraft/world/damagesource/DamageSource   <init>  (Ljava/lang/String;)V
