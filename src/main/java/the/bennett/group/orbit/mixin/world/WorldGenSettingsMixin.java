@@ -23,7 +23,7 @@ public class WorldGenSettingsMixin {
      */
     @Inject(method = "<init>(JZZLnet/minecraft/core/Registry;Ljava/util/Optional;)V",
             at = @At(value = "RETURN"))
-    private void worldblender_giveUsTrueWorldSeed(long seed, boolean generateStructures, boolean bonusChest, Registry<LevelStem> mappedRegistry, Optional<String> legacyCustomOptions, CallbackInfo ci) {
+    private void orbit$captureSeed(long seed, boolean generateStructures, boolean bonusChest, Registry<LevelStem> mappedRegistry, Optional<String> legacyCustomOptions, CallbackInfo ci) {
         SeedHolder.setSeed(seed);
         if(QuiltLoader.isDevelopmentEnvironment()) {
             Orbit.log("Seed acquired: " + seed);

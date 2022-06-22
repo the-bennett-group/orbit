@@ -1,5 +1,4 @@
 {
-  "type": "minecraft:shift_y",
   "type": "minecraft:add",
   "argument1": {
     "type": "minecraft:add",
@@ -30,7 +29,34 @@
                 "y_scale": 0.75,
                 "shift_x": 0.0,
                 "shift_z": 0.0,
-                "shift_y": 0.2
+                "shift_y": {
+                  "type": "minecraft:spline",
+                  "spline": {
+                    "coordinate": "orbit:casud/height_squish_noise",
+                    "points": [
+                      {
+                        "location": -1.0,
+                        "derivative": 0,
+                        "value": 1.5
+                      },
+                      {
+                        "location": -0.5,
+                        "derivative": 0.5,
+                        "value": 0.75
+                      },
+                      {
+                        "location": 0,
+                        "derivative": 0,
+                        "value": 0.75
+                      },
+                      {
+                        "location": 1.5,
+                        "derivative": 0,
+                        "value": 1.5
+                      }
+                    ]
+                  }
+                }
               }
             },
             "argument2": {
@@ -41,19 +67,19 @@
                   "coordinate": "orbit:casud/height_detail_guard",
                   "points": [
                     {
-                      "location": 0,
+                      "location": -1,
                       "derivative": 0,
                       "value": 0
                     },
                     {
-                      "location": 0.25,
+                      "location": -0.3,
                       "derivative": 0,
-                      "value": 1
+                      "value": 0.35
                     },
                     {
-                      "location": 0.75,
+                      "location": 0.65,
                       "derivative": 0,
-                      "value": 0
+                      "value": 0.65
                     },
                     {
                       "location": 1,
@@ -77,9 +103,9 @@
   },
   "argument2": {
     "type": "minecraft:y_clamped_gradient",
-    "from_value": 0.90,
+    "from_value": 2.0,
     "from_y": 0,
-    "to_value": -0.25,
+    "to_value": -0.50,
     "to_y": 180
   }
 }

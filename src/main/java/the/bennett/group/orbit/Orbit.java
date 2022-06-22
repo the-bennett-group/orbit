@@ -44,7 +44,7 @@ public class Orbit implements ModInitializer {
         return new ResourceLocation(Orbit.MOD_ID, name);
     }
 
-    public static void log(String message) {LOGGER.info("[" + MOD_NAME + "]"  + message);}
+    public static void log(String message) {LOGGER.info(message);}
 
 
 }

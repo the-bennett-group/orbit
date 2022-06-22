@@ -20,7 +20,7 @@ public final class OrbitBlocks {
 	public static final Block STRIPPED_BLACKWOOD_LOG = register(RegistryUtils.newLogBlock(), "stripped_blackwood_log");
 	public static final Block BLACKWOOD_PLANKS = register(RegistryUtils.newLogBlock(), "blackwood_planks");
 	public static final Block BLACKWOOD_LEAVES = register(new Block(BlockBehaviour.Properties.of(Material.GRASS).strength(4.0f).sound(SoundType.GRASS).noOcclusion().randomTicks().isViewBlocking(((blockState, blockGetter, blockPos) -> false))), "blackwood_leaves");
-	public static final Block BLACKWOOD_FENCE = register(new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).strength(2.0f, 3.0f).sound(SoundType.WOOD)), "blackwood_fence");
+	public static final Block BLACKWOOD_FENCE = register(new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).emissiveRendering((blockState, blockGetter, blockPos) -> true).strength(2.0f, 3.0f).sound(SoundType.WOOD)), "blackwood_fence");
 	public static final Block BLACKWOOD_FENCE_GATE = register(
 			new FenceGateBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).strength(2.0f, 3.0f).sound(SoundType.WOOD)),
 			"blackwood_fence_gate");
