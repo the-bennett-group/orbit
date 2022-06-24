@@ -30,32 +30,36 @@
                 "shift_x": 0.0,
                 "shift_z": 0.0,
                 "shift_y": {
-                  "type": "minecraft:spline",
-                  "spline": {
-                    "coordinate": "orbit:casud/height_squish_noise",
-                    "points": [
-                      {
-                        "location": -1.0,
-                        "derivative": 0,
-                        "value": 1.5
-                      },
-                      {
-                        "location": -0.5,
-                        "derivative": 0.5,
-                        "value": 0.75
-                      },
-                      {
-                        "location": 0,
-                        "derivative": 0,
-                        "value": 0.75
-                      },
-                      {
-                        "location": 1.5,
-                        "derivative": 0,
-                        "value": 1.5
-                      }
-                    ]
-                  }
+                  "type": "minecraft:mul",
+                  "argument1": {
+                    "type": "minecraft:spline",
+                    "spline": {
+                      "coordinate": "orbit:casud/height_squish_noise",
+                      "points": [
+                        {
+                          "location": -1.0,
+                          "derivative": 0,
+                          "value": 1.5
+                        },
+                        {
+                          "location": -0.5,
+                          "derivative": 0.5,
+                          "value": 0.75
+                        },
+                        {
+                          "location": 0,
+                          "derivative": 0,
+                          "value": 0.75
+                        },
+                        {
+                          "location": 1.5,
+                          "derivative": 0,
+                          "value": 1.5
+                        }
+                      ]
+                    }
+                  },
+                  "argument2": "orbit:casud/height_squish_noise"
                 }
               }
             },
