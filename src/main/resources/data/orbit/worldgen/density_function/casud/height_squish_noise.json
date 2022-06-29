@@ -6,7 +6,7 @@
       "type": "minecraft:noise",
       "noise": "orbit:casud/height_squish",
       "xz_scale": 2.0,
-      "y_scale": 2.0
+      "y_scale": 3.0
     }
   }
 }

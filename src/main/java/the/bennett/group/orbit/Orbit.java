@@ -15,6 +15,7 @@ import the.bennett.group.orbit.tags.OrbitTags;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.world.feature.OrbitFeatures;
 import the.bennett.group.orbit.world.gen.BaseOrbitChunkGenerator;
+import the.bennett.group.orbit.world.gen.OrbitRuleSources;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
@@ -33,7 +34,7 @@ public class Orbit implements ModInitializer {
         OrbitItems.initialize();
         OrbitFeatures.initialize();
         BaseOrbitChunkGenerator.initialize();
-
+        OrbitRuleSources.initialize();
 
         if(QuiltLoader.isDevelopmentEnvironment()) {
             log(ContentCounter.report());
