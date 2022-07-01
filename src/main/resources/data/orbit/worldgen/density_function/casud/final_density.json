@@ -1,5 +1,9 @@
 {
   "type": "minecraft:add",
-  "argument1": "orbit:casud/base_height",
-  "argument2": 0.0
+  "argument1": "orbit:casud/squished_base_height",
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": 0.0,
+    "argument2": 0.0
+  }
 }

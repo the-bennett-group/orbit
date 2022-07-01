@@ -4,7 +4,6 @@
   "package": "the.bennett.group.orbit.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "world.WorldGenSettingsMixin",
     "entity.PlayerMixin",
     "entity.EntityMixin",
     "entity.ItemEntityMixin",
