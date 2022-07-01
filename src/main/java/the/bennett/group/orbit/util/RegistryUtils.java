@@ -5,17 +5,9 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SoundType;
-import org.quiltmc.qsl.block.extensions.api.QuiltBlockSettings;
 import the.bennett.group.orbit.Orbit;
 
 public class RegistryUtils {
-
-    public static RotatedPillarBlock newLogBlock() {
-        return new RotatedPillarBlock(QuiltBlockSettings.copyOf(Blocks.OAK_LOG).strength(2.0F).sound(SoundType.WOOD));
-    }
 
     public static <R extends Registry<T>, T> Holder<T> findHolder(T object, R registry) {
         return registry.getOrCreateHolderOrThrow(registry.getResourceKey(object).orElseThrow());

@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseFireBlock;
@@ -17,6 +16,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.items.OrbitItems;
+import the.bennett.group.orbit.rules.OrbitRules;
 import the.bennett.group.orbit.tags.OrbitTags;
 import the.bennett.group.orbit.util.RegistryUtils;
 
@@ -53,7 +53,7 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 	protected boolean isRandomlyTicking(){return true;}
 
 	public void randomTick(Level level, BlockPos blockPos, FluidState fluidState, Random random) {
-		if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
+		if (level.getGameRules().getBoolean(OrbitRules.RULE_DO_CORROSION)) {
 			int i = random.nextInt(3);
 			if (i > 0) {
 				BlockPos acidTargetedBlockPos = blockPos;

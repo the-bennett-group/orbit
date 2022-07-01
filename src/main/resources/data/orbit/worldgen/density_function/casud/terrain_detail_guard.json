@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:interpolated",
-  "argument": {
-    "type": "minecraft:noise",
-    "noise": "orbit:casud/terrain_detail_guard",
-    "xz_scale": 1,
-    "y_scale": 1
-  }
-}

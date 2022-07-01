@@ -8,6 +8,7 @@ import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.blocks.fluid.OrbitFluids;
+import the.bennett.group.orbit.entity.OrbitEntities;
 import the.bennett.group.orbit.items.OrbitItems;
 import the.bennett.group.orbit.items.tabs.OrbitTabs;
 import the.bennett.group.orbit.rules.OrbitRules;
@@ -15,8 +16,7 @@ import the.bennett.group.orbit.tags.OrbitTags;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.world.feature.OrbitFeatures;
 import the.bennett.group.orbit.world.gen.BaseOrbitChunkGenerator;
-import the.bennett.group.orbit.world.gen.df.OrbitDensityFunctions;
-import the.bennett.group.orbit.world.gen.surface.OrbitRuleSources;
+import the.bennett.group.orbit.world.gen.OrbitRuleSources;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
@@ -27,20 +27,15 @@ public class Orbit implements ModInitializer {
     @Override
     public void onInitialize(ModContainer mod) {
         ContentCounter.initialize();
-
         OrbitRules.initialize();
         OrbitTags.initialize();
-
         OrbitFluids.initialize();
         OrbitBlocks.initialize();
-
         OrbitTabs.initialize();
         OrbitItems.initialize();
-
-        BaseOrbitChunkGenerator.initialize();
         OrbitFeatures.initialize();
+        BaseOrbitChunkGenerator.initialize();
         OrbitRuleSources.initialize();
-        OrbitDensityFunctions.initialize();
 
         if(QuiltLoader.isDevelopmentEnvironment()) {
             log(ContentCounter.report());
@@ -53,5 +48,6 @@ public class Orbit implements ModInitializer {
 
     public static void log(String message) {LOGGER.info(message);}
 
+        OrbitEntities.initialize();
 
 }
