@@ -3,9 +3,9 @@
   "argument1": {
     "type": "minecraft:y_clamped_gradient",
     "from_value": 1.5,
-    "from_y": 0,
+    "from_y": -32,
     "to_value": -1.5,
-    "to_y": 256
+    "to_y": 304
   },
-  "argument2": 0.0
+  "argument2": "orbit:casud/base_terrain_noise"
 }

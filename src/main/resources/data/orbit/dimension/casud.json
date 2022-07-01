@@ -5,31 +5,7 @@
       "biomes": [
         {
           "parameters": {
-            "erosion": [-1.0, 0.05],
-            "depth": 0.0,
-            "weirdness": [-1.0, 1.0],
-            "offset": 0.0,
-            "temperature": [-1.0, 0],
-            "humidity": [-0.1, 1.0],
-            "continentalness": [-0.11, 0.3]
-          },
-          "biome": "orbit:blackwood_forest"
-        },
-        {
-          "parameters": {
-            "erosion": [0.05, 1.0],
-            "depth": 0.0,
-            "weirdness": [-1.0, 1.0],
-            "offset": 0.0,
-            "temperature": [0, 1.0],
-            "humidity": [-1.0, -0.1],
-            "continentalness": [0.3, 1.0]
-          },
-          "biome": "orbit:salty_flatlands"
-        },
-        {
-          "parameters": {
-            "erosion": [-1.0, 1.0],
+            "erosion": [0.35, 1.0],
             "depth": [-1.0, 1.0],
             "weirdness": [-1.0, 1.0],
             "offset": 0.0,
@@ -37,11 +13,11 @@
             "humidity": [-1.0, 1.0],
             "continentalness": [-0.19, -0.11]
           },
-          "biome": "orbit:salty_beach"
+          "biome": "orbit:salty_flatlands"
         },
         {
           "parameters": {
-            "erosion": [-1.0, 1.0],
+            "erosion": [-1.0, 0],
             "depth": [-1.0, 1.0],
             "weirdness": [-1.0, 1.0],
             "offset": 0.0,
@@ -50,24 +26,11 @@
             "continentalness": [-0.445, -0.19]
           },
           "biome": "orbit:blackwood_forest"
-        },
-        {
-          "parameters": {
-            "erosion": [-1.0, 1.0],
-            "depth": 0.0,
-            "weirdness": [-1.0, 1.0],
-            "offset": 0.0,
-            "temperature": [-1.0, 1.0],
-            "humidity": [-1.0, 1.0],
-            "continentalness": [-1.0, -0.445]
-          },
-          "biome": "orbit:salty_flatlands"
         }
-
       ],
       "type": "minecraft:multi_noise"
     },
     "settings": "orbit:casud",
-    "type": "orbit:generator"
+    "type": "orbit:casud"
   }
 }

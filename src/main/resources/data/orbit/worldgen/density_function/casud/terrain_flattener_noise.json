@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:interpolated",
+    "argument": {
+      "type": "minecraft:noise",
+      "noise": "orbit:casud/height_flattener",
+      "xz_scale": 2.0,
+      "y_scale": 0.0
+    }
+}

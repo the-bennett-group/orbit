@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlackwoodSaplingBlock extends SaplingBlock{
+public class BlackwoodSaplingBlock extends SaplingBlock {
     public BlackwoodSaplingBlock(AbstractTreeGrower grower, Properties properties) {
         super(grower, properties);
     }

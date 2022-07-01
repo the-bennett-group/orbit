@@ -15,6 +15,8 @@ import the.bennett.group.orbit.tags.OrbitTags;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.world.feature.OrbitFeatures;
 import the.bennett.group.orbit.world.gen.BaseOrbitChunkGenerator;
+import the.bennett.group.orbit.world.gen.df.OrbitDensityFunctions;
+import the.bennett.group.orbit.world.gen.surface.OrbitRuleSources;
 
 public class Orbit implements ModInitializer {
     public static final String MOD_ID = "orbit";
@@ -25,15 +27,20 @@ public class Orbit implements ModInitializer {
     @Override
     public void onInitialize(ModContainer mod) {
         ContentCounter.initialize();
+
         OrbitRules.initialize();
         OrbitTags.initialize();
+
         OrbitFluids.initialize();
         OrbitBlocks.initialize();
+
         OrbitTabs.initialize();
         OrbitItems.initialize();
-        OrbitFeatures.initialize();
-        BaseOrbitChunkGenerator.initialize();
 
+        BaseOrbitChunkGenerator.initialize();
+        OrbitFeatures.initialize();
+        OrbitRuleSources.initialize();
+        OrbitDensityFunctions.initialize();
 
         if(QuiltLoader.isDevelopmentEnvironment()) {
             log(ContentCounter.report());
@@ -44,7 +51,7 @@ public class Orbit implements ModInitializer {
         return new ResourceLocation(Orbit.MOD_ID, name);
     }
 
-    public static void log(String message) {LOGGER.info("[" + MOD_NAME + "]"  + message);}
+    public static void log(String message) {LOGGER.info(message);}
 
 
 }

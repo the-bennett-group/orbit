@@ -7,7 +7,10 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.levelgen.*;
+import net.minecraft.world.level.levelgen.DensityFunction;
+import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
+import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
+import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -26,19 +29,15 @@ public class BaseOrbitChunkGenerator extends NoiseBasedChunkGenerator {
             return generator.noises;
         }), BiomeSource.CODEC.fieldOf("biome_source").forGetter((generator) -> {
             return generator.biomeSource;
-        }), Codec.LONG.fieldOf("seed").stable().orElseGet(SeedHolder::seed).forGetter((generator) -> {
-            return generator.seed;
         }), NoiseGeneratorSettings.CODEC.fieldOf("settings").forGetter((generator) -> {
             return generator.settings;
         }))).apply(instance, instance.stable(BaseOrbitChunkGenerator::new));
     });
 
     public Registry<NormalNoise.NoiseParameters> noises;
-    public Long seed;
 
-    public BaseOrbitChunkGenerator(Registry<StructureSet> registry, Registry<NormalNoise.NoiseParameters> registry2, BiomeSource biomeSource, long l, Holder<NoiseGeneratorSettings> holder) {
+    public BaseOrbitChunkGenerator(Registry<StructureSet> registry, Registry<NormalNoise.NoiseParameters> registry2, BiomeSource biomeSource, Holder<NoiseGeneratorSettings> holder) {
         super(registry, registry2, biomeSource, holder);
-        this.seed = l;
     }
 
     public static void initialize() {
@@ -49,7 +48,6 @@ public class BaseOrbitChunkGenerator extends NoiseBasedChunkGenerator {
     public void addDebugScreenInfo(List<String> list, RandomState randomState, BlockPos blockPos) {
         if (QuiltLoader.isDevelopmentEnvironment()) {
             //i like how this looks better.
-            list.add("Seed " + SeedHolder.seed());
             DecimalFormat decimalFormat = new DecimalFormat("0.000");
             DensityFunction.SinglePointContext singlePointContext = new DensityFunction.SinglePointContext(blockPos.getX(), blockPos.getY(), blockPos.getZ());
             double d = randomState.router().ridges().compute(singlePointContext);
