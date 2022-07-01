@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,9 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import the.bennett.group.orbit.tags.OrbitTags;
 import the.bennett.group.orbit.world.damagesource.OrbitDamageSources;
+import the.bennett.group.orbit.world.util.OrbitWorldUtils;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
+    @Shadow
+    public Level level;
+
     @Shadow
     public boolean firstTick;
 
@@ -65,6 +70,15 @@ public abstract class EntityMixin {
             this.hurt(OrbitDamageSources.ACID, 4.0F);
             this.fallDistance  = 0F;
         }
+    }
+
+    @Inject(method = "getBlockJumpFactor()F",
+            at = @At(value = "RETURN"), cancellable = true)
+    public void applyGravityToBlockJumpFactor(CallbackInfoReturnable<Float> cir) {
+        if(this.level.dimension() == OrbitWorldUtils.CASUD) {
+            cir.setReturnValue(cir.getReturnValue() * OrbitWorldUtils.getGravityModifer(this.level.dimension()));
+        }
+        cir.cancel();
     }
 
     public void acidHurt() {
