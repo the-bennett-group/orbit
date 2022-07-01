@@ -239,20 +239,15 @@
                   "then_run": {
                     "type": "orbit:random_block",
                     "blockstates": [
-                      {"Name":  "minecraft:white_concrete"},
-                      {"Name":  "minecraft:white_concrete"},
                       {"Name":  "minecraft:light_gray_terracotta"},
-                      {"Name":  "minecraft:orange_concrete"},
                       {"Name":  "minecraft:cyan_terracotta"},
                       {"Name":  "minecraft:cyan_terracotta"},
                       {"Name":  "orbit:salt_block"},
                       {"Name":  "orbit:salt_block"},
-                      {"Name":  "minecraft:white_concrete_powder"},
-                      {"Name":  "minecraft:white_concrete_powder"},
+                      {"Name":  "orbit:salt_block"},
+                      {"Name":  "orbit:salt_block"},
                       {"Name":  "minecraft:purple_terracotta"},
-                      {"Name":  "minecraft:purple_terracotta"},
-                      {"Name":  "minecraft:purple_concrete"},
-                      {"Name":  "minecraft:purple_concrete"}
+                      {"Name":  "minecraft:purple_terracotta"}
                     ]
                   }
                 },
@@ -267,16 +262,15 @@
                   "then_run": {
                     "type": "orbit:random_block",
                     "blockstates": [
-                      {"Name":  "minecraft:white_concrete"},
-                      {"Name":  "minecraft:white_concrete"},
-                      {"Name":  "minecraft:white_concrete"},
-                      {"Name":  "minecraft:blue_concrete"},
-                      {"Name":  "minecraft:orange_concrete"},
+                      {"Name":  "minecraft:light_gray_terracotta"},
+                      {"Name":  "minecraft:cyan_terracotta"},
+                      {"Name":  "minecraft:cyan_terracotta"},
                       {"Name":  "orbit:salt_block"},
                       {"Name":  "orbit:salt_block"},
-                      {"Name":  "minecraft:white_concrete_powder"},
-                      {"Name":  "minecraft:white_concrete_powder"},
-                      {"Name":  "minecraft:pink_concrete"}
+                      {"Name":  "orbit:salt_block"},
+                      {"Name":  "orbit:salt_block"},
+                      {"Name":  "minecraft:purple_terracotta"},
+                      {"Name":  "minecraft:purple_terracotta"}
                     ]
                   }
                 }
