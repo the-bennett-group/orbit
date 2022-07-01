@@ -21,7 +21,7 @@
     "erosion": "orbit:casud/height_squish_noise",
     "depth": "orbit:casud/depth",
     "ridges": "orbit:casud/ridges",
-    "initial_density_without_jaggedness": "orbit:casud/base_height",
+    "initial_density_without_jaggedness": "orbit:casud/squished_base_height",
     "lava": {
       "noise": "orbit:casud/aquifer_acid",
       "xz_scale": 1.0,

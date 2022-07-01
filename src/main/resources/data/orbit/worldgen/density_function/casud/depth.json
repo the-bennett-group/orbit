@@ -7,5 +7,5 @@
     "to_value": -1.5,
     "to_y": 256
   },
-  "argument2": "orbit:casud/base_height"
+  "argument2": "orbit:casud/squished_base_height"
 }

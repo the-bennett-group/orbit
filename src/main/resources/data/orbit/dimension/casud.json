@@ -68,6 +68,6 @@
       "type": "minecraft:multi_noise"
     },
     "settings": "orbit:casud",
-    "type": "orbit:generator"
+    "type": "orbit:casud"
   }
 }

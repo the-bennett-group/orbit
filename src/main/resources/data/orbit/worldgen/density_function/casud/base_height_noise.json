@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:interpolated",
+  "argument": {
+    "type": "minecraft:shifted_noise",
+    "noise": "orbit:casud/base_height",
+    "xz_scale": 3,
+    "y_scale": 0.75,
+    "shift_x": 0.0,
+    "shift_z": 0.0,
+    "shift_y": 0.0
+  }
+}
