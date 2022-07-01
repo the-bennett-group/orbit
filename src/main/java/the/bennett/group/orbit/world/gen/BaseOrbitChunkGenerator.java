@@ -15,7 +15,6 @@ import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import org.quiltmc.loader.api.QuiltLoader;
 import the.bennett.group.orbit.Orbit;
-import the.bennett.group.orbit.util.SeedHolder;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -24,15 +23,11 @@ import java.util.List;
 
 
 public class BaseOrbitChunkGenerator extends NoiseBasedChunkGenerator {
-    public static final Codec<BaseOrbitChunkGenerator> CODEC = RecordCodecBuilder.create((instance) -> {
-        return commonCodec(instance).and(instance.group(RegistryOps.retrieveRegistry(Registry.NOISE_REGISTRY).forGetter((generator) -> {
-            return generator.noises;
-        }), BiomeSource.CODEC.fieldOf("biome_source").forGetter((generator) -> {
-            return generator.biomeSource;
-        }), NoiseGeneratorSettings.CODEC.fieldOf("settings").forGetter((generator) -> {
-            return generator.settings;
-        }))).apply(instance, instance.stable(BaseOrbitChunkGenerator::new));
-    });
+    public static final Codec<BaseOrbitChunkGenerator> CODEC = RecordCodecBuilder.create((instance) -> commonCodec(instance).and(instance.group(RegistryOps.retrieveRegistry(Registry.NOISE_REGISTRY).forGetter((generator) -> generator.noises), BiomeSource.CODEC.fieldOf("biome_source").forGetter((generator) -> {
+        return generator.biomeSource;
+    }), NoiseGeneratorSettings.CODEC.fieldOf("settings").forGetter((generator) -> {
+        return generator.settings;
+    }))).apply(instance, instance.stable(BaseOrbitChunkGenerator::new)));
 
     public Registry<NormalNoise.NoiseParameters> noises;
 
@@ -42,6 +37,7 @@ public class BaseOrbitChunkGenerator extends NoiseBasedChunkGenerator {
 
     public static void initialize() {
         Registry.register(Registry.CHUNK_GENERATOR, Orbit.newId("generator"), CODEC);
+        Registry.register(Registry.CHUNK_GENERATOR, Orbit.newId("casud"), CasudChunkGenerator.CODEC);
     }
 
     @Override

@@ -7,5 +7,5 @@
     "to_value": -1.5,
     "to_y": 304
   },
-  "argument2": "orbit:casud/base_terrain_noise"
+  "argument2": "orbit:casud/base_height"
 }
