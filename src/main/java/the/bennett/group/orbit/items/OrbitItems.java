@@ -24,7 +24,9 @@ public final class OrbitItems {
 	public static final Item BLACKWOOD_FENCE = register(OrbitBlocks.BLACKWOOD_FENCE, "blackwood_fence");
 	public static final Item BLACKWOOD_FENCE_GATE = register(OrbitBlocks.BLACKWOOD_FENCE_GATE, "blackwood_fence_gate");
 	public static final Item BLACKWOOD_SAPLING = register(OrbitBlocks.BLACKWOOD_SAPLING, "blackwood_sapling");
-	
+	public static final Item BLACKWOOD_TRAPDOOR = register(OrbitBlocks.BLACKWOOD_TRAPDOOR, "blackwood_trapdoor");
+	public static final Item BLACKWOOD_BUTTON = register(OrbitBlocks.BLACKWOOD_BUTTON, "blackwood_button");
+
 	public static void initialize() {
 
 	}
