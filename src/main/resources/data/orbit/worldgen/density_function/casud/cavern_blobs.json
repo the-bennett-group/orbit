@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:mul",
+  "argument1": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": -20,
+    "to_y": 60,
+    "from_value": -2.5,
+    "to_value": 0.1
+  },
+  "argument2": {
+    "type": "minecraft:interpolated",
+    "argument": {
+      "type": "minecraft:noise",
+      "noise": "orbit:casud/cavern_blobs",
+      "xz_scale": 2.0,
+      "y_scale": 1.0
+    }
+  }
+}

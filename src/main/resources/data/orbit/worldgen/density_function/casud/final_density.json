@@ -1,5 +1,43 @@
 {
   "type": "minecraft:add",
-  "argument1": "orbit:casud/base_height",
-  "argument2": 0.0
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:add",
+      "argument1": -0.078125,
+      "argument2": {
+        "type": "minecraft:mul",
+        "argument1": {
+          "type": "minecraft:y_clamped_gradient",
+          "from_value": 1.0,
+          "from_y": 150,
+          "to_value": 0.0,
+          "to_y": 170
+        },
+        "argument2": {
+          "type": "minecraft:add",
+          "argument1": 0.078125,
+          "argument2": {
+            "type": "minecraft:add",
+            "argument1": "orbit:casud/base_height",
+            "argument2": "orbit:casud/cave_layer"
+          }
+        }
+      }
+    },
+    "argument2": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_value": 1.2,
+      "from_y": -32,
+      "to_value": -0.25,
+      "to_y": 170
+    }
+  },
+  "argument2": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": -32,
+    "to_y": -20,
+    "from_value": 10.0,
+    "to_value": 0
+  }
 }
