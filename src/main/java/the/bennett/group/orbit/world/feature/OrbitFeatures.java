@@ -4,7 +4,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
@@ -34,11 +33,6 @@ public class OrbitFeatures {
     public static ResourceKey<PlacedFeature> ACID_LAKE_KEY;
     public static ResourceKey<PlacedFeature> ACID_LAKE_FREQUENT_KEY;
 
-    public static Feature<PillarFeatureConfiguration> PILLAR_FEATURE;
-    public static ConfiguredFeature<PillarFeatureConfiguration, ?> SALT_PILLAR_CONFIGURED;
-    public static PlacedFeature SALT_PILLAR_PLACED;
-    public static ResourceKey<PlacedFeature> SALT_PILLAR_KEY;
-
     public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD;
     public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD_TALL;
     public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD_MEGA;
@@ -54,11 +48,6 @@ public class OrbitFeatures {
         ACID_LAKE_KEY = RegistryUtils.makeKey("acid_lake_surface", Registry.PLACED_FEATURE_REGISTRY);
         ACID_LAKE_PLACED_FREQUENT = register(new PlacedFeature(Holder.direct(ACID_LAKE_CONFIGURED), List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), BiomeFilter.biome())), "acid_lake_surface_frequent");
         ACID_LAKE_FREQUENT_KEY = RegistryUtils.makeKey("acid_lake_surface_frequent", Registry.PLACED_FEATURE_REGISTRY);
-
-        PILLAR_FEATURE = register(new PillarFeature(PillarFeatureConfiguration.CODEC), "salt_pillar");
-        SALT_PILLAR_CONFIGURED = register(new ConfiguredFeature<>(PILLAR_FEATURE, new PillarFeatureConfiguration(UniformInt.of(5, 15), UniformInt.of(3, 10), UniformInt.of(3, 10), UniformInt.of(3, 10), UniformInt.of(3, 10), BlockStateProvider.simple(OrbitBlocks.SALT_BLOCK))), "salt_pillar_configured");
-        SALT_PILLAR_PLACED = register(new PlacedFeature(Holder.direct(SALT_PILLAR_CONFIGURED), List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), BiomeFilter.biome())), "salt_pillar_surface");
-        SALT_PILLAR_KEY = RegistryUtils.makeKey("salt_pillar_surface", Registry.PLACED_FEATURE_REGISTRY);
 
         BLACKWOOD_TREE_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.CONFIGURATION);
         BLACKWOOD_TALL_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, TallBlackwoodTreeGrower.TALL_CONFIGURATION);

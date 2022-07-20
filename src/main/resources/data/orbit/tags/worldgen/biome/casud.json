@@ -1,10 +1,7 @@
 {
   "replace": false,
   "values": [
-    "orbit:acid_ocean",
     "orbit:blackwood_forest",
-    "orbit:deep_acid_ocean",
-    "orbit:salty_beach",
-    "orbit:salty_flatlands"
+    "orbit:salty_dunes"
   ]
 }

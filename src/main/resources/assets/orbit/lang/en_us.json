@@ -19,8 +19,5 @@
   "block.orbit.blackwood_trapdoor": "Blackwood Trapdoor",
   "item.orbit.blackwood_trapdoor": "Blackwood Trapdoor",
   "biome.orbit.blackwood_forest": "Blackwood Forest",
-  "biome.orbit.acid_ocean": "Acid Ocean",
-  "biome.orbit.deep_acid_ocean": "Deep Acid Ocean",
-  "biome.orbit.salty_flatlands": "Salty Flatlands",
-  "biome.orbit.salty_beach": "Salty Beach"
+  "biome.orbit.salty_dunes": "Salty Dunes"
 }
