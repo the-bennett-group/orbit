@@ -75,7 +75,7 @@ public abstract class AcidFluid extends BaseOrbitFluid {
 					}
 				}
 			} else {
-				for(int j = 0; j < 3; ++j) { //3 attempts to set nearby block on fire
+				for(int j = 0; j < 3; ++j) { //3 attempts to set nearby block on fire TODO: corrosion
 					BlockPos pos = blockPos.offset(random.nextInt(3) - 1, 0, random.nextInt(3) - 1);
 					if (!level.isLoaded(pos)) {
 						return;

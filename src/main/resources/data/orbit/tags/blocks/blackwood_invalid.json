@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "orbit:salt_block",
+    "orbit:blackwood_log",
+    "orbit:blackwood_leaves",
     "minecraft:air"
   ]
 }

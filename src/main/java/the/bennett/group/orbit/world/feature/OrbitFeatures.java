@@ -19,8 +19,6 @@ import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.util.RegistryUtils;
 import the.bennett.group.orbit.world.feature.tree.blackwood.BlackwoodTreeGrower;
-import the.bennett.group.orbit.world.feature.tree.blackwood.MegaBlackwoodTreeGrower;
-import the.bennett.group.orbit.world.feature.tree.blackwood.TallBlackwoodTreeGrower;
 
 import java.util.List;
 
@@ -33,12 +31,8 @@ public class OrbitFeatures {
     public static ResourceKey<PlacedFeature> ACID_LAKE_KEY;
     public static ResourceKey<PlacedFeature> ACID_LAKE_FREQUENT_KEY;
 
-    public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD;
-    public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD_TALL;
-    public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD_MEGA;
+    public static Holder<ConfiguredFeature<?, ?>> BLACKWOOD_HOLDER;
     public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_TREE_CONFIGURED;
-    public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_TALL_CONFIGURED;
-    public static ConfiguredFeature<TreeConfiguration, ?> BLACKWOOD_MEGA_CONFIGURED;
 
 
     public static void initialize() {
@@ -50,12 +44,7 @@ public class OrbitFeatures {
         ACID_LAKE_FREQUENT_KEY = RegistryUtils.makeKey("acid_lake_surface_frequent", Registry.PLACED_FEATURE_REGISTRY);
 
         BLACKWOOD_TREE_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, BlackwoodTreeGrower.CONFIGURATION);
-        BLACKWOOD_TALL_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, TallBlackwoodTreeGrower.TALL_CONFIGURATION);
-        BLACKWOOD_MEGA_CONFIGURED = new ConfiguredFeature<>(Feature.TREE, MegaBlackwoodTreeGrower.TALLER_CONFIGURATION);
-
-        BLACKWOOD = makeHolder("blackwood", BLACKWOOD_TREE_CONFIGURED);
-        BLACKWOOD_TALL = makeHolder("blackwood_tall", BLACKWOOD_TALL_CONFIGURED);
-        BLACKWOOD_MEGA = makeHolder("blackwood_mega", BLACKWOOD_MEGA_CONFIGURED);
+        BLACKWOOD_HOLDER = makeHolder("blackwood_regular", BLACKWOOD_TREE_CONFIGURED);
 
     }
 

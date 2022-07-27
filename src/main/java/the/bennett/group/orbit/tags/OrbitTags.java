@@ -12,15 +12,7 @@ import the.bennett.group.orbit.Orbit;
 public class OrbitTags {
     public static final TagKey<Block> CORRODIBLE_BLOCKS = newBlocktag("corrodible_blocks");
     public static final TagKey<Fluid> ACID = newFluidTag("acid");
-    public static final TagKey<Block> INFINIBURN_CASUD = newBlocktag("infiniburn_casud");
-    public static final TagKey<Block> BLACKWOOD_REPLACEABLE = newBlocktag("blackwood_replaceable");
 
-    public static final TagKey<Biome> CASUD_BIOMES = newBiomeTag("casud");
-
-    public static final TagKey<PlacedFeature> ACID_LAKES = newPlacedFeatureTag("acid_lakes");
-    public static final TagKey<PlacedFeature> BLACKWOOD_TREES = newPlacedFeatureTag("blackwood_trees");
-
-    public static final TagKey<Item> CREATES_SALT_FROM_ACID = newItemTag("creates_salt_from_acid");
     public static void initialize() {
 
     }
