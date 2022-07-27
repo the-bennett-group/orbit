@@ -2,31 +2,11 @@
   "feature": "orbit:blackwood_giant",
   "placement": [
     {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "min_inclusive": {
-          "above_bottom": 0
-        },
-        "max_inclusive": {
-          "below_top": 0
-        }
-      }
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
     },
     {
       "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:environment_scan",
-      "direction_of_search": "down",
-      "max_steps": 1,
-      "target_condition": {
-        "type": "minecraft:not",
-        "predicate": {
-          "type": "minecraft:matching_block_tag",
-          "tag": "orbit:blackwood_invalid"
-        }
-      }
     }
   ]
 }

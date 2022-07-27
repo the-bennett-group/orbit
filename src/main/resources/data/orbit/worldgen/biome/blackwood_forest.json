@@ -50,9 +50,12 @@
     [],
     [],
     [],
-    ["orbit:blackwood_tree_placed",
-      "orbit:blackwood_tall_placed",
-      "orbit:blackwood_mega_placed"
+    [
+      "orbit:blackwood_chonk",
+      "orbit:blackwood_giant",
+      "orbit:blackwood_regular",
+      "orbit:blackwood_stub",
+      "orbit:blackwood_tall"
     ],
     []
   ]

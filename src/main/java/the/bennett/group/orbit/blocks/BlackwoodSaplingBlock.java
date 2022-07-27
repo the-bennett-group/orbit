@@ -1,7 +1,6 @@
 package the.bennett.group.orbit.blocks;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SaplingBlock;
@@ -15,6 +14,6 @@ public class BlackwoodSaplingBlock extends SaplingBlock {
 
     @Override
     public boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-        return floor.is(BlockTags.DIRT) || floor.is(Blocks.FARMLAND) || floor.is(OrbitBlocks.SALT_BLOCK) || floor.is(OrbitBlocks.ACID);
+        return super.mayPlaceOn(floor, world, pos)  || floor.is(OrbitBlocks.SALT_BLOCK) || floor.is(OrbitBlocks.ACID) || floor.is(Blocks.PURPLE_TERRACOTTA);
     }
 }
