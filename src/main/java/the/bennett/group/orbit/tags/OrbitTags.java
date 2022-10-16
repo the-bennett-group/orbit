@@ -9,9 +9,12 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.Fluid;
 import the.bennett.group.orbit.Orbit;
 
+import java.util.function.Predicate;
+
 public class OrbitTags {
     public static final TagKey<Block> CORRODIBLE_BLOCKS = newBlocktag("corrodible_blocks");
     public static final TagKey<Fluid> ACID = newFluidTag("acid");
+    public static final TagKey<Block> BLACKWOOD_PLACEABLE = newBlocktag("blackwood_placeable");
 
     public static void initialize() {
 
