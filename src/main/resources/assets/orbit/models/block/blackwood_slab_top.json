@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "orbit:block/blackwood_planks",
+    "side": "orbit:block/blackwood_planks",
+    "top": "orbit:block/blackwood_planks"
+  }
+}

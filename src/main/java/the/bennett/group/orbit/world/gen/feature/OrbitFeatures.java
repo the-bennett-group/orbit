@@ -1,4 +1,4 @@
-package the.bennett.group.orbit.world.feature;
+package the.bennett.group.orbit.world.gen.feature;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -18,7 +18,7 @@ import the.bennett.group.orbit.Orbit;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
 import the.bennett.group.orbit.util.ContentCounter;
 import the.bennett.group.orbit.util.RegistryUtils;
-import the.bennett.group.orbit.world.feature.tree.blackwood.BlackwoodTreeGrower;
+import the.bennett.group.orbit.world.gen.feature.tree.blackwood.BlackwoodTreeGrower;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package the.bennett.group.orbit.world.feature;
+package the.bennett.group.orbit.world.gen.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -1,4 +1,4 @@
-package the.bennett.group.orbit.world.feature.tree.blackwood;
+package the.bennett.group.orbit.world.gen.feature.tree.blackwood;
 
 import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
@@ -11,10 +11,10 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlac
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import the.bennett.group.orbit.blocks.OrbitBlocks;
-import the.bennett.group.orbit.world.feature.OrbitFeatures;
+import the.bennett.group.orbit.world.gen.feature.OrbitFeatures;
 
 public class BlackwoodTreeGrower extends BaseBlackwoodTreeGrower {
-    public static final TreeConfiguration CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LOG), new StraightTrunkPlacer(7, 2, 2), BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LEAVES), new BushFoliagePlacer(UniformInt.of(0, 3), ConstantInt.of(0), 4), new TwoLayersFeatureSize(1, 0, 2)).dirt(BlockStateProvider.simple(OrbitBlocks.SALT_BLOCK)).build();
+    public static final TreeConfiguration CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LOG), new StraightTrunkPlacer(7, 2, 2), BlockStateProvider.simple(OrbitBlocks.BLACKWOOD_LEAVES), new BushFoliagePlacer(UniformInt.of(0, 2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 2)).dirt(BlockStateProvider.simple(OrbitBlocks.SALT_BLOCK)).build();
 
     public BlackwoodTreeGrower(ConfiguredFeature<TreeConfiguration, ?> feature) {
 

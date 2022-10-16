@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "orbit:block/blackwood_slab"
+    },
+    "type=double": {
+      "model": "orbit:block/blackwood_planks"
+    },
+    "type=top": {
+      "model": "orbit:block/blackwood_slab_top"
+    }
+  }
+}

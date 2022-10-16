@@ -14,7 +14,7 @@ import the.bennett.group.orbit.items.tabs.OrbitTabs;
 import the.bennett.group.orbit.rules.OrbitRules;
 import the.bennett.group.orbit.tags.OrbitTags;
 import the.bennett.group.orbit.util.ContentCounter;
-import the.bennett.group.orbit.world.feature.OrbitFeatures;
+import the.bennett.group.orbit.world.gen.feature.OrbitFeatures;
 import the.bennett.group.orbit.world.gen.BaseOrbitChunkGenerator;
 import the.bennett.group.orbit.world.gen.OrbitRuleSources;
 import the.bennett.group.orbit.world.gen.df.OrbitDensityFunctions;
