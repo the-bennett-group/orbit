@@ -18,6 +18,7 @@ public final class OrbitItems {
 
 	public static void initialize() {
 		OrbitBlocks.ITEMABLE_BLOCKS.forEach((Block block, String name) -> register(newBlockItem(block), name));
+		register(ACID_BUCKET, "acid_bucket");
 	}
 	
 	private static void register(Item item, String name) {

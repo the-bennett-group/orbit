@@ -42,7 +42,6 @@ public final class OrbitBlocks {
 	public static final BlackwoodSaplingBlock BLACKWOOD_SAPLING = new BlackwoodSaplingBlock(new BlackwoodTreeGrower(OrbitFeatures.BLACKWOOD_TREE_CONFIGURED), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().noOcclusion().sound(SoundType.GRASS));
 
 	static {
-		ITEMABLE_BLOCKS.put(ACID, "acid");
 		ITEMABLE_BLOCKS.put(SALT_BLOCK, "salt_block");
 		ITEMABLE_BLOCKS.put(BLACKWOOD_LOG, "blackwood_log");
 		ITEMABLE_BLOCKS.put(STRIPPED_BLACKWOOD_LOG, "stripped_blackwood_log");
@@ -59,6 +58,7 @@ public final class OrbitBlocks {
 
 	public static void initialize() {
 		ITEMABLE_BLOCKS.forEach(OrbitBlocks::register);
+		register(ACID, "acid");
 	}
 
 	public static <T extends Block> T register(T block, String name) {
