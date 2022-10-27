@@ -1,15 +1,5 @@
 {
   "type": "minecraft:add",
-  "argument1": {
-    "type": "minecraft:add",
-    "argument1": "orbit:casud/base_height",
-    "argument2": {
-      "type": "minecraft:y_clamped_gradient",
-      "from_y": -32,
-      "from_value": 3.0,
-      "to_y": -28,
-      "to_value": 0.0
-    }
-  },
+  "argument1": "orbit:casud/base_height",
   "argument2": "orbit:casud/cave_layer"
 }

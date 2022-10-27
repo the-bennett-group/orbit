@@ -2,9 +2,6 @@
   "feature": "orbit:blackwood_giant",
   "placement": [
     {
-      "type": "minecraft:in_square"
-    },
-    {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:would_survive",
