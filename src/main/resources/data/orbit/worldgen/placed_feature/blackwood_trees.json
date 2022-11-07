@@ -8,8 +8,8 @@
         "value": {
           "mean": 12,
           "deviation": 2.2,
-          "min_inclusive": 6,
-          "max_inclusive": 18
+          "min_inclusive": 8,
+          "max_inclusive": 16
         }
       }
     },

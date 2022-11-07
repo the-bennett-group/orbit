@@ -4,10 +4,11 @@
   "package": "the.bennett.group.orbit.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "entity.PlayerMixin",
     "entity.EntityMixin",
     "entity.ItemEntityMixin",
-    "entity.LivingEntityMixin"
+    "entity.LivingEntityMixin",
+    "entity.PlayerMixin",
+    "worldgen.TrunkPlacerMixin"
   ],
   "client": [
   ],
