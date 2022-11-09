@@ -27,18 +27,19 @@ public final class OrbitBlocks {
 	public static final BlockBehaviour.StateArgumentPredicate<EntityType<?>> ENTITY_PREDICATE_NEVER  = (BlockState state, BlockGetter world, BlockPos pos, EntityType<?> type) -> false;
 
 	// Casud associated blocks
-	public static final Block ACID = new LiquidBlock(OrbitFluids.SOURCE_ACID, QuiltBlockSettings.copyOf(Blocks.LAVA).luminance(0).emissiveRendering(ALWAYS));
-	public static final Block SALT_BLOCK = new Block(BlockBehaviour.Properties.of(Material.SAND).strength(0.3f).sound(SoundType.GRAVEL));
-	public static final Block BLACKWOOD_LOG = newLogBlock();
-	public static final Block STRIPPED_BLACKWOOD_LOG = newLogBlock();
-	public static final Block BLACKWOOD_PLANKS = newLogBlock();
-	public static final Block BLACKWOOD_LEAVES = new Block(BlockBehaviour.Properties.of(Material.GRASS).strength(4.0f).sound(SoundType.GRASS).noOcclusion().randomTicks().isViewBlocking(((blockState, blockGetter, blockPos) -> false)));
-	public static final Block BLACKWOOD_FENCE = new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).emissiveRendering((blockState, blockGetter, blockPos) -> true).strength(2.0f, 3.0f).sound(SoundType.WOOD));
+	public static final Block ACID = new LiquidBlock(OrbitFluids.SOURCE_ACID, QuiltBlockSettings.copyOf(Blocks.LAVA).luminance(0).emissiveRendering(ALWAYS).color(MaterialColor.COLOR_LIGHT_GREEN));
+	public static final Block SALT_BLOCK = new Block(BlockBehaviour.Properties.of(Material.SAND).strength(0.3f).sound(SoundType.GRAVEL).color(MaterialColor.QUARTZ));
+	public static final Block BLACKWOOD_LOG = newLogBlock(MaterialColor.COLOR_BLACK);
+	public static final Block STRIPPED_BLACKWOOD_LOG = newLogBlock(BLACKWOOD_LOG.defaultMaterialColor());
+	public static final Block BLACKWOOD_PLANKS = newLogBlock(BLACKWOOD_LOG.defaultMaterialColor());
+	public static final Block BLACKWOOD_LEAVES = new Block(BlockBehaviour.Properties.of(Material.GRASS).strength(4.0f).color(MaterialColor.WOOL).sound(SoundType.GRASS).noOcclusion().randomTicks().isViewBlocking(NEVER));
+	public static final Block BLACKWOOD_FENCE = new FenceBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).noOcclusion().strength(2.0f, 3.0f).sound(SoundType.WOOD));
 	public static final Block BLACKWOOD_FENCE_GATE = new FenceGateBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).strength(2.0f, 3.0f).sound(SoundType.WOOD));
-	public static final Block BLACKWOOD_BUTTON = new WoodButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.75F).sound(SoundType.WOOD));
-	public static final Block BLACKWOOD_TRAPDOOR = new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.33F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ENTITY_PREDICATE_NEVER));
-	public static final Block BLACKWOOD_SLAB = new SlabBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.33F, 6.0F).sound(SoundType.WOOD));
-	public static final Block BLACKWOOD_DOOR = new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(3.33F, 6.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(ENTITY_PREDICATE_NEVER));
+	public static final Block BLACKWOOD_BUTTON = new WoodButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).noOcclusion().strength(0.75F).sound(SoundType.WOOD));
+	public static final Block BLACKWOOD_TRAPDOOR = new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SNOW).strength(3.33F).sound(SoundType.WOOD).isViewBlocking(NEVER).noOcclusion().isValidSpawn(ENTITY_PREDICATE_NEVER));
+	public static final Block BLACKWOOD_SLAB = new SlabBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).strength(3.33F, 6.0F).sound(SoundType.WOOD));
+	public static final Block BLACKWOOD_DOOR = new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).strength(3.33F, 6.0F).sound(SoundType.WOOD).noOcclusion());
+	public static final Block BLACKWOOD_STAIRS = new StairBlock(BLACKWOOD_PLANKS.defaultBlockState(), BlockBehaviour.Properties.of(Material.WOOD, BLACKWOOD_LOG.defaultMaterialColor()).strength(3.33F, 6.0F).sound(SoundType.WOOD).noOcclusion());
 	public static final BlackwoodSaplingBlock BLACKWOOD_SAPLING = new BlackwoodSaplingBlock(new BlackwoodTreeGrower(OrbitFeatures.BLACKWOOD_TREE_CONFIGURED), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().noOcclusion().sound(SoundType.GRASS));
 
 	static {
@@ -53,6 +54,7 @@ public final class OrbitBlocks {
 		ITEMABLE_BLOCKS.put(BLACKWOOD_BUTTON, "blackwood_button");
 		ITEMABLE_BLOCKS.put(BLACKWOOD_TRAPDOOR, "blackwood_trapdoor");
 		ITEMABLE_BLOCKS.put(BLACKWOOD_SLAB, "blackwood_slab");
+		ITEMABLE_BLOCKS.put(BLACKWOOD_STAIRS, "blackwood_stairs");
 		ITEMABLE_BLOCKS.put(BLACKWOOD_DOOR, "blackwood_door");
 	}
 
@@ -66,11 +68,7 @@ public final class OrbitBlocks {
 		return Registry.register(Registry.BLOCK, Orbit.newId(name), block);
 	}
 
-	private static LeavesBlock leaves(SoundType soundType) {
-		return new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(soundType).noOcclusion().isSuffocating(NEVER).isViewBlocking(NEVER));
-	}
-
-	public static RotatedPillarBlock newLogBlock() {
-		return new RotatedPillarBlock(QuiltBlockSettings.copyOf(Blocks.OAK_LOG).strength(2.0F).sound(SoundType.WOOD));
+	public static RotatedPillarBlock newLogBlock(MaterialColor materialColor) {
+		return new RotatedPillarBlock(QuiltBlockSettings.copyOf(Blocks.OAK_LOG).strength(2.0F).color(materialColor).sound(SoundType.WOOD));
 	}
 }

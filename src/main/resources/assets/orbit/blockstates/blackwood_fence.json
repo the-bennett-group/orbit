@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "orbit:block/blackwood_fence"
+        "model": "orbit:block/blackwood_fence_post"
       }
     },
     {

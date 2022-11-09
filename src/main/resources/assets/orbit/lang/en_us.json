@@ -20,6 +20,10 @@
   "item.orbit.blackwood_trapdoor": "Blackwood Trapdoor",
   "block.orbit.blackwood_slab": "Blackwood Slab",
   "item.orbit.blackwood_slab": "Blackwood Slab",
+  "block.orbit.blackwood_door": "Blackwood Door",
+  "item.orbit.blackwood_door": "Blackwood Door",
+  "block.orbit.blackwood_stairs": "Blackwood Stairs",
+  "item.orbit.blackwood_stairs": "Blackwood Stairs",
   "biome.orbit.blackwood_forest": "Blackwood Forest",
   "biome.orbit.salty_dunes": "Salty Dunes"
 }

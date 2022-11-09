@@ -24,16 +24,11 @@ public class OrbitClient implements ClientModInitializer {
         ClientSpriteRegistryCallback.event(InventoryMenu.BLOCK_ATLAS).register((atlasTexture, registry) -> {
             registerBlockTexture(registry, "acid_still");
             registerBlockTexture(registry, "acid_flow");
-            registerBlockTexture(registry, "blackwood_log");
-            registerBlockTexture(registry, "blackwood_log_top");
-            registerBlockTexture(registry, "stripped_blackwood_log");
-            registerBlockTexture(registry, "stripped_blackwood_log_top");
-            registerBlockTexture(registry, "blackwood_planks");
-            registerBlockTexture(registry, "blackwood_sapling");
 
             createFluidRenderLayer(OrbitFluids.SOURCE_ACID, OrbitFluids.FLOWING_ACID, "acid_still", "acid_flow");
             putSpecialRenderType(RenderType.cutout(), OrbitBlocks.BLACKWOOD_SAPLING);
             putSpecialRenderType(RenderType.cutout(), OrbitBlocks.BLACKWOOD_LEAVES);
+            putSpecialRenderType(RenderType.cutout(), OrbitBlocks.BLACKWOOD_TRAPDOOR);
         });
 
     }
